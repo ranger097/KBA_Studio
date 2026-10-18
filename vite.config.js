@@ -10,10 +10,8 @@ export default defineConfig({
         pages: 'build',
         assets: 'build',
         fallback: '404.html',
-        precompress: false,
         strict: true
       }),
-      // Use empty base in dev, otherwise use the CI-provided BASE_PATH
       paths: {
         base: process.argv.includes('dev') ? '' : process.env.BASE_PATH || ''
       }
