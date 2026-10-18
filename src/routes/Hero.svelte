@@ -1,19 +1,19 @@
 <script>
 const images = [
 { title: "wow art",
-  image_url: "/Gallery/IMG_8781.JPG",
+  image_url: "/KBA_Studio/Gallery/IMG_8781.JPG",
   alt_text: "cool art" },
 { title: "wow art",
-  image_url: "/Gallery/IMG_8781.JPG",
+  image_url: "/KBA_Studio/Gallery/IMG_8781.JPG",
   alt_text: "cool art" },
 { title: "wow art",
-  image_url: "/Gallery/IMG_8781.JPG",
+  image_url: "/KBA_Studio/Gallery/IMG_8781.JPG",
   alt_text: "cool art" },
 { title: "wow art",
-  image_url: "/Gallery/IMG_8781.JPG",
+  image_url: "/KBA_Studio/Gallery/IMG_8781.JPG",
   alt_text: "cool art" },
 { title: "wow art",
-  image_url: "/Gallery/IMG_8781.JPG",
+  image_url: "/KBA_Studio/Gallery/IMG_8781.JPG",
   alt_text: "cool art" }
 ]
 </script>
