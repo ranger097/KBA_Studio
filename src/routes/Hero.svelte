@@ -1,4 +1,7 @@
 <script>
+let selectedBackground = "/Gallery/IMG_9960.JPG";
+let selectedImage = null;
+
 const images = [
 { title: "wow art",
   image_url: "/Gallery/IMG_9645.JPG",
@@ -32,9 +35,26 @@ const images = [
   alt_text: "cool art" }
 
 ]
+
+
 </script>
-<main class="main_section">
+
+
+<main 
+class="main_section" 
+id="main_section"
+style:background-image={`url("${selectedBackground}")`}
+>
+
 <section class="hero_section">
+<nav class="nav_container">
+<a href="">Home</a>
+<div class="nav_div">
+<a href="">Blog</a>
+<a href="">About</a>
+<a href="">Socials</a>
+</div>
+</nav>
 <div class="header_div">
 <h1>KATHY BELCHER ART</h1>
 </div>
@@ -160,8 +180,17 @@ const images = [
 
 </div>
 <section class="hero_art_image_container">
-{#each images as art}
-<img class="hero_art_images" src={art.image_url} alt={art.alt_text}/>
+{#each images as art, i}
+<img  
+id="hero_art_images" 
+class="hero_art_images" 
+src={art.image_url} 
+alt={art.alt_text}
+class:selected={selectedImage === i}
+onclick={() => { 
+selectedImage = i;
+selectedBackground = art.image_url;
+}}/>
 {/each}
 
 </section>
@@ -178,16 +207,18 @@ const images = [
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  transition: all 0.5s linear;
 }
 
 .hero_art_images {
 max-height: 30vh;
 border: 1px solid transparent;
+border-radius: 20px;
 }
 
-.hero_art_images:hover {
+.hero_art_images.selected {
 border: 1px solid black;
-
+border-radius: 0px;
 }
 
 .hero_art_image_container {
@@ -206,7 +237,6 @@ margin: -3vw 0px 0px 6vw;
   font-style: normal;
   font-variation-settings:
     "wdth" 100;
-
 }
 
 .description_container {
@@ -231,13 +261,15 @@ padding: 10px 30px;
 .hero_section {
 object-fit: contain;
 height: 100%;
-margin: 39px 0px 0px 0px;
-backdrop-filter: blur(10px);
+margin: 0px 0px 0px 0px;
+-webkit-backdrop-filter: blur(60px) brightness(1.1) saturate(0.3);
+backdrop-filter: blur(60px) brightness(1.1) saturate(0.3);
 }
 
 .main_section {
-background-image: url(/Gallery/IMG_9960.JPG);
-
+background-size: 100vw;
+background-repeat: no-repeat;
+background-position: center;
 }
 
 .header_div {
@@ -408,6 +440,39 @@ button:hover .star-6 {
 .fil0 {
   fill: lightgoldenrodyellow;
 }
+
+
+
+.nav_container {
+background-color: transparent;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0px 0px 0px 20px;
+position: fixed;
+left: 0px;
+top: 0px;
+width: calc(100vw - 20px);
+margin: 0px;
+}
+
+.nav_div {
+background-color: transparent;
+display: flex;
+align-items: center;
+padding: 10px 20px;
+gap: 20px;
+}
+
+a {
+text-decoration: none;
+color: rgba(255,255,255,0.7);
+}
+
+a:hover {
+color: rgba(255,255,255,1);
+}
+
 
 </style>
 
