@@ -25,7 +25,7 @@
 
 
 .nav_container {
-background-color: black;
+background-color: transparent;
 display: flex;
 justify-content: space-between;
 align-items: center;
@@ -38,7 +38,7 @@ margin: 0px;
 }
 
 .nav_div {
-background-color: black;
+background-color: transparent;
 display: flex;
 align-items: center;
 padding: 10px 20px;
