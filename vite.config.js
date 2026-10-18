@@ -6,8 +6,8 @@ export default defineConfig({
     plugins: [
         sveltekit({
             adapter: adapter({
-                pages: 'dist',
-                assets: 'dist',
+                pages: 'build',
+                assets: 'build',
                 fallback: '404.html', // Recommended for client-side routing
                 precompress: false,
                 strict: true
