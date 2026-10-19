@@ -1,6 +1,7 @@
 <script>
 let selectedBackground = "/Gallery/IMG_9960.JPG";
 let selectedImage = null;
+let intervalId = null;
 
 const images = [
 { title: "wow art",
@@ -33,9 +34,23 @@ const images = [
 { title: "wow art",
   image_url: "/Gallery/22.png",
   alt_text: "cool art" }
-
 ]
 
+function nextImage() {
+if (selectedImage === null) {
+    selectedImage = 0;
+  } else {
+    selectedImage = (selectedImage + 1) % images.length;
+  }
+  selectedBackground = images[selectedImage].image_url;
+}
+
+function slideShow() {
+if (intervalId) clearInterval(intervalId);
+intervalId = setInterval(nextImage,3000);
+}
+
+slideShow();
 
 </script>
 
@@ -47,14 +62,6 @@ style:background-image={`url("${selectedBackground}")`}
 >
 
 <section class="hero_section">
-<nav class="nav_container">
-<a href="">Home</a>
-<div class="nav_div">
-<a href="">Blog</a>
-<a href="">About</a>
-<a href="">Socials</a>
-</div>
-</nav>
 <div class="header_div">
 <h1>KATHY BELCHER ART</h1>
 </div>
@@ -179,21 +186,6 @@ style:background-image={`url("${selectedBackground}")`}
 </button>
 
 </div>
-<section class="hero_art_image_container">
-{#each images as art, i}
-<img  
-id="hero_art_images" 
-class="hero_art_images" 
-src={art.image_url} 
-alt={art.alt_text}
-class:selected={selectedImage === i}
-onclick={() => { 
-selectedImage = i;
-selectedBackground = art.image_url;
-}}/>
-{/each}
-
-</section>
 </section>
 </main>
 
@@ -210,61 +202,58 @@ selectedBackground = art.image_url;
   transition: all 0.5s linear;
 }
 
-.hero_art_images {
-max-height: 30vh;
-border: 1px solid transparent;
-border-radius: 20px;
-}
-
-.hero_art_images.selected {
-border: 1px solid black;
-border-radius: 0px;
-}
-
-.hero_art_image_container {
-margin: 4vw 6vw ;
-display: flex;
-gap: 20px;
-padding: 0px 0px 6vw 0px;
-overflow-x: scroll;
+h1 {
+color: white;
+text-shadow: 0px 0px 10px rgba(255,255,255,0.1);
 }
 
 .description {
-margin: -3vw 0px 0px 6vw;
+margin: 0vw 0px 0vw 0vw;
  font-family: "Fredoka", sans-serif;
-  font-size: clamp(1.5vw, 4vw, 1.7vw) ;
-  font-weight: 300;
-  font-style: normal;
-  font-variation-settings:
+ font-size: clamp(1.5vw, 4vw, 1.7vw) ;
+ font-weight: 300;
+ font-style: normal;
+ font-variation-settings:
     "wdth" 100;
+padding: 20px 6vw;
+background-color: rgba(0,0,0,1);
+color: white;
+text-shadow: -2px 2px 5px rgba(0,0,0,0.4);
+
 }
 
 .description_container {
 display: flex;
 flex-basis: 50%;
 flex-wrap: nowrap;
+background-color: black;
+margin: 0vh 0px 0px 0px;
 }
 
 .view_button {
-margin: 50px 6vw 0px 50px;
+margin: 5vw;
 text-wrap: nowrap;
 flex-basis: 50%;
-background-color: black;
+background-color: red;
 outline: none;
 border-radius: 100px;
 color: white;
 font-size: clamp(1.3vw, 4vw, 1.4vw);
-padding: 10px 30px;
-
+padding: 0px 30px;
 }
 
 .hero_section {
 object-fit: contain;
 height: 100%;
 margin: 0px 0px 0px 0px;
--webkit-backdrop-filter: blur(60px) brightness(1.1) saturate(0.3);
-backdrop-filter: blur(60px) brightness(1.1) saturate(0.3);
 }
+
+.hero_section:hover {
+object-fit: contain;
+height: 100%;
+margin: 0px 0px 0px 0px;
+}
+
 
 .main_section {
 background-size: 100vw;
@@ -278,8 +267,15 @@ background-color: rgba(255,255,255,0);
 display: flex;
 align-items: center;
 justify-content: center;
-padding: 0px;
+padding: 10vw 0px 10vw 0px;
 height: 100%;
+margin: 0vw 0px 0px 0px;
+
+}
+
+.header_div:hover {
+-webkit-backdrop-filter: blur(20px) brightness(0.4) saturate(1);
+backdrop-filter: blur(20px) brightness(0.4) saturate(1);
 
 }
 
@@ -295,11 +291,11 @@ button {
   font-weight: 500;
   color: #181818;
   border-radius: 100px;
-  box-shadow: 0 0 0 #fec1958c;
+  box-shadow: 0 0 30 #fec1958c;
   transition: all 0.5s linear;
   cursor: pointer;
-  border: 1px solid white;
-
+  outline: none;
+  border: none;
 }
 
 .star-1 {
@@ -373,8 +369,9 @@ button:hover {
   background: rgba(0,0,0,1);
   border-radius: 100px;
   color: #fec195;
-  box-shadow: 0 0 30px rgba(0,0,0,0.5);
-  border: 1px solid black;
+  box-shadow: 0 0 70px lightgoldenrodyellow;
+  outline:none;
+  border: none;
 }
 
 button:hover .star-1 {
@@ -440,39 +437,6 @@ button:hover .star-6 {
 .fil0 {
   fill: lightgoldenrodyellow;
 }
-
-
-
-.nav_container {
-background-color: transparent;
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 0px 0px 0px 20px;
-position: fixed;
-left: 0px;
-top: 0px;
-width: calc(100vw - 20px);
-margin: 0px;
-}
-
-.nav_div {
-background-color: transparent;
-display: flex;
-align-items: center;
-padding: 10px 20px;
-gap: 20px;
-}
-
-a {
-text-decoration: none;
-color: rgba(255,255,255,0.7);
-}
-
-a:hover {
-color: rgba(255,255,255,1);
-}
-
 
 </style>
 
