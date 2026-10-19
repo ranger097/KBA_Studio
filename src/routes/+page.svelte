@@ -1,15 +1,15 @@
 <script>
+import Top from './Top.svelte';
 import Nav from './Nav.svelte';
 import Hero from './Hero.svelte';
-import Portfolio from './Portfolio.svelte';
-import Footer from './Footer.svelte';
+import Bottom from './Bottom.svelte';
 </script>
 
 <main>
+<Top />
 <Nav />
 <Hero />
-<Portfolio />
-<Footer />
+<Bottom />
 </main>
 
 
