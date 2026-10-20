@@ -63,21 +63,57 @@ const images = [
   link3: "dang 3 links" }
 ]
 
+let starterImage = 0;
+let currentImage = images[starterImage].image_url;
+let lastThreshold = 0;
+
+function nextImage() {
+starterImage = (starterImage + 1) % images.length 
+currentImage = images[starterImage].image_url;
+}
+
+function previousImage() {
+starterImage = (starterImage - 1) % images.length 
+currentImage = images[starterImage].image_url;
+}
+
+
+function handleScroll() {
+const threshold = Math.floor(window.scrollY / 600);
+if (threshold > lastThreshold) {
+nextImage();
+} 
+else if ( threshold < lastThreshold) {
+previousImage();
+}
+lastThreshold = threshold;
+}
+
 
 </script>
 
+<svelte:window 
+onscroll={handleScroll}
+/>
 
 <main 
 class="main_section hero_section" 
 id="main_section"
 >
-{#each images as image}
-<img src={image.image_url}
-class="fade-in-on-scroll hero_image hero_section"
+{#key starterImage}
+<div class="image_container">
+<img src={currentImage}
+class="hero_image"
 />
+</div>
 
-{/each}
+{/key}
+<div class="image_info">
+<a href="">{images[starterImage].link1}</a>
+<a href="">{images[starterImage].link2}</a>
+<a href="">{images[starterImage].link3}</a>
 
+</div>
 </main>
 
 <style>
@@ -91,7 +127,7 @@ class="fade-in-on-scroll hero_image hero_section"
   font-weight: 400;
   font-style: normal;
   transition: all 0.5s linear;
-
+  scrollbar-width: 0px;
 }
 
 h1 {
@@ -114,45 +150,79 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 gap: 100px;
-animation: fadeIn 1s ease-in;
+
+height: 10000vh;
 }
 
 .hero_image {
 width: 70vw;
 aspect-ratio: 16/9;
 object-fit: cover;
+position: fixed;
+margin: auto;
+inset: 0;
+animation: fadeIn 0.2s linear;
+transition: all 0.3s ease;
+perspective: 800px;
+}
+
+.image_container {
+background-color: grey;
+width: 70vw;
+aspect-ratio: 16/9;
+object-fit: cover;
+position: fixed;
+margin: auto;
+inset: 0;
+animation: sway 4s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.image_info {
+background-color: transparent;
+position: fixed;
+z-index: 100000000000000;
+margin: auto;
+margin-right: 120px;
+inset: 0;
+width: 200px;
+height: 200px;
+text-decoration: none;
+color: white;
+}
+
+a {
+color: black;
+}
+
+@keyframes sway {
+  from { 
+  transform: rotate(-1deg) translateY(0px);
+  }
+  to { 
+  transform: rotate(1deg) translateY(-10px); 
+
+  }
 }
 
 
-/* 1. Define the fade-in animation keyframes */
 @keyframes fadeIn {
   from {
-    opacity: 0;
-    transform: translateY(200px); /* Optional: slight slide-up effect */
+    opacity: 0.4;
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-/* 2. Apply it to your target elements */
 .fade-in-on-scroll {
-  /* Tie the animation progress to the element entering the viewport */
   animation-timeline: view();
-  
-  /* Define when the animation starts and finishes */
-  /* 'entry 0%' starts as soon as the element peeks into view */
-  /* 'cover 30%' finishes when it travels through 30% of the viewport */
-  animation-range: entry 0% cover 100%;
-  
-  /* Assign the keyframes */
+  animation-range: entry 0% cover 10%;
   animation-name: fadeIn;
   animation-fill-mode: both; 
 }
 
 
-/* 1. Define the fade-out animation keyframes */
 @keyframes fadeOut {
   from {
     opacity: 1;
@@ -162,14 +232,9 @@ object-fit: cover;
   }
 }
 
-/* 2. Apply it to the hero container */
 .hero-section {
   animation-timeline: view();
-  
-  /* 'exit 0%' begins the fade as the section starts leaving the top */
-  /* 'exit 100%' finishes when the section is completely out of view */
   animation-range: exit 0% exit 100%;
-  
   animation-name: fadeOut;
   animation-fill-mode: both;
 }
