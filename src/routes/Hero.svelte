@@ -67,11 +67,11 @@ let starterImage = $state(0);
 let currentImage = images[starterImage].image_url;
 let lastThreshold = $state(0);
 
+
 function nextImage() {
 starterImage = (starterImage + 1) % images.length 
 currentImage = images[starterImage].image_url;
 }
-
 
 function handleScroll() {
 const threshold = Math.floor(window.scrollY / 600);
@@ -94,13 +94,18 @@ id="main_section"
 >
 
 <nav class="nav_container">
+
+</nav>
+<div class="static_nav">
 <a class="nav_links" href="">Art</a>
 <a class="nav_links" href="">Events</a>
 <a class="nav_links" href="">Collections</a>
 <a class="nav_links" href="">Socials</a>
-</nav>
+</div>
 
 <h3 class="header">KATHY<br>BELCHER<br>ART</h3>
+
+
 
 {#key starterImage}
 <div class="image_container">
@@ -122,28 +127,19 @@ class="hero_image"
 <img class="grid_image" src={images[7].image_url} style="grid-area: h"/>
 <img class="grid_image" src={images[8].image_url} style="grid-area: i"/>
 <img class="grid_image" src={images[9].image_url} style="grid-area: j"/>
-<img class="grid_image" src={images[0].image_url} style="grid-area: k"/>
-<img class="grid_image" src={images[0].image_url} style="grid-area: l"/>
-<img class="grid_image" src={images[0].image_url} style="grid-area: m"/>
-<img class="grid_image" src={images[0].image_url} style="grid-area: n"/>
-<img class="grid_image" src={images[0].image_url} style="grid-area: o"/>
+<!--<img class="grid_image" src={images[0].image_url} style="grid-area: k"/>-->
 </div>
 
-<div class="image_info">
-<a class="image_links" href="">{images[starterImage].link1}</a>
-<a class="image_links" href="">{images[starterImage].link2}</a>
-<a class="image_links" href="">{images[starterImage].link3}</a>
-</div>
 
 <section class="menu_section">
-<a class="bottom_links" href="">DISCOVER</a>
+<div class="discover_container"></div>
+<a class="bottom_links discover_link" href="">DISCOVER</a>
 <div class="side_div">
 <a class="bottom_links" href="">ARTICLES</a>
 <a class="bottom_links" href="">REVIEWS</a>
 </div>
 </section>
 
-<button class="menu_button">Menu</button>
 </main>
 
 <style>
@@ -168,6 +164,40 @@ padding: 20px 30px;
 border-radius: 10px;
 }
 
+
+.discover_link {
+z-index: 1000000000;
+position: absolute;
+}
+
+
+.discover_container {
+background-color: yellow;
+box-shadow: 0px 0px 500px yellow;
+filter: blur(100px);
+opacity: 0.6;
+width: 200px;
+height: 20px;
+border-radius: 100px;
+position: relative;
+}
+
+
+.static_nav {
+display: flex;
+flex-direction: column;
+background-color: transparent;
+max-width: 200px;
+max-height: 100px;
+inset: 0;
+margin-top: auto;
+margin-bottom: auto;
+margin-left: 50px;
+position: fixed;
+z-index: 100000000;
+animation: staticnav 3s alternate infinite;
+}
+
 .header {
 position: fixed;
 top: 0px;
@@ -179,11 +209,6 @@ font-style: normal;
 }
 
 .main_section {
-background-size: 100vw;
-background-repeat: no-repeat;
-background-position: center;
-object-fit: contain;
-transition: all 0.5s linear;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -248,6 +273,7 @@ border-bottom: 3px solid transparent;
 font-family: "Playfair Display SC", serif;
 font-weight: 700;
 font-style: normal;
+clip-path: inset(-100px -100px -100px -100px);
 }
 
 .bottom_links:hover {
@@ -264,20 +290,21 @@ inset: 0;
 z-index: 1000000;
 display: grid;
 grid-template-areas: 
-"a b c d e"
-"f g h i j"
-"k l m n o";
+"a a b b c"
+"a a d e f";
 gap: 10px;
+background-color: transparent;
+scale: 1.0;
+width: 50vw;
 }
-
 
 .grid_image {
 aspect-ratio: 1/1;
-max-width: 13vw;
-}
-
-.grid_image:hover {
-
+border-radius: 10px;
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: center;
 }
 
 .nav_container {
@@ -286,23 +313,21 @@ flex-direction: column;
 justify-content: center;
 align-items: flex-start;
 position: fixed;
-width: 12vw;
-height: 23vw;
-min-width: 200px;
+min-width: 100px;
 min-height: 100px;
 inset: 0;
 margin-top: auto;
 margin-bottom: auto;
 margin-left: 50px;
-border: 1px solid black;
+border: 0px solid black;
 z-index: 100000000;
-box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+box-shadow: inset 0px 0px 5px white, 0px 0px 500px blue;
 gap: 0px;
 transition: all 1s linear;
-background: radial-gradient(blue, lightcoral, yellow, grey);
+background: radial-gradient( pink 40%, orange );
 
   background-size: 400% 400%;
-  animation: gradient 200s ease infinite, corners 10s alternate infinite,alt_sway 10s alternate infinite, size_change 8s alternate infinite;
+  animation: gradient 400s ease infinite, corners 10s alternate infinite,alt_sway 10s alternate infinite, size_change 8s alternate infinite;
 }
 
 
@@ -324,29 +349,66 @@ color: white;
 border-radius: 0px;
 font-family: "Fredoka";
 font-weight: 300;
-font-size: clamp(1.5vw, 2vw, 1.7vw);
-text-shadow: 0px 0px 10px rgba(0,0,0,0.4);
-margin-left: 45px;
+font-size: clamp(1.4vw, 2vw, 1.6vw);
+animation: nav 4s alternate infinite;
 }
 
+.nav_links:hover {
+font-size: clamp(1.6vw, 2vw, 1.8vw);
+
+}
+
+
+@keyframes nav {
+from {
+margin: -1px 0px 0px 55px;
+}
+
+to {
+margin: -1px 0px 0px 54px;
+}
+
+to {
+margin: 0.5px 0px 0px 55px;
+}
+
+to {
+margin: 0px 0px 0px 53px;
+}
+
+}
+
+@keyframes staticnav {
+from {
+transform: translateY(-15px);
+transform: translateX(5px);
+
+}
+
+to {
+transform: translateY(-13px);
+transform: translateX(3px);
+}
+
+}
 
 
 
 @keyframes corners {
 0% {
-border-radius: 100px 100px 100px 100px;
+border-radius: 100px 80px 80px 100px;
 }
 
 50% {
-border-radius: 0px 0px 0px 0px;
+border-radius: 90px 90px 90px 90px;
 }
 
 75% {
-border-radius: 0px 0px 0px 0px;
+border-radius: 100px 100px 100px 90px;
 }
 
 100% {
-border-radius: 0px 0px 0px 0px;
+border-radius: 100px 100px 100px 100px;
 }
 
 
@@ -354,26 +416,16 @@ border-radius: 0px 0px 0px 0px;
 
 
 @keyframes size_change {
-0% {
-height: 15vw;
-width: 15vw;
+from {
+height: 17vw;
+width: 17vw;
 }
 
-25% {
-height: 15vw;
-width: 15vw;
-}
 
-75% {
-height: 15vw;
-width: 15vw;
+to {
+height: 17vw;
+width: 17vw;
 }
-
-100% {
-height: 15vw;
-width: 15vw;
-}
-
 
 }
 
@@ -382,6 +434,7 @@ width: 15vw;
   from { 
   transform: rotate(-1deg) translateY(0px);
   }
+
   to { 
   transform: rotate(1deg) translateY(-10px); 
 
@@ -391,10 +444,10 @@ width: 15vw;
 
 @keyframes alt_sway {
   from { 
-  transform: rotate(-6deg) translateY(0px);
+  transform: rotate(-200deg) translateY(0px);
   }
   to { 
-  transform: rotate(3deg) translateY(0px); 
+  transform: rotate(50deg) translateY(0px); 
 
   }
 
@@ -433,21 +486,9 @@ width: 15vw;
   animation-fill-mode: both;
 }
 
-.menu_button {
-position: fixed;
-margin: auto;
-inset: 0;
-width: 50px;
-height: 20px;
-padding: 0px;
-cursor: pointer;
-border: none;
-margin-top: 30px;
-margin-right: 30px;
-font-family: "Playfair Display SC", serif;
-font-weight: 700;
-font-style: normal;
-}
+
+
+
 
 </style>
 
