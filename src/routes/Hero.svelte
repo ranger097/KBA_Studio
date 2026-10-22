@@ -63,6 +63,53 @@ const images = [
   link3: "dang 3 links" }
 ]
 
+
+let nav_buttons = [
+{title: "Art",
+ id: "nav_link_one"},
+{title: "Events",
+ id: "nav_link_two"},
+{title: "Collections",
+ id: "nav_link_three"},
+{title: "Socials",
+ id: "nav_link_four"}
+]
+
+
+function buttonSwitcher(event) {
+const clickedButton = event.target;
+let art = document.getElementById("nav_link_one");
+let events = document.getElementById("nav_link_two");
+let collections = document.getElementById("nav_link_three");
+let socials = document.getElementById("nav_link_four");
+
+if (clickedButton === art) {
+art.innerHTML = "Art &#9997;";
+events.innerHTML = "Events";
+collections.innerHTML = "Collections";
+socials.innerHTML = "Socials";
+}
+else if (clickedButton === events) {
+art.innerHTML = "Art";
+events.innerHTML = "Events &#10022;";
+collections.innerHTML = "Collections";
+socials.innerHTML = "Socials";
+}
+else if (clickedButton === collections) {
+art.innerHTML = "Art ";
+events.innerHTML = "Events";
+collections.innerHTML = "Collections &#10022;";
+socials.innerHTML = "Socials";
+}
+else if (clickedButton === socials) {
+art.innerHTML = "Art";
+events.innerHTML = "Events";
+collections.innerHTML = "Collections";
+socials.innerHTML = "Socials &#10022;";
+}
+
+}
+
 let starterImage = $state(0);
 let currentImage = images[starterImage].image_url;
 let lastThreshold = $state(0);
@@ -82,6 +129,9 @@ lastThreshold = threshold;
 }
 
 
+
+
+
 </script>
 
 <svelte:window 
@@ -94,15 +144,19 @@ id="main_section"
 >
 
 <nav class="nav_container">
-
 </nav>
+
 <div class="static_nav">
-<a class="nav_links" href="">Art</a>
-<a class="nav_links" href="">Events</a>
-<a class="nav_links" href="">Collections</a>
-<a class="nav_links" href="">Socials</a>
+{#each nav_buttons as link}
+<button 
+onclick={buttonSwitcher} 
+class="nav_buttons" 
+id={link.id}>
+{link.title}</button>
+{/each}
 </div>
 
+<div class="KBA_container"></div>
 <h3 class="header">KATHY<br>BELCHER<br>ART</h3>
 
 
@@ -132,11 +186,21 @@ class="hero_image"
 
 
 <section class="menu_section">
+<div class="side_div">
+<div>
+<div class="home_container"></div>
+<a class="bottom_links home_link" href="">HOME</a>
+</div>
+<div>
 <div class="discover_container"></div>
 <a class="bottom_links discover_link" href="">DISCOVER</a>
+</div>
+</div>
 <div class="side_div">
-<a class="bottom_links" href="">ARTICLES</a>
-<a class="bottom_links" href="">REVIEWS</a>
+<div class="article_link_container"></div>
+<a class="bottom_links article_link" href="">ARTICLES</a>
+<div class="review_link_container"></div>
+<a class="bottom_links review_link" href="">REVIEWS</a>
 </div>
 </section>
 
@@ -165,7 +229,8 @@ border-radius: 10px;
 }
 
 
-.discover_link {
+
+.discover_link, .home_link {
 z-index: 1000000000;
 position: absolute;
 }
@@ -176,11 +241,28 @@ background-color: yellow;
 box-shadow: 0px 0px 500px yellow;
 filter: blur(100px);
 opacity: 0.6;
-width: 200px;
+width: 5vw;
+min-width: 70px;
 height: 20px;
+margin-right: 20px;
 border-radius: 100px;
 position: relative;
 }
+
+.home_container {
+background-color: purple;
+box-shadow: 0px 0px 500px purple;
+filter: blur(100px);
+opacity: 0.6;
+width: 5vw;
+min-width: 70px;
+height: 20px;
+margin-right: 20px;
+border-radius: 100px;
+position: relative;
+}
+
+
 
 
 .static_nav {
@@ -188,7 +270,7 @@ display: flex;
 flex-direction: column;
 background-color: transparent;
 max-width: 200px;
-max-height: 100px;
+max-height: 110px;
 inset: 0;
 margin-top: auto;
 margin-bottom: auto;
@@ -197,6 +279,21 @@ position: fixed;
 z-index: 100000000;
 animation: staticnav 3s alternate infinite;
 }
+
+.KBA_container {
+position: absolute;
+margin: auto;
+inset: 0;
+background-color: indigo;
+width: 200px;
+height: 150px;
+margin-left: -20px;
+margin-top: -20px;
+opacity: 0.2;
+filter: blur(500px);
+border-radius: 100px;
+}
+
 
 .header {
 position: fixed;
@@ -256,12 +353,10 @@ color: white;
 }
 
 .menu_section {
-position: fixed;
 width: 100vw;
-bottom: 0px;
-left: 0px;
 display: flex;
 justify-content: space-between;
+gap: 20px;
 }
 
 .bottom_links {
@@ -283,6 +378,8 @@ border-bottom: 3px solid red;
 .side_div {
 display: flex;
 }
+
+
 
 .grid_container {
 margin: auto;
@@ -319,16 +416,19 @@ inset: 0;
 margin-top: auto;
 margin-bottom: auto;
 margin-left: 50px;
+width: 17vw;
+height: 17vw;
 border: 0px solid black;
 z-index: 100000000;
-box-shadow: inset 0px 0px 5px white, 0px 0px 500px blue;
+box-shadow: inset 0px 0px 5px white, 0px 0px 500px rgba(0,0,255,1);
 gap: 0px;
 transition: all 1s linear;
 background: radial-gradient( pink 40%, orange );
 
-  background-size: 400% 400%;
-  animation: gradient 400s ease infinite, corners 10s alternate infinite,alt_sway 10s alternate infinite, size_change 8s alternate infinite;
+  background-size: 600% 600%;
+  animation: gradient 30s alternate infinite, corners 10s alternate infinite,alt_sway 10s alternate infinite;
 }
+
 
 
 @keyframes gradient {
@@ -343,15 +443,56 @@ background: radial-gradient( pink 40%, orange );
   }
 }
 
-.nav_links {
+.nav_buttons {
 text-decoration: none;
+text-align: left;
+border: none;
+padding: 0px;
+background-color: transparent;
 color: white;
 border-radius: 0px;
 font-family: "Fredoka";
 font-weight: 300;
-font-size: clamp(1.4vw, 2vw, 1.6vw);
-animation: nav 4s alternate infinite;
+cursor: pointer;
+font-size: clamp(1.5vw, 2vw, 1.7vw);
+animation: nav 4s alternate infinite, textsway 4s alternate infinite;
 }
+
+#nav_link_one {
+animation: linkmove 3.10s alternate infinite;
+}
+
+#nav_link_one:hover {
+scale: 2.1;
+}
+
+#nav_link_two {
+animation: linkmove 3.11s alternate infinite;
+
+}
+
+#nav_link_three {
+animation: linkmove 3.12s alternate infinite;
+
+}
+
+#nav_link_four {
+animation: linkmove 3.13s alternate infinite;
+
+}
+
+@keyframes linkmove {
+from {
+margin-left: 45px;
+scale: 1.01;
+}
+
+to {
+margin-left: 47px;
+scale: 1.05;
+}
+}
+
 
 .nav_links:hover {
 font-size: clamp(1.6vw, 2vw, 1.8vw);
@@ -380,14 +521,14 @@ margin: 0px 0px 0px 53px;
 
 @keyframes staticnav {
 from {
-transform: translateY(-15px);
-transform: translateX(5px);
+transform: translateY(-35px);
+transform: translateX(15px);
 
 }
 
 to {
-transform: translateY(-13px);
-transform: translateX(3px);
+transform: translateY(-25px);
+transform: translateX(13px);
 }
 
 }
@@ -415,19 +556,6 @@ border-radius: 100px 100px 100px 100px;
 }
 
 
-@keyframes size_change {
-from {
-height: 17vw;
-width: 17vw;
-}
-
-
-to {
-height: 17vw;
-width: 17vw;
-}
-
-}
 
 
 @keyframes sway {
@@ -441,13 +569,24 @@ width: 17vw;
   }
 }
 
+@keyframes textsway {
+  from { 
+  transform: rotate(-2deg) translateY(0px);
+  }
+
+  to { 
+  transform: rotate(2deg) translateY(0px); 
+
+  }
+}
+
 
 @keyframes alt_sway {
   from { 
-  transform: rotate(-200deg) translateY(0px);
+  transform: rotate(-200deg) translateY(2px);
   }
   to { 
-  transform: rotate(50deg) translateY(0px); 
+  transform: rotate(100deg) translateY(-2px); 
 
   }
 
