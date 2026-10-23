@@ -165,8 +165,6 @@ id="main_section"
 >
 
 <nav class="nav_container">
-</nav>
-
 <div class="static_nav">
 {#each nav_buttons as link}
 <button 
@@ -177,6 +175,8 @@ id={link.id}>
 </button>
 {/each}
 </div>
+</nav>
+
 
 <div class="KBA_container"></div>
 <h3 class="header">KATHY<br>BELCHER<br>ART</h3>
@@ -241,20 +241,15 @@ border: none;
 font-size: 3rem;
 }
 
-
 .static_nav {
 display: flex;
 flex-direction: column;
 background-color: transparent;
-max-width: 200px;
-max-height: 110px;
-inset: 0;
-margin-top: auto;
-margin-bottom: auto;
-margin-left: 50px;
-position: fixed;
 z-index: 100000000;
-animation: staticnav 3s alternate infinite;
+transform: rotate(0deg);
+width: 15vw;
+margin-left: 7vw;
+margin-bottom: 0.5vh;
 }
 
  .image_card_wrapper {
@@ -357,7 +352,7 @@ object-position: center;
 display: flex;
 flex-direction: column;
 justify-content: center;
-align-items: flex-start;
+align-items: center;
 position: fixed;
 min-width: 100px;
 min-height: 100px;
@@ -365,18 +360,22 @@ inset: 0;
 margin-top: auto;
 margin-bottom: auto;
 margin-left: 50px;
-width: 17vw;
-height: 17vw;
+width: 18vw;
+height: 18vw;
 border: 0px solid black;
 z-index: 100000000;
-box-shadow: inset 0px 0px 5px white, 0px 0px 500px rgba(0,0,255,1);
+box-shadow: inset 0px 0px 0.5vw white,-1vw 2vw 1vw rgba(0,0,0,0.5), 0px 0px 100vw rgba(0,0,255,1);
+background: radial-gradient( coral 30%, orange 70% );
+
 gap: 0px;
 transition: all 1s linear;
-background: radial-gradient( pink 40%, orange );
+background-size: 200% 200%;
+animation: gradient 30s alternate infinite, corners 60s alternate infinite,alt_sway 10s alternate infinite;
 
-  background-size: 600% 600%;
-  animation: gradient 30s alternate infinite, corners 10s alternate infinite,alt_sway 10s alternate infinite;
 }
+
+
+
 
 
 
@@ -404,48 +403,13 @@ font-family: "Fredoka";
 font-weight: 300;
 cursor: pointer;
 font-size: clamp(1.5vw, 2vw, 1.7vw);
-animation: nav 4s alternate infinite, textsway 4s alternate infinite;
-}
-
-#nav_link_one {
-animation: linkmove 3.10s alternate infinite;
-}
-
-#nav_link_one:hover {
-scale: 2.1;
-}
-
-#nav_link_two {
-animation: linkmove 3.11s alternate infinite;
-
-}
-
-#nav_link_three {
-animation: linkmove 3.12s alternate infinite;
-
-}
-
-#nav_link_four {
-animation: linkmove 3.13s alternate infinite;
-
-}
-
-@keyframes linkmove {
-from {
-margin-left: 45px;
-scale: 1.01;
-}
-
-to {
-margin-left: 47px;
-scale: 1.05;
-}
+animation: textsway 4s alternate infinite;
 }
 
 
-.nav_links:hover {
+.nav_buttons:hover {
 font-size: clamp(1.6vw, 2vw, 1.8vw);
-
+font-weight: 400;
 }
 
 
@@ -468,37 +432,21 @@ margin: 0px 0px 0px 53px;
 
 }
 
-@keyframes staticnav {
-from {
-transform: translateY(-35px);
-transform: translateX(15px);
-
-}
-
-to {
-transform: translateY(-25px);
-transform: translateX(13px);
-}
-
-}
-
-
-
 @keyframes corners {
 0% {
-border-radius: 100px 80px 80px 100px;
+border-radius: 100px 100px 100px 100px;
 }
 
 50% {
-border-radius: 90px 90px 90px 90px;
+border-radius: 200px 100px 200px 100px;
 }
 
 75% {
-border-radius: 100px 100px 100px 90px;
+border-radius: 200px 400px 200px 400px;
 }
 
 100% {
-border-radius: 100px 100px 100px 100px;
+border-radius: 200px 100px 200px 100px;
 }
 
 
@@ -532,10 +480,10 @@ border-radius: 100px 100px 100px 100px;
 
 @keyframes alt_sway {
   from { 
-  transform: rotate(-200deg) translateY(2px);
+  transform: rotate(-3deg) translateY(2px);
   }
   to { 
-  transform: rotate(100deg) translateY(-2px); 
+  transform: rotate(3deg) translateY(-2px); 
 
   }
 
