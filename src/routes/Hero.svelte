@@ -201,6 +201,14 @@ onclick={()=> clickedImage(image.id)}/>
 </div>
 
 
+
+<div class="color_div yellow_div"></div>
+<div class="color_div purple_div"></div>
+<div class="color_div green_div"></div>
+<div class="color_div indigo_div"></div>
+
+
+
 <section class="menu_section">
 <button class="bottom_links discover_link">DISCOVER</button>
 <div>
@@ -239,6 +247,39 @@ background-color: transparent;
 color: white;
 border: none;
 font-size: 3rem;
+}
+
+.color_div {
+margin: auto;
+inset: 0;
+position: fixed;
+width: 10vw;
+height: 10vw;
+aspect-ratio: 1/1;
+border-radius: 0px;
+z-index: -10;
+filter: blur(500px);
+opacity: 0.8;
+display: none;
+}
+
+.yellow_div {
+background-color: yellow;
+margin-bottom: 0px;
+margin-left: 0px;
+}
+
+
+.green_div {
+background-color: green;
+margin-bottom: 0px;
+margin-right: 0px;
+
+}
+
+.indigo_div {
+background-color: indigo;
+
 }
 
 .static_nav {
@@ -370,13 +411,9 @@ background: radial-gradient( coral 30%, orange 70% );
 gap: 0px;
 transition: all 1s linear;
 background-size: 200% 200%;
-animation: gradient 30s alternate infinite, corners 60s alternate infinite,alt_sway 10s alternate infinite;
+animation: gradient 30s alternate infinite, corners 200s alternate infinite,alt_sway 10s alternate infinite;
 
 }
-
-
-
-
 
 
 @keyframes gradient {
@@ -397,7 +434,7 @@ text-align: left;
 border: none;
 padding: 0px;
 background-color: transparent;
-color: white;
+color: rgba(255,255,255,0.7);
 border-radius: 0px;
 font-family: "Fredoka";
 font-weight: 300;
@@ -453,8 +490,6 @@ border-radius: 200px 100px 200px 100px;
 }
 
 
-
-
 @keyframes sway {
   from { 
   transform: rotate(-1deg) translateY(0px);
@@ -489,17 +524,12 @@ border-radius: 200px 100px 200px 100px;
 
 }
 
-
 .hero_section {
 background-color: transparent;
 height: 100vh;
 width: 100vw;
 overflow-x: hidden;
 }
-
-
-
-
 
 </style>
 
