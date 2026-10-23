@@ -1,47 +1,45 @@
 <script>
-import {onMount} from 'svelte';
-
-
+import { onMount } from 'svelte';
 
 const home_page_images = [
 { title: "wow art",
-  image_url: "/Gallery/IMG_9645.JPG",
+  image_url: "IMG_9645.JPG",
   alt_text: "cool art",
   id: "a"},
 { title: "wow art",
-  image_url: "/Gallery/IMG_8656.JPG",
+  image_url: "IMG_8656.JPG",
   alt_text: "cool art",
   id: "b"},
 { title: "wow art",
-  image_url: "/Gallery/IMG_8802.JPG",
+  image_url: "IMG_8802.JPG",
   alt_text: "cool art",
   id: "c"},
 { title: "wow art",
-  image_url: "/Gallery/111.png",
+  image_url: "111.png",
   alt_text: "cool art",
   id: "d"},
 { title: "wow art",
-  image_url: "/Gallery/22.png",
+  image_url: "22.png",
   alt_text: "cool art",
   id: "e"},
 { title: "wow art",
-  image_url: "/Gallery/IMG_9645.JPG",
+  image_url: "IMG_9645.JPG",
   alt_text: "cool art",
   id: "f"},
 { title: "wow art",
-  image_url: "/Gallery/IMG_8656.JPG",
+  image_url: "IMG_8656.JPG",
   alt_text: "cool art",
   id: "g"},
 { title: "wow art",
-  image_url: "/Gallery/IMG_8802.JPG",
+  image_url: "IMG_8802.JPG",
   alt_text: "cool art",
   id: "h"},
 { title: "wow art",
-  image_url: "/Gallery/111.png",
+  image_url: "111.png",
   alt_text: "cool art",
   id: "i"},
 { title: "wow art",
-  image_url: "/Gallery/22.png",
+  image_url: "22.png",
   alt_text: "cool art",
   id: "j"}
 ]
@@ -190,7 +188,7 @@ id={link.id}>
 <div class="image_card_wrapper" style="grid-area: {image.id};">
 <img 
 style="grid-area: {image.id};" 
-src={image.image_url} 
+src="artwork/{image.image_url}" 
 id={image.id} 
 alt={image.alt_text} 
 class="grid_image"

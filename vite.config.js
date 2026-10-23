@@ -16,6 +16,7 @@ export default defineConfig({
                 // Replace '/KBA_Studio' with your exact GitHub repository name
                 // Leave it empty ('') if your repo is username.github.io
                 base: process.env.NODE_ENV === 'production' ? '/KBA_Studio' : ''
+	        relative: false
             }
         })
     ]
