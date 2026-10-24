@@ -7,31 +7,31 @@ const home_page_images = [
   alt_text: "cool art",
   id: "a"},
 { title: "wow art",
-  image_url: "IMG_8656.JPG",
+  image_url: "khbxkjs.jpeg",
   alt_text: "cool art",
   id: "b"},
 { title: "wow art",
-  image_url: "IMG_8802.JPG",
+  image_url: "2222.jpg",
   alt_text: "cool art",
   id: "c"},
 { title: "wow art",
-  image_url: "111.png",
+  image_url: "IMG_9677.JPG",
   alt_text: "cool art",
   id: "d"},
 { title: "wow art",
-  image_url: "22.png",
+  image_url: "IMG_9971.JPG",
   alt_text: "cool art",
   id: "e"},
 { title: "wow art",
-  image_url: "IMG_9645.JPG",
+  image_url: "IMG_9973.JPG",
   alt_text: "cool art",
   id: "f"},
 { title: "wow art",
-  image_url: "IMG_8656.JPG",
+  image_url: "IMG_1370.JPG",
   alt_text: "cool art",
   id: "g"},
 { title: "wow art",
-  image_url: "IMG_8802.JPG",
+  image_url: "IMG_8656.JPG",
   alt_text: "cool art",
   id: "h"},
 { title: "wow art",
@@ -50,8 +50,8 @@ onMount(()=>{
 homepage_image_grid_container.style.gridTemplateAreas = `
       "a a b c"
       "a a d e"
-      "f g h i"
-      "j . . ."
+      "f g h h"
+      "j i h h"
       `; 
 
 });
@@ -182,7 +182,7 @@ id={link.id}>
 <h3 class="header">KATHY<br>BELCHER<br>ART</h3>
 
 
-
+<div class="black_box"></div>
 <div id="homepage_image_grid_container" bind:this={homepage_image_grid_container}>
 {#each home_page_images as image}
 <div class="image_card_wrapper" style="grid-area: {image.id};">
@@ -200,21 +200,41 @@ onclick={()=> clickedImage(image.id)}/>
 {/each}
 </div>
 
-
-
-<div class="color_div yellow_div"></div>
-<div class="color_div purple_div"></div>
-<div class="color_div green_div"></div>
-<div class="color_div indigo_div"></div>
-
-
-
 <section class="menu_section">
-<button class="bottom_links discover_link">DISCOVER</button>
-<div>
-<button class="bottom_links article_link">ARTICLES</button>
-<button class="bottom_links review_link">REVIEWS</button>
-</div>
+<button class="article_link bottom_links">
+  <span>ARTICLES</span>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 74 74"
+    height="34"
+    width="34"
+  >
+    <circle stroke-width="3" stroke="white" r="35.5" cy="37" cx="37"></circle>
+    <path
+      fill="white"
+      d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z"
+    ></path>
+  </svg>
+</button>
+
+<button class="review_link bottom_links">
+  <span>REVIEWS</span>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 74 74"
+    height="34"
+    width="34"
+  >
+    <circle stroke-width="3" stroke="white" r="35.5" cy="37" cx="37"></circle>
+    <path
+      fill="white"
+      d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z"
+    ></path>
+  </svg>
+</button>
+
 </section>
 
 </main>
@@ -223,6 +243,7 @@ onclick={()=> clickedImage(image.id)}/>
 @import url('https://fonts.googleapis.com/css2?family=Gravitas+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
 
 * {
   font-family: "Gravitas One", cursive;
@@ -249,37 +270,15 @@ border: none;
 font-size: 3rem;
 }
 
-.color_div {
+.black_box {
+background-color: black;
+width: 100vw;
+min-height: 100%;
 margin: auto;
 inset: 0;
 position: fixed;
-width: 10vw;
-height: 10vw;
-aspect-ratio: 1/1;
-border-radius: 0px;
-z-index: -10;
-filter: blur(500px);
-opacity: 0.8;
-display: none;
-}
-
-.yellow_div {
-background-color: yellow;
-margin-bottom: 0px;
-margin-left: 0px;
-}
-
-
-.green_div {
-background-color: green;
-margin-bottom: 0px;
-margin-right: 0px;
-
-}
-
-.indigo_div {
-background-color: indigo;
-
+margin-right: 2vw;
+margin-left: 24vw;
 }
 
 .static_nav {
@@ -301,12 +300,10 @@ margin-bottom: 0.5vh;
 
 .header {
 position: fixed;
-top: 0px;
+bottom: 0px;
 left: 20px;
 background-color: transparent;
-font-family: "Playfair Display SC", serif;
-font-weight: 700;
-font-style: normal;
+font-size: 3vw;
 }
 
 .hero_image {
@@ -341,28 +338,69 @@ position: fixed;
 z-index: 10000000000;
 left: 0px;
 bottom: 0px;
-justify-content: space-between;
+justify-content: flex-end;
 align-items: center;
 gap: 0px;
 background-color: transparent;
 }
 
 .bottom_links {
-background-color: transparent;
-padding: 17px 30px;
+padding: 8px 15px;
 text-decoration: none;
 color: black;
 border: none;
-border-bottom: 3px solid transparent;
 font-family: "Playfair Display SC", serif;
-font-weight: 700;
+font-weight: 300;
 font-style: normal;
-clip-path: inset(-100px -100px -100px -100px);
+backdrop-filter: blur(30px);
+
+cursor: pointer;
+transition: all 0.2s;
+border-radius: 100px;
+display: flex;
+align-items: center;
 }
 
-.bottom_links:hover {
-border-bottom: 3px solid red;
+@keyframes article_sway {
+from {transform: translateX(-15px);}
+to {transform: translateX(-10px);}
 }
+
+@keyframes review_sway {
+from {transform: translateX(-5px);}
+to {transform: translateX(-10px);}
+}
+
+
+.bottom_links > svg {
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.bottom_links:hover svg {
+  transform: translateX(5px);
+}
+
+
+
+.review_link {
+margin-right: 1vw;
+margin-bottom: 1vw;
+background: linear-gradient(45deg, grey, green);
+color: white;
+animation: review_sway 2s alternate-reverse infinite;
+box-shadow: inset 0px 0px 4px silver, -5px 5px 10px rgba(0,0,0,0.5);
+}
+
+.article_link {
+margin-right: 1vw;
+margin-bottom: 1vw;
+background: linear-gradient(45deg, gold, indigo);
+color: white;
+animation: article_sway 2s alternate infinite;
+box-shadow: inset 0px 0px 4px darkgrey, -5px 5px 10px rgba(0,0,0,0.5);
+}
+
 
 .side_div {
 display: flex;
@@ -375,14 +413,17 @@ z-index: 1000000;
 display: grid;
 gap: 4px;
 background-color: transparent;
-height: 50vh;
-width: 60vw;
-padding: 40px 20px 40px 15vw;
+height: 60vh;
+width: 75.25vw;
+padding-bottom: 5vw;
+margin-right: 0.5vw;
+margin-top: 0.25vw;
+margin-bottom: 5vw;
 }
 
 .grid_image {
 aspect-ratio: 1/1;
-border-radius: 2px;
+border-radius: 0px;
 width: 100%;
 height: 100%;
 object-fit: cover;
@@ -398,20 +439,19 @@ position: fixed;
 min-width: 100px;
 min-height: 100px;
 inset: 0;
-margin-top: auto;
+margin-top: 5vw;
 margin-bottom: auto;
 margin-left: 50px;
-width: 18vw;
-height: 18vw;
+width: 16vw;
+height: 16vw;
 border: 0px solid black;
 z-index: 100000000;
 box-shadow: inset 0px 0px 0.5vw white,-1vw 2vw 1vw rgba(0,0,0,0.5), 0px 0px 100vw rgba(0,0,255,1);
 background: radial-gradient( coral 30%, orange 70% );
-
 gap: 0px;
 transition: all 1s linear;
 background-size: 200% 200%;
-animation: gradient 30s alternate infinite, corners 200s alternate infinite,alt_sway 10s alternate infinite;
+animation: gradient 30s alternate infinite, corners 20s alternate infinite,alt_sway 10s alternate infinite;
 
 }
 
@@ -471,19 +511,19 @@ margin: 0px 0px 0px 53px;
 
 @keyframes corners {
 0% {
-border-radius: 100px 100px 100px 100px;
+border-radius: 5px 5px 5px 5px;
 }
 
 50% {
-border-radius: 200px 100px 200px 100px;
+border-radius: 20px 100px 20px 100px;
 }
 
 75% {
-border-radius: 200px 400px 200px 400px;
+border-radius: 40px 40px 40px 40px;
 }
 
 100% {
-border-radius: 200px 100px 200px 100px;
+border-radius: 20px 20px 20px 20px;
 }
 
 
