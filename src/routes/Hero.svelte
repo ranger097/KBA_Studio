@@ -1,6 +1,17 @@
 <script>
 import { onMount } from 'svelte';
 
+let welcome_section;
+
+onMount(()=>{
+welcome_section.style.backgroundColor = "rgba(100,0,200,0.6)";
+});
+
+
+function welcome_button() {
+welcome_section.style.display = "none";
+}
+
 const home_page_images = [
 { title: "wow art",
   image_url: "IMG_9645.JPG",
@@ -142,38 +153,50 @@ function clickedImage(id) {
     }
 }
 
-let active_nav_id = "";
+let active_nav_id;
 
 let nav_buttons = [
 { title: "Art", 
   id: "nav_link_one", 
   active_text: "Art ✍",
-  description: "view art"
+  description: "view art",
+  bg_color: "lightblue"
   },
 { title: "Events", 
   id: "nav_link_two", 
   active_text: "Events ✦",
-  description: "view events"
+  description: "view events",
+  bg_color: "lightgreen"
   },
 { title: "Collections", 
   id: "nav_link_three", 
   active_text: "Collections ✦",
-  description: "view collections"
+  description: "view collections",
+  bg_color: "lightyellow"
   },
 { title: "Socials", 
   id: "nav_link_four", 
   active_text: "Socials ✦",
-  description: "view socials"
+  description: "view socials",
+  bg_color: "lightorange"
   },
 { title: "Articles",
   id: "nav_link_five",
   active_text: "Articles ✦",
-  description: "view articles" 
+  description: "view articles",
+  bg_color: "lightpurple"
   },
 { title: "About",
   id: "nav_link_six",
   active_text: "About ✦",
-  description: "view about" 
+  description: "view about",
+  bg_color: "lightred"
+  },
+{ title: "Reviews",
+  id: "reviews",
+  active_text: "Reviews ✦",
+  description: "view reviews",
+  bg_color: "indigo"
   }
 ];
 
@@ -184,21 +207,21 @@ active_nav_id = id;
 </script>
 
 
-<main class="main_section">
-<section class="menu_section">
-<nav class="nav_container">
-<div class="static_nav">
-{#each nav_buttons as link}
-<button 
-onclick={()=>buttonSwitcher(link.id)} 
-class="nav_buttons" 
-id={link.id}>
-{active_nav_id === link.id ? link.active_text : link.title}
-</button>
-{/each}
-</div>
-</nav>
+<section bind:this={welcome_section} class="welcome_section">
+<button onclick={welcome_button}>Enter</button>
 </section>
+
+<div class="search_div">
+<label for="search"></label>
+<input id="search" type="search" placeholder="Search Artwork">
+</div>
+
+
+<div class="welcome_div"></div>
+<nav class="nav_section"></nav>
+
+
+<main class="main_section">
 <section class="grid_section">
 <div id="homepage_image_grid_container" bind:this={homepage_image_grid_container}>
 {#each home_page_images as image}
@@ -233,7 +256,9 @@ onclick={()=> clickedImage(image.id)}/>
   font-weight: 400;
   font-style: normal;
   transition: all 0.5s linear;
-  scrollbar-width: 0px;
+  &::-webkit-scrollbar { display: none; }
+    scrollbar-width: none;
+   -ms-overflow-style: none; 
 }
 
 .expand_button {
@@ -244,93 +269,116 @@ border: none;
 font-size: 3rem;
 }
 
+
+
+
+
+.welcome_section {
+backdrop-filter: blur(20px);
+margin: auto;
+inset: 0;
+position: fixed;
+box-shadow: inset 0px 0px 100px grey;
+z-index: 100000000000000000000;
+}
+
+
 .static_nav {
 display: flex;
 flex-direction: column;
-background-color: blue;
-width: 25vw;
-height: 100%;
-}
-
-.logo_container {
-background: linear-gradient(purple, orange);
-padding-top: 10px;
-padding-right: 10px;
-aspect-ratio: 1/1;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-.img_logo {
-width: 100%;
-aspect-ratio: 1/1;
-scale: 1.2;
-}
-
-.header {
-position: fixed;
-bottom: 0px;
-left: 20px;
 background-color: transparent;
-font-size: 3vw;
+align-items: center;
+width: calc(25vw);
+height: 100%;
+gap: 4px;
+margin-top: 4px;
 }
+
 
 .menu_section {
 width: 25vw;
 display: flex;
-justify-content: flex-start;
-align-items: flex-start;
+justify-content: center;
+align-items: center;
 flex-direction: column;
-gap: 41px;
-background-color: white;
+gap: 0px;
+background-color: black;
 margin: 4px 0px 4px 4px;
 height: calc(100vh - 8px);
 overflow-x: hidden;
 overflow-y: scroll;
+border-radius: 5px;
+}
+
+.search_div {
+background-color: rgba(0,0,0,0);
+width: 100vw;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 0px 20px 0px 20px;
+position: fixed;
+z-index: 10000000000000000000000;
+top: 0px;
+left: 0px;
+}
+
+#search {
+border-radius: 500px;
+padding: 12px 30px;
+width: 50vw;
+background-color: rgba(255,255,255,0.8);
+border: 1px solid rgba(255,255,255,1);
+color: black;
+margin: 20px;
+box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
+backdrop-filter: blur(20px);
 }
 
 #homepage_image_grid_container {
 display: grid;
-gap: 4px;
+gap: 5px;
 background-color: white;
-height: 100%;
-width: 75vw;
-padding: 4px;
+height: calc(100vh - 120px);
+width: calc(100vw - 350px);
+padding: 85px 175px;
 overflow-x: hidden;
 overflow-y: scroll;
 }
 
 .grid_image {
 aspect-ratio: 1/1;
-border-radius: 0px;
+border-radius: 5px;
 width: 100%;
 height: 100%;
 object-fit: cover;
 object-position: center;
+overflow: hidden;
+filter: saturate(110%);
 }
 
 .nav_container {
 background-color: transparent;
 display:flex;
 flex-direction: column;
-gap: 4px;
-height: 100%
+gap: 0px;
+height: calc(100%);
 }
 
 .nav_buttons {
 text-decoration: none;
 text-align: left;
 border: none;
-padding: 0px;
-background-color: transparent;
-color: rgba(255,255,255,0.7);
-border-radius: 0px;
+padding: 20px;
+background-color: white;
+color: black;
+border-radius: 5px;
 font-family: "Fredoka";
 font-weight: 300;
 cursor: pointer;
 font-size: clamp(1.5vw, 2vw, 1.7vw);
 animation: textsway 4s alternate infinite;
+width: calc(25vw - 54px);
 }
 
 .nav_buttons:hover {
@@ -341,7 +389,7 @@ font-weight: 400;
 .main_section {
 display: flex;
 width: 100vw;
-height: 100vh;
+height: 100%;
 overflow: hidden;
 background-color: white;
 }
