@@ -12,148 +12,159 @@ function welcome_button() {
 welcome_section.style.display = "none";
 }
 
+let search_field = $state('');
+let filtered_images = $derived(
+    all_images.filter(img => {
+      const query = search_field.toLowerCase();
+      return (
+        img.tags.toLowerCase().includes(query) ||
+        img.alt_text.toLowerCase().includes(query)
+      );
+    })
+  );
+
+const all_images = [
+{ image_url: "0.jpg",
+  alt_text: "art",
+  tags: "apple" },
+{ image_url: "1.png",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "2.png",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "3.png",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "5.jpg",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "6.jpg",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "7.png",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "8.jpg",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "9.png",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "10.jpg",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "11.jpg",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "12.png",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "13.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "14.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "15.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "16.PNG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "17.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "18.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "19.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "20.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "21.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "22.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "23.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "24.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "25.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "26.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "27.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "28.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "29.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "30.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "31.JPG",
+  alt_text: "art",
+  tags: "wow cool dang" },
+{ image_url: "32.jpeg",
+  alt_text: "art",
+  tags: "wow cool dang" }
+]
+
 const home_page_images = [
 { title: "wow art",
-  image_url: "IMG_9645.JPG",
+  image_url: "24.JPG",
   alt_text: "cool art",
   id: "a"},
 { title: "wow art",
-  image_url: "khbxkjs.jpeg",
+  image_url: "30.JPG",
   alt_text: "cool art",
   id: "b"},
 { title: "wow art",
-  image_url: "2222.jpg",
+  image_url: "5.jpg",
   alt_text: "cool art",
   id: "c"},
 { title: "wow art",
-  image_url: "IMG_9677.JPG",
+  image_url: "8.jpg",
   alt_text: "cool art",
   id: "d"},
 { title: "wow art",
-  image_url: "IMG_9971.JPG",
+  image_url: "10.jpg",
   alt_text: "cool art",
   id: "e"},
 { title: "wow art",
-  image_url: "IMG_9973.JPG",
+  image_url: "12.png",
   alt_text: "cool art",
   id: "f"},
 { title: "wow art",
-  image_url: "IMG_1370.JPG",
+  image_url: "13.JPG",
   alt_text: "cool art",
   id: "g"},
 { title: "wow art",
-  image_url: "IMG_8656.JPG",
+  image_url: "19.JPG",
   alt_text: "cool art",
   id: "h"},
 { title: "wow art",
-  image_url: "9090.jpg",
+  image_url: "15.JPG",
   alt_text: "cool art",
   id: "i"},
 { title: "wow art",
-  image_url: "IMG_8861.JPG",
+  image_url: "16.PNG",
   alt_text: "cool art",
   id: "j"}
 ]
 
-let homepage_image_grid_container;
-
-onMount(()=>{
-homepage_image_grid_container.style.gridTemplateAreas = `
-      "a a b c"
-      "a a d e"
-      "f g h h"
-      "j i h h"
-      `; 
-});
-
-let clicked_grid_image = "";
-
-function clickedImage(id) {
-  clicked_grid_image = id; 
-    if (clicked_grid_image === "a") {
-      homepage_image_grid_container.style.gridTemplateAreas = `
-      "a a b c"
-      "a a d e"
-      "f g h i"
-      "j . . ."
-      `;
-      
-    }
-    else if (clicked_grid_image === "b") {
-       homepage_image_grid_container.style.gridTemplateAreas = `
-      "a b b c"
-      "d b b e"
-      "f g h i"
-      "j . . ."
-      `; 
-    }
-       else if (clicked_grid_image === "c") {
-       homepage_image_grid_container.style.gridTemplateAreas = `
-      "a b c c"
-      "d e c c"
-      "f g h i"
-      "j . . ."
-      `; 
-    }
-       else if (clicked_grid_image === "d") {
-       homepage_image_grid_container.style.gridTemplateAreas = `
-      "a b f c"
-      "d d g e"
-      "d d h i"
-      "j . . ."
-      `; 
-    }
-       else if (clicked_grid_image === "e") {
-       homepage_image_grid_container.style.gridTemplateAreas = `
-      "a b c d"
-      "h i e e"
-      "f g e e"
-      "j . . ."
-      `; 
-    }
-       else if (clicked_grid_image === "f") {
-       homepage_image_grid_container.style.gridTemplateAreas = `
-      "a b c d"
-      "e g h i"
-      "f f j ."
-      "f f . ."
-      `; 
-    }
-       else if (clicked_grid_image === "g") {
-       homepage_image_grid_container.style.gridTemplateAreas = `
-      "a b c d"
-      "e f g g"
-      "h i g g"
-      "j . . ."
-      `; 
-    }
-       else if (clicked_grid_image === "h") {
-       homepage_image_grid_container.style.gridTemplateAreas = `
-      "a b c d"
-      "e f g i"
-      "j . h h"
-      ". . h h"
-      `; 
-    }
-       else if (clicked_grid_image === "i") {
-       homepage_image_grid_container.style.gridTemplateAreas = `
-      "a b c d"
-      "e f g h"
-      "j j i i"
-      ". . i i"
-      `; 
-    }
-       else if (clicked_grid_image === "j") {
-       homepage_image_grid_container.style.gridTemplateAreas = `
-      "a b c d"
-      "e f g h"
-      "j j i ."
-      "j j . ."
-      `; 
-    }
-}
-
-let active_nav_id;
 
 let nav_buttons = [
 { title: "Art", 
@@ -211,34 +222,32 @@ active_nav_id = id;
 <button onclick={welcome_button}>Enter</button>
 </section>
 
-<div class="search_div">
-<label for="search"></label>
-<input id="search" type="search" placeholder="Search Artwork">
-</div>
 
-
-<div class="welcome_div"></div>
 <nav class="nav_section"></nav>
 
 
 <main class="main_section">
-<section class="grid_section">
-<div id="homepage_image_grid_container" bind:this={homepage_image_grid_container}>
-{#each home_page_images as image}
-<div class="image_card_wrapper" style="grid-area: {image.id};">
-<img 
-style="grid-area: {image.id};" 
-src="artwork/{image.image_url}" 
-id={image.id} 
-alt={image.alt_text} 
-class="grid_image"
-onclick={()=> clickedImage(image.id)}/>
-{#if clicked_grid_image === image.id}
-<button class="expand_button">&#9974;</button>
+<section class="search_div">
+<input 
+  type="text" 
+  bind:value={search_field} 
+  placeholder="Search images by tags..." 
+  id="search"
+/>
+</section>
+
+<section class="homepage_images">
+{#if filtered_images.length >= 1}
+  <div class="homepage_image_flex_container">
+    {#each filtered_images as image}
+        <img 
+	class="flex_image" 
+	src="artwork/{image.image_url}" 
+	alt="artwork/{image.alt_text}" 
+	/>
+    {/each}
+  </div>
 {/if}
-</div>
-{/each}
-</div>
 </section>
 </main>
 
@@ -271,8 +280,6 @@ font-size: 3rem;
 
 
 
-
-
 .welcome_section {
 backdrop-filter: blur(20px);
 margin: auto;
@@ -281,7 +288,6 @@ position: fixed;
 box-shadow: inset 0px 0px 100px grey;
 z-index: 100000000000000000000;
 }
-
 
 .static_nav {
 display: flex;
@@ -293,6 +299,30 @@ height: 100%;
 gap: 4px;
 margin-top: 4px;
 }
+
+
+.homepage_image_flex_container {
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+justify-content: center;
+gap: 5px;
+background-color: white;
+height: calc(100vh - 30vh);
+width: calc(100vw - 20vw);
+padding: 15vh 10vw;
+overflow-x: hidden;
+overflow-y: scroll;
+flex-wrap: wrap;
+}
+
+
+.flex_image {
+width: calc(20vw - 5px);
+aspect-ratio: 1/1;
+border-radius: 5px;
+}
+
 
 
 .menu_section {
@@ -318,7 +348,7 @@ justify-content: center;
 align-items: center;
 padding: 0px 20px 0px 20px;
 position: fixed;
-z-index: 10000000000000000000000;
+z-index: 10000;
 top: 0px;
 left: 0px;
 }
@@ -330,9 +360,14 @@ width: 50vw;
 background-color: rgba(255,255,255,0.8);
 border: 1px solid rgba(255,255,255,1);
 color: black;
-margin: 20px;
+margin: 4vh;
 box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
 backdrop-filter: blur(20px);
+outline: none;
+}
+
+#search:focus {
+border: 3px inset red; 
 }
 
 #homepage_image_grid_container {
