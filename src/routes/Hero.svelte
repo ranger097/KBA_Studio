@@ -599,7 +599,8 @@ cursor: pointer;
 }
 
 #search:focus {
-border: 1px inset black; 
+border: 1px inset black;
+height: 40px;
 }
 
 .nav_container {
