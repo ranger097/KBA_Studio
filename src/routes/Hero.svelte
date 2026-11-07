@@ -2,6 +2,8 @@
 import { onMount } from 'svelte';
 
 let welcome_section;
+let menu;
+let menu_bool = $state(true);
 
 onMount(()=>{
 welcome_section.style.backgroundColor = "rgba(100,0,200,0.6)";
@@ -57,9 +59,16 @@ function open_image(id) {
 
 
 
-
-
-
+function menu_style() {
+if (menu_bool == false) {
+menu.style.display = "none";
+menu_bool = true;
+}
+else {
+menu.style.display = "flex";
+menu_bool = false;
+} 
+}
 
 
 
@@ -245,41 +254,40 @@ let nav_buttons = [
   description: "view art",
   bg_color: "lightblue"
   },
-{ title: "Events", 
-  id: "nav_link_two", 
-  active_text: "Events ✦",
-  description: "view events",
-  bg_color: "lightgreen"
-  },
 { title: "Collections", 
   id: "nav_link_three", 
   active_text: "Collections ✦",
   description: "view collections",
-  bg_color: "lightyellow"
+  bg_color: "lightyellow",
+  link: "#"
   },
 { title: "Socials", 
   id: "nav_link_four", 
   active_text: "Socials ✦",
   description: "view socials",
-  bg_color: "lightorange"
+  bg_color: "lightorange",
+  link: "#"
   },
 { title: "Articles",
   id: "nav_link_five",
   active_text: "Articles ✦",
   description: "view articles",
-  bg_color: "lightpurple"
+  bg_color: "lightpurple",
+  link: "#"
   },
 { title: "About",
   id: "nav_link_six",
   active_text: "About ✦",
   description: "view about",
-  bg_color: "lightred"
+  bg_color: "lightred",
+  link: "#"
   },
 { title: "Reviews",
   id: "reviews",
   active_text: "Reviews ✦",
   description: "view reviews",
-  bg_color: "indigo"
+  bg_color: "indigo",
+  link: "#"
   }
 ];
 
@@ -290,12 +298,16 @@ let nav_buttons = [
 <button onclick={welcome_button}>Enter</button>
 </section>
 
-
-<nav class="nav_section"></nav>
+<nav bind:this={menu} class="nav_container">
+{#each nav_buttons as button}
+<a class="nav_buttons" href={button.link}>{button.title}</a>
+{/each}
+</nav>
 
 
 <main class="main_section">
 <section class="search_div">
+<button onclick={menu_style} class="menu_button">&#9776;</button>
 <input 
   type="text" 
   bind:value={search_field} 
@@ -312,7 +324,6 @@ let nav_buttons = [
         class="flex_image" 
         src="artwork/{image.image_url}" 
         alt="artwork/{image.alt_text}"
-        style={image.style}
         onclick={() => open_image(image.id)} 
       />
     {/each}
@@ -409,9 +420,9 @@ align-items: flex-start;
 justify-content: center;
 gap: 5px;
 background-color: white;
-height: calc(100vh - 30vh);
+height: calc(100vh - 20vh);
 width: calc(100vw - 20vw);
-padding: 15vh 10vw;
+padding: 13vh 10vw;
 overflow-x: hidden;
 overflow-y: scroll;
 flex-wrap: wrap;
@@ -534,20 +545,6 @@ object-position: center;
 cursor: pointer;
 }
 
-.menu_section {
-width: 25vw;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-gap: 0px;
-background-color: black;
-margin: 4px 0px 4px 4px;
-height: calc(100vh - 8px);
-overflow-x: hidden;
-overflow-y: scroll;
-border-radius: 5px;
-}
 
 .search_div {
 background-color: rgba(0,0,0,0);
@@ -555,56 +552,92 @@ width: 100vw;
 display: flex;
 justify-content: center;
 align-items: center;
-padding: 0px 20px 0px 20px;
 position: fixed;
 z-index: 10000;
 top: 0px;
 left: 0px;
+gap: 0vw;
+padding: 20px 0px 20px 0px;
 }
 
 #search {
 border-radius: 500px;
-padding: 12px 30px;
-width: 50vw;
 background-color: rgba(255,255,255,0.8);
 border: 1px solid rgba(255,255,255,1);
 color: black;
-margin: 4vh;
-box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
+box-shadow: -5px 5px 15px rgba(0,0,0,0.08);
 backdrop-filter: blur(20px);
 outline: none;
+height: 40px;
+padding-left: 3vw;
+padding-right: 3vw;
+width: 60vw;
+}
+
+.menu_button {
+border-radius: 500px;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: rgba(255,255,255.8);
+border: 1px solid rgba(255,255,255,1);
+color: #404040;
+box-shadow: -5px 5px 15px rgba(0,0,0,0.08);
+backdrop-filter: blur(20px);
+outline: none;
+aspect-ratio: 1/1;
+height: 40px;
+margin-left: 5vw;
+flex-wrap: nowrap;
+position: fixed;
+margin: auto;
+inset: 0;
+margin-left: 20px;
+margin-top: 26px;
+z-index: 1000000000000;
+cursor: pointer;
 }
 
 #search:focus {
-border: 3px inset red; 
+border: 1px inset black; 
 }
 
 .nav_container {
-background-color: transparent;
-display:flex;
+display: none;
 flex-direction: column;
 gap: 0px;
-height: calc(100%);
+position: fixed;
+margin: auto;
+inset: 0;
+margin-left: 20px;
+margin-top: 80px;
+background-color: rgba(255,255,255.8);
+border: 1px solid rgba(255,255,255,1);
+color: #404040;
+box-shadow: -5px 5px 15px rgba(0,0,0,0.08);
+backdrop-filter: blur(20px);
+width: 10vw;
+min-width: 130px;
+height: 30vh;
+min-height: 230px;
+padding: 20px;
+border-radius: 20px;
 }
 
 .nav_buttons {
 text-decoration: none;
 text-align: left;
 border: none;
-padding: 20px;
-background-color: white;
+padding: 5px;
+background-color: transparent;
 color: black;
-border-radius: 5px;
-font-family: "Fredoka";
+border-radius: 0px;
 font-weight: 300;
 cursor: pointer;
-font-size: clamp(1.5vw, 2vw, 1.7vw);
-animation: textsway 4s alternate infinite;
-width: calc(25vw - 54px);
+font-size: 1.2rem;
 }
 
 .nav_buttons:hover {
-font-size: clamp(1.6vw, 2vw, 1.8vw);
 font-weight: 400;
 }
 
@@ -623,9 +656,10 @@ align-items: flex-start;
 justify-content: flex-start;
 gap: 5px;
 background-color: white;
-height: calc(100vh);
-width: calc(100vw);
-padding: 15vh 5vw;
+min-height: auto;
+width: 100vw;
+height: calc(100vh - 20vh);
+padding: 12vh 5vw;
 overflow-y: scroll;
 }
 
@@ -649,9 +683,9 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-z-index: 100000000000000000000000;
+z-index: 1000000000;
 padding: 0px 5vw;
-width: calc(100vw - 10vw);
+width: 90vw;
 }
 
 .full_image_info_div {
@@ -741,6 +775,36 @@ content: " close";
 .full_image_close_button_mobile:hover {
 background-color: red;
 }
+
+.search_div {
+background-color: rgba(0,0,0,0);
+width: 100vw;
+display: flex;
+justify-content: center;
+align-items: center;
+position: fixed;
+z-index: 10000;
+top: 0px;
+left: 0px;
+gap: 0vw;
+padding: 20px 0px 20px 0px;
+}
+
+#search {
+border-radius: 500px;
+background-color: rgba(255,255,255,0.8);
+border: 1px solid rgba(255,255,255,1);
+color: black;
+box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
+backdrop-filter: blur(20px);
+outline: none;
+height: 6vh;
+padding-left: 3vw;
+padding-right: 3vw;
+width: 50vw;
+}
+
+
 
 }
 
