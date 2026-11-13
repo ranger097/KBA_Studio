@@ -316,17 +316,8 @@ let nav_buttons = [
 </script>
 
 
-
-<nav bind:this={menu} class="nav_container">
-{#each nav_buttons as button}
-<a class="nav_buttons" bind:this={button.id} href={button.link}>{button.active_text}</a>
-{/each}
-</nav>
-
-
 <main class="main_section">
 <section class="search_div">
-<button onclick={menu_style} class="menu_button">&#9776;</button>
 <input 
   type="text" 
   bind:value={search_field} 
@@ -410,26 +401,6 @@ font-size: 3rem;
 
 .full_image_close_button_mobile {
 display: none;
-}
-
-.welcome_section {
-backdrop-filter: blur(20px);
-margin: auto;
-inset: 0;
-position: fixed;
-box-shadow: inset 0px 0px 100px grey;
-z-index: 100000000000000000000;
-}
-
-.static_nav {
-display: flex;
-flex-direction: column;
-background-color: transparent;
-align-items: center;
-width: calc(25vw);
-height: 100%;
-gap: 4px;
-margin-top: 4px;
 }
 
 .homepage_image_flex_container {
@@ -551,7 +522,7 @@ cursor: pointer;
 
 
 .search_div {
-background-color: rgba(0,0,0,0);
+background-color: rgba(0,0,0,1);
 width: 100vw;
 display: flex;
 justify-content: center;
@@ -572,10 +543,10 @@ color: black;
 box-shadow: -5px 5px 15px rgba(0,0,0,0.08);
 backdrop-filter: blur(20px);
 outline: none;
-height: 40px;
+min-height: calc(4vh + 30px);
 padding-left: 3vw;
 padding-right: 3vw;
-width: 60vw;
+width: 70vw;
 }
 
 .menu_button {
@@ -792,23 +763,28 @@ z-index: 10000;
 top: 0px;
 left: 0px;
 gap: 0vw;
-padding: 20px 0px 20px 0px;
+padding: 0px 0px 20px 0px;
 }
 
 #search {
-border-radius: 500px;
+border-radius: 0px;
 background-color: rgba(255,255,255,0.8);
-border: 1px solid rgba(255,255,255,1);
+border: none;
+border-bottom: 1px solid white;
 color: black;
-box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
+box-shadow: none;
 backdrop-filter: blur(20px);
 outline: none;
-height: 6vh;
-padding-left: 3vw;
-padding-right: 3vw;
-width: 50vw;
+height: calc(3vh + 20px);
+padding-left: 5vw;
+padding-right: 5vw;
+width: 100vw;
 }
 
+#search:focus {
+border: none;
+height: calc(3vh + 20px);
+}
 
 
 }

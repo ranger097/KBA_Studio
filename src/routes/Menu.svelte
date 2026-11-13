@@ -5,7 +5,8 @@
 <a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/home.svg"/>Home</a>
 <a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/memo-pad.svg"/>Blog</a>
 <a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/user.svg"/>Contact</a>
-<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/info.svg"/>About</a>
+<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/fire-flame-curved.svg"/>Reviews</a>
+<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/info.svg"/>Info</a>
 
 </nav>
 </main>
@@ -91,7 +92,7 @@ justify-content: center;
 .nav_section {
 display: flex;
 gap: 0px;
-background-color: rgba(255,255,255,0.9);
+background: linear-gradient(rgba(255,255,255,0.8));
 margin-bottom: 0px;
 backdrop-filter: blur(20px);
 height: 100%;
@@ -101,7 +102,7 @@ border: none;
 border-top: 1px solid white;
 align-items: center;
 justify-content: space-evenly;
-padding: 0px;
+padding: 0px 10vw;
 }
 
 .menu_link {
@@ -110,7 +111,7 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 text-decoration: none;
-color: black;
+color: #101010;
 gap: 0.5vh;
 }
 
