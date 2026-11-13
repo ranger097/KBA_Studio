@@ -1,18 +1,12 @@
 <script>
 import { onMount } from 'svelte';
 
-let welcome_section;
 let menu;
+let home;
+let about;
+let contact;
+let review;
 let menu_bool = $state(true);
-
-onMount(()=>{
-welcome_section.style.backgroundColor = "rgba(100,0,200,0.6)";
-});
-
-
-function welcome_button() {
-welcome_section.style.display = "none";
-}
 
 let search_field = $state('');
 let filtered_images = $derived(
@@ -68,6 +62,48 @@ else {
 menu.style.display = "flex";
 menu_bool = false;
 } 
+}
+
+function nav_links(node) {
+
+function home_link() {
+home.innerHTML = `
+${nav_buttons.active_text}
+`;
+forEach((about,contact,review)=>{
+
+})
+}
+
+function about_link () {
+
+}
+
+function contact_link() {
+
+}
+
+function review_link () {
+
+}
+
+}
+
+
+function home_link(node) {
+return nav_links(node).home_link();
+}
+
+function about_link(node) {
+return nav_links(node).about_link();
+}
+
+function contact_link(node) {
+return nav_links(node).contact_link();
+}
+
+function review_link(node) {
+return nav_links(node).review_link();
 }
 
 
@@ -248,41 +284,27 @@ const home_page_images = [
 
 
 let nav_buttons = [
-{ title: "Art", 
-  id: "nav_link_one", 
-  active_text: "Art ✍",
+{ title: "Home", 
+  id: "home", 
+  active_text: "Home ✍",
   description: "view art",
   bg_color: "lightblue"
   },
-{ title: "Collections", 
-  id: "nav_link_three", 
-  active_text: "Collections ✦",
+{ title: "About", 
+  id: "about", 
+  active_text: "About ✍",
   description: "view collections",
   bg_color: "lightyellow",
   link: "#"
   },
-{ title: "Socials", 
-  id: "nav_link_four", 
-  active_text: "Socials ✦",
+{ title: "Contact", 
+  id: "contact", 
+  active_text: "Contact ✍",
   description: "view socials",
   bg_color: "lightorange",
   link: "#"
   },
-{ title: "Articles",
-  id: "nav_link_five",
-  active_text: "Articles ✦",
-  description: "view articles",
-  bg_color: "lightpurple",
-  link: "#"
-  },
-{ title: "About",
-  id: "nav_link_six",
-  active_text: "About ✦",
-  description: "view about",
-  bg_color: "lightred",
-  link: "#"
-  },
-{ title: "Reviews",
+{ title: "Review",
   id: "reviews",
   active_text: "Reviews ✦",
   description: "view reviews",
@@ -294,13 +316,10 @@ let nav_buttons = [
 </script>
 
 
-<section bind:this={welcome_section} class="welcome_section">
-<button onclick={welcome_button}>Enter</button>
-</section>
 
 <nav bind:this={menu} class="nav_container">
 {#each nav_buttons as button}
-<a class="nav_buttons" href={button.link}>{button.title}</a>
+<a class="nav_buttons" bind:this={button.id} href={button.link}>{button.active_text}</a>
 {/each}
 </nav>
 
@@ -432,8 +451,8 @@ flex-wrap: wrap;
 margin: auto;
 inset: 0;
 position: fixed;
-background-color: rgba(255,255,255,0.5);
-backdrop-filter: blur(20px);
+background: linear-gradient(120deg,rgba(0,0,0,0.5) 70%, #202020);
+backdrop-filter: blur(10px);
 display: flex;
 align-items: center;
 justify-content: center;
@@ -454,27 +473,22 @@ padding: 10px;
 .full_image_info_div {
 padding: 10px 20px;
 border-radius: 10px;
-box-shadow: -5px 5px 10px rgba(0,0,0,0.5);
 background-color: rgba(255,255,255,0.5);
 backdrop-filter: blur(20px);
-border: 1px solid black;
 width: 25vw;
 }
 
 
 .full_image_share_div {
 padding: 10px 20px;
-background-color: blue;
+background-color: black;
 color: white;
 border-radius: 10px;
-border: 1px solid black;
-box-shadow: -5px 5px 10px rgba(0,0,0,0.5);
 cursor: pointer;
 }
 
 .full_image_share_div:hover {
 background-color: black;
-box-shadow: 0px 0px 100px grey;
 
 }
 
@@ -483,35 +497,26 @@ color: white;
 text-decoration: none;
 }
 
-.full_image_description:hover {
-background-color: purple ;
+.full_image_description {
+background: linear-gradient(120deg,black 70%, #202020);
 color: lightgoldenrodyellow;
-box-shadow: 0px 0px 100px grey;
-border: 1px solid purple;
 }
 
-.full_image_tag:hover {
-background-color: red;
+.full_image_tag {
+background: linear-gradient(120deg,black 70%, #202020);
 color: white;
-box-shadow: 0px 0px 100px grey;
-border: 1px solid red;
 }
 
 
 .full_image {
 height: 80vh;
-box-shadow: -5px 5px 10px rgba(0,0,0,0.5);
 border-radius: 10px;
-border: 1px solid black;
 max-width: 50vw;
 overflow: hidden;
 object-fit: cover;
 object-position: center;
 }
 
-.full_image:hover {
-box-shadow: 0px 0px 100px grey;
-}
 
 .full_image_close_button {
 margin: auto;
@@ -527,7 +532,6 @@ color: white;
 text-shadow: -2px 2px 5px rgba(0,0,0,0.3);
 border: 1px solid grey;
 background-color: rgba(0,0,0,1);
-box-shadow: -2px 2px 5px rgba(0,0,0,0.3);
 }
 
 .full_image_close_button:hover {
@@ -658,8 +662,8 @@ justify-content: flex-start;
 gap: 5px;
 background-color: white;
 min-height: auto;
-width: 100vw;
 height: calc(100vh - 20vh);
+width: 100vw;
 padding: 12vh 5vw;
 overflow-y: scroll;
 }
