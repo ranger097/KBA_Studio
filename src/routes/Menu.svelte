@@ -28,31 +28,27 @@
 }
 
 
-
-
 .main_section {
 background-color: rgba(0,0,0,0);
-margin: auto;
-inset: 0;
-position: fixed;
-margin-bottom: 0px;
 width: 100vw;
-height: calc(10vh + 30px);
 display: flex;
 align-items: center;
 justify-content: center;
+position: fixed;
+bottom: calc(0px);
 }
 
 .nav_section {
 display: flex;
-gap: calc(2vw + 5px);
-background-color: rgba(255,255,255,0.7);
+gap: calc(3vw + 5px);
+background-color: rgba(255,255,255,0.6);
 margin-bottom: 0px;
-padding: calc(1vh + 5px) calc(2vw + 10px);
+padding: calc(2vh + 5px) calc(5vw + 10px) 10px;
 backdrop-filter: blur(20px);
 border: 1px solid white;
-box-shadow: -2px 2px 5px rgba(0,0,0,0.1);
-border-radius: 100px;
+border-bottom: none;
+box-shadow: inset 0px 5px 20px rgba(255,255,255,1);
+border-radius: 100px 100px 0px 0px;
 }
 
 .menu_link {

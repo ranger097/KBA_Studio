@@ -1,376 +1,27 @@
 <script>
 import { onMount } from 'svelte';
-
-let menu;
-let home;
-let about;
-let contact;
-let review;
-let menu_bool = $state(true);
-
-let search_field = $state('');
-let filtered_images = $derived(
-    all_images.filter(img => {
-      const query = search_field.toLowerCase();
-      return (
-        img.tags.toLowerCase().includes(query) ||
-        img.alt_text.toLowerCase().includes(query)
-      );
-    })
-  );
-
-let selected_image_id = $state(null);
-
-let full_image = $derived(
-  all_images.find(img => img.id === selected_image_id)
-);
-
-function open_image(id) {
-  selected_image_id = id;
-}
-
-
-  let buttonText = 'Copy and Share Image';
-  let isCopied = false;
-
-  function copyCurrentLink(image_url) {
-    const baseUrl = new URL(window.location.href);
-    const fullUrl = new URL(`artwork/${image_url}`, baseUrl.origin).href;
-
-    navigator.clipboard.writeText(fullUrl)
-      .then(() => {
-        buttonText = 'Copied!';
-        isCopied = true;
-        setTimeout(() => {
-          buttonText = 'Copy Page Link';
-          isCopied = false;
-        }, 2000);
-      })
-      .catch((err) => {
-        console.error('Failed to copy: ', err);
-      });
-  }
+import { getSearchResults, searchState } from '#lib/search.svelte.js';
+import all_art from '#lib/data/art.json';
+let results = $derived(getSearchResults());
 
 
 
-function menu_style() {
-if (menu_bool == false) {
-menu.style.display = "none";
-menu_bool = true;
-}
-else {
-menu.style.display = "flex";
-menu_bool = false;
-} 
-}
-
-function nav_links(node) {
-
-function home_link() {
-home.innerHTML = `
-${nav_buttons.active_text}
-`;
-forEach((about,contact,review)=>{
-
-})
-}
-
-function about_link () {
-
-}
-
-function contact_link() {
-
-}
-
-function review_link () {
-
-}
-
-}
-
-
-function home_link(node) {
-return nav_links(node).home_link();
-}
-
-function about_link(node) {
-return nav_links(node).about_link();
-}
-
-function contact_link(node) {
-return nav_links(node).contact_link();
-}
-
-function review_link(node) {
-return nav_links(node).review_link();
-}
-
-
-
-const all_images = [
-{ image_url: "24.JPG",
-  alt_text: "Kathy Belcher",
-  tags: "woman, art, working",
-  id: "1"},
-{ image_url: "19.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "2"},
-{ image_url: "2.png",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "3"},
-{ image_url: "3.png",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "4"},
-{ image_url: "5.jpg",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "5"},
-{ image_url: "6.jpg",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "6"},
-{ image_url: "7.png",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "7"},
-{ image_url: "8.jpg",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "8"},
-{ image_url: "9.png",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "9"},
-{ image_url: "10.jpg",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "10"},
-{ image_url: "11.jpg",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "11"},
-{ image_url: "12.png",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "12"},
-{ image_url: "13.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "13"},
-{ image_url: "14.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "14"},
-{ image_url: "15.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "15"},
-{ image_url: "16.PNG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "16"},
-{ image_url: "17.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "17"},
-{ image_url: "18.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "18"},
-{ image_url: "1.png",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "19"},
-{ image_url: "20.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "20"},
-{ image_url: "21.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "21"},
-{ image_url: "22.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "22"},
-{ image_url: "23.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "23"},
-{ image_url: "0.jpg",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "24"},
-{ image_url: "25.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "25"},
-{ image_url: "26.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "26"},
-{ image_url: "27.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "27"},
-{ image_url: "28.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "28"},
-{ image_url: "29.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "29"},
-{ image_url: "30.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "30"},
-{ image_url: "31.JPG",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "31"},
-{ image_url: "32.jpeg",
-  alt_text: "art",
-  tags: "wow cool dang",
-  id: "32"}
-]
-
-const home_page_images = [
-{ title: "wow art",
-  image_url: "24.JPG",
-  alt_text: "cool art",
-  id: "a"},
-{ title: "wow art",
-  image_url: "30.JPG",
-  alt_text: "cool art",
-  id: "b"},
-{ title: "wow art",
-  image_url: "5.jpg",
-  alt_text: "cool art",
-  id: "c"},
-{ title: "wow art",
-  image_url: "8.jpg",
-  alt_text: "cool art",
-  id: "d"},
-{ title: "wow art",
-  image_url: "10.jpg",
-  alt_text: "cool art",
-  id: "e"},
-{ title: "wow art",
-  image_url: "12.png",
-  alt_text: "cool art",
-  id: "f"},
-{ title: "wow art",
-  image_url: "13.JPG",
-  alt_text: "cool art",
-  id: "g"},
-{ title: "wow art",
-  image_url: "19.JPG",
-  alt_text: "cool art",
-  id: "h"},
-{ title: "wow art",
-  image_url: "15.JPG",
-  alt_text: "cool art",
-  id: "i"},
-{ title: "wow art",
-  image_url: "16.PNG",
-  alt_text: "cool art",
-  id: "j"}
-]
-
-
-let nav_buttons = [
-{ title: "Home", 
-  id: "home", 
-  active_text: "Home ✍",
-  description: "view art",
-  bg_color: "lightblue"
-  },
-{ title: "About", 
-  id: "about", 
-  active_text: "About ✍",
-  description: "view collections",
-  bg_color: "lightyellow",
-  link: "#"
-  },
-{ title: "Contact", 
-  id: "contact", 
-  active_text: "Contact ✍",
-  description: "view socials",
-  bg_color: "lightorange",
-  link: "#"
-  },
-{ title: "Review",
-  id: "reviews",
-  active_text: "Reviews ✦",
-  description: "view reviews",
-  bg_color: "indigo",
-  link: "#"
-  }
-];
 
 </script>
 
 
 <main class="main_section">
-<section class="search_div">
-<input 
-  type="text" 
-  bind:value={search_field} 
-  placeholder="Search art by tags..." 
-  id="search"
-/>
-</section>
-
-<section class="homepage_images">
-{#if filtered_images.length >= 1}
-  <div class="homepage_image_flex_container">
-    {#each filtered_images as image}
-      <img 
-        class="flex_image" 
-        src="artwork/{image.image_url}" 
-        alt="artwork/{image.alt_text}"
-        onclick={() => open_image(image.id)} 
-      />
-    {/each}
-
-    {#if full_image}
-      <div class="full_image_container">
-        <button
-	class="full_image_close_button_mobile"
-	onclick={() => selected_image_id = null}>&times;</button>
-
-        <img class="full_image" src="artwork/{full_image.image_url}" alt={full_image.alt_text} />
-	<div class="full_image_info_container">
-        <div class="full_image_info_div full_image_description">
-        <span>Description:<br>{full_image.alt_text}</span>
-	</div>
-        <div class="full_image_info_div full_image_tag">
-        <span>Tags:<br>{full_image.tags}</span>
-	</div>
-        <div
-	onclick={() => copyCurrentLink(full_image.image_url)}
-	class="full_image_share_div">
-        <span>{buttonText}</span>
-	</div>
-	<div class="full_image_share_div">
-        <a href="artwork/{full_image.image_url}" download>Download Image</a>
-	</div>
-
-	</div>
-        <button
-	class="full_image_close_button"
-	onclick={() => selected_image_id = null}>&times;</button>
-      </div>
-    {/if}
-
-  </div>
+<div class="homepage_image_flex_container">
+{#if results.total > 0}
+{#each results.art as art}
+<img class="flex_image" src="./artwork/{art.image_url}" alt={art.alt_text} />
+{/each}
+{:else}
+{#each all_art as artwork}
+<img class="flex_image" src="./artwork/{artwork.image_url}" alt={artwork.alt_text} />
+{/each}
 {/if}
-</section>
+</div>
 </main>
 
 
@@ -410,105 +61,22 @@ align-items: flex-start;
 justify-content: center;
 gap: 5px;
 background-color: white;
-height: calc(100vh - 20vh);
 width: calc(100vw - 20vw);
-padding: 13vh 10vw;
+padding: calc(6vh + 20px) 10vw;
 overflow-x: hidden;
 overflow-y: scroll;
 flex-wrap: wrap;
 }
 
-.full_image_container {
-margin: auto;
-inset: 0;
-position: fixed;
-background: linear-gradient(120deg,rgba(0,0,0,0.5) 70%, #202020);
-backdrop-filter: blur(10px);
+.main_section {
 display: flex;
-align-items: center;
-justify-content: center;
-z-index: 100000000000000000000000;
-}
-
-
-.full_image_info_container {
-background-color: transparent;
-padding: 0px;
-height: calc(80vh - 0px);
-display: flex;
-flex-direction: column;
-gap: 10px;
-padding: 10px;
-}
-
-.full_image_info_div {
-padding: 10px 20px;
-border-radius: 10px;
-background-color: rgba(255,255,255,0.5);
-backdrop-filter: blur(20px);
-width: 25vw;
-}
-
-
-.full_image_share_div {
-padding: 10px 20px;
-background-color: black;
-color: white;
-border-radius: 10px;
-cursor: pointer;
-}
-
-.full_image_share_div:hover {
-background-color: black;
-
-}
-
-.full_image_share_div a {
-color: white;
-text-decoration: none;
-}
-
-.full_image_description {
-background: linear-gradient(120deg,black 70%, #202020);
-color: lightgoldenrodyellow;
-}
-
-.full_image_tag {
-background: linear-gradient(120deg,black 70%, #202020);
-color: white;
-}
-
-
-.full_image {
-height: 80vh;
-border-radius: 10px;
-max-width: 50vw;
+width: 100vw;
 overflow: hidden;
-object-fit: cover;
-object-position: center;
+background-color: white;
 }
 
 
-.full_image_close_button {
-margin: auto;
-inset: 0;
-width: 50px;
-margin-right: 2vw;
-margin-top: 2vw;
-position: fixed;
-aspect-ratio: 1/1;
-border-radius: 100px;
-font-size: 2rem;
-color: white;
-text-shadow: -2px 2px 5px rgba(0,0,0,0.3);
-border: 1px solid grey;
-background-color: rgba(0,0,0,1);
-}
 
-.full_image_close_button:hover {
-border: 1px solid red;
-background-color: rgba(255,0,0,0.5);
-}
 
 .flex_image {
 width: calc(20vw - 5px);
@@ -521,109 +89,11 @@ cursor: pointer;
 }
 
 
-.search_div {
-background-color: rgba(0,0,0,1);
-width: 100vw;
-display: flex;
-justify-content: center;
-align-items: center;
-position: fixed;
-z-index: 10000;
-top: 0px;
-left: 0px;
-gap: 0vw;
-padding: 20px 0px 20px 0px;
-}
 
-#search {
-border-radius: 500px;
-background-color: rgba(255,255,255,0.8);
-border: 1px solid rgba(255,255,255,1);
-color: black;
-box-shadow: -5px 5px 15px rgba(0,0,0,0.08);
-backdrop-filter: blur(20px);
-outline: none;
-min-height: calc(4vh + 30px);
-padding-left: 3vw;
-padding-right: 3vw;
-width: 70vw;
-}
 
-.menu_button {
-border-radius: 500px;
-display: flex;
-align-items: center;
-justify-content: center;
-background-color: rgba(255,255,255.8);
-border: 1px solid rgba(255,255,255,1);
-color: #404040;
-box-shadow: -5px 5px 15px rgba(0,0,0,0.08);
-backdrop-filter: blur(20px);
-outline: none;
-aspect-ratio: 1/1;
-height: 40px;
-margin-left: 5vw;
-flex-wrap: nowrap;
-position: fixed;
-margin: auto;
-inset: 0;
-margin-left: 20px;
-margin-top: 26px;
-z-index: 1000000000000;
-cursor: pointer;
-}
 
-#search:focus {
-border: 1px inset black;
-height: 40px;
-}
 
-.nav_container {
-display: none;
-flex-direction: column;
-gap: 0px;
-position: fixed;
-margin: auto;
-inset: 0;
-margin-left: 20px;
-margin-top: 80px;
-background-color: rgba(255,255,255.8);
-border: 1px solid rgba(255,255,255,1);
-color: #404040;
-box-shadow: -5px 5px 15px rgba(0,0,0,0.08);
-backdrop-filter: blur(20px);
-width: 10vw;
-min-width: 130px;
-height: 30vh;
-min-height: 230px;
-padding: 20px;
-border-radius: 20px;
-}
 
-.nav_buttons {
-text-decoration: none;
-text-align: left;
-border: none;
-padding: 5px;
-background-color: transparent;
-color: black;
-border-radius: 0px;
-font-weight: 300;
-cursor: pointer;
-font-size: 1.2rem;
-}
-
-.nav_buttons:hover {
-font-weight: 400;
-}
-
-.main_section {
-display: flex;
-width: 100vw;
-height: 100%;
-overflow: hidden;
-background-color: white;
-}
 
 @media (max-width: 700px) {
 .homepage_image_flex_container {
