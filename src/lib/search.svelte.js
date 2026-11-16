@@ -10,7 +10,7 @@ export const searchState = $state({
 export function getSearchResults() {
   const q = searchState.query.toLowerCase().trim();
   
-  if (!q) return { art: [], articles: [], total: 0 };
+  if (!q) return { art: [], articles: [], contact: [], faq: [],  total: 0 };
 
   const matchingArt = artData.filter(item => 
     item.tags.toLowerCase().includes(q) || 
@@ -18,7 +18,11 @@ export function getSearchResults() {
   );
 
   const matchingArticles = articleData.filter(item => 
-    item.tags.toLowerCase().includes(q)
+    item.title.toLowerCase().includes(q) ||
+    item.paragraph1.toLowerCase().includes(q) ||
+    item.paragraph2.toLowerCase().includes(q) ||
+    item.paragraph3.toLowerCase().includes(q) ||
+    item.paragraph4.toLowerCase().includes(q)
   );
 
   const matchingContacts = contactData.filter(item => 

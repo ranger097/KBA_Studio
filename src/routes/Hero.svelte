@@ -3,16 +3,13 @@ import { onMount } from 'svelte';
 import { getSearchResults, searchState } from '#lib/search.svelte.js';
 import all_art from '#lib/data/art.json';
 let results = $derived(getSearchResults());
-
-
-
-
 </script>
 
 
 <main class="main_section">
 <div class="homepage_image_flex_container">
-{#if results.total > 0}
+<div class="image_container">
+{#if results.art.length > 0}
 {#each results.art as art}
 <img class="flex_image" src="./artwork/{art.image_url}" alt={art.alt_text} />
 {/each}
@@ -22,13 +19,45 @@ let results = $derived(getSearchResults());
 {/each}
 {/if}
 </div>
+</div>
+
+<div class="homepage_article_flex_container">
+{#if results.articles.length > 0}
+{#each results.articles as article}
+<div class="article_container">
+<h2>{article.title}</h2>
+{#if article.paragraph1}
+<p>{article.paragraph1}</p>
+{/if}
+{#if article.paragraph2}
+<p>{article.paragraph2}</p>
+{/if}
+{#if article.paragraph3}
+<p>{article.paragraph3}</p>
+{/if}
+{#if article.paragraph4}
+<p>{article.paragraph4}</p>
+{/if}
+{#if article.paragraph5}
+<p>{article.paragraph5}</p>
+{/if}
+{#if article.paragraph6}
+<p>{article.paragraph6}</p>
+{/if}
+{#if article.paragraph7}
+<p>{article.paragraph7}</p>
+{/if}
+{#if article.paragraph8}
+<p>{article.paragraph8}</p>
+{/if}
+</div>
+{/each}
+{/if}
+</div>
 </main>
-
-
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
-
 
 * {
    font-family: "Quicksand", sans-serif;
@@ -40,6 +69,11 @@ let results = $derived(getSearchResults());
   &::-webkit-scrollbar { display: none; }
     scrollbar-width: none;
    -ms-overflow-style: none; 
+}
+
+h2 {
+font-weight: 600;
+font-size: 1.6rem;
 }
 
 .expand_button {
@@ -61,27 +95,57 @@ align-items: flex-start;
 justify-content: center;
 gap: 5px;
 background-color: white;
-width: calc(100vw - 20vw);
-padding: calc(6vh + 20px) 10vw;
+width: 100vw;
 overflow-x: hidden;
-overflow-y: scroll;
 flex-wrap: wrap;
+padding: 10vh 0px 20px 0px;
+}
+
+.image_container {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+border-radius: 20px;
+background-color: white;
+width: calc(90vw + 40px);
+overflow:hidden;
+gap: 5px;
+}
+
+.homepage_article_flex_container {
+background-color: white;
+width: 100vw;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+padding-bottom: 12vh;
+gap: 10px;
+}
+
+.article_container {
+background-color: rgba(245,245,245,1);
+width: 90vw;
+border-radius: 20px;
+padding: 10px 20px;
 }
 
 .main_section {
 display: flex;
+flex-direction: column;
 width: 100vw;
 overflow: hidden;
 background-color: white;
+align-items: center;
+justify-content: center;
 }
 
 
-
-
 .flex_image {
-width: calc(20vw - 5px);
+flex-basis: calc(25% - 4px);
 aspect-ratio: 1/1;
-border-radius: 5px;
+border-radius: 0px;
 overflow: hidden;
 object-fit: cover;
 object-position: center;
@@ -89,30 +153,23 @@ cursor: pointer;
 }
 
 
-
-
-
-
-
-
 @media (max-width: 700px) {
 .homepage_image_flex_container {
 display: flex;
-align-items: flex-start;
-justify-content: flex-start;
+align-items: center;
+justify-content: center;
 gap: 5px;
 background-color: white;
 min-height: auto;
-height: calc(100vh - 20vh);
 width: 100vw;
-padding: 12vh 5vw;
-overflow-y: scroll;
+padding: 12vh 20px 10px 20px;
 }
 
 .flex_image {
-width: 90vw;
+width: 98vw;
+flex-basis: calc(100%);
 aspect-ratio: 1/1;
-border-radius: 5px;
+border-radius: 0px;
 overflow: hidden;
 object-fit: cover;
 object-position: center;
