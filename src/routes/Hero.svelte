@@ -103,11 +103,11 @@ padding: 10vh 0px 20px 0px;
 
 .image_container {
 display: flex;
-justify-content: center;
+justify-content: flex-start;
 align-items: center;
 flex-wrap: wrap;
 border-radius: 20px;
-background-color: white;
+background-color: rgba(245,245,245,1);
 width: calc(90vw + 40px);
 overflow:hidden;
 gap: 5px;
@@ -175,6 +175,26 @@ object-fit: cover;
 object-position: center;
 cursor: pointer;
 }
+
+.image_container {
+display: flex;
+justify-content: flex-start;
+align-items: center;
+flex-wrap: wrap;
+border-radius: 0px;
+background-color: rgba(245,245,245,1);
+width: calc(100vw);
+overflow:hidden;
+gap: 5px;
+}
+
+.article_container {
+background-color: rgba(245,245,245,1);
+width: calc(100vw - 40px);
+border-radius: 0px;
+padding: 10px 20px;
+}
+
 
 .full_image_container {
 position: fixed;

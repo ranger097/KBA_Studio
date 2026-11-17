@@ -2,12 +2,11 @@
 
 <main class="main_section">
 <nav class="nav_section">
-<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/home.svg"/>Home</a>
-<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/memo-pad.svg"/>Blog</a>
-<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/user.svg"/>Contact</a>
-<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/fire-flame-curved.svg"/>Reviews</a>
-<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/info.svg"/>Info</a>
-
+<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/house-svgrepo-com(1).svg"/>Home</a>
+<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/image-placeholder-svgrepo-com.svg"/>Images</a>
+<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/heart-red-svgrepo-com.svg"/>Testimonies</a>
+<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/book-svgrepo-com.svg"/>Information</a>
+<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/delete-user-svgrepo-com.svg"/>Settings</a>
 </nav>
 </main>
 
@@ -20,7 +19,7 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: 0.6rem;
+  font-size: 1.3rem;
   transition: all 0.5s linear;
   &::-webkit-scrollbar { display: none; }
     scrollbar-width: none;
@@ -32,33 +31,39 @@
 background-color: rgba(0,0,0,0);
 width: 100vw;
 display: flex;
-align-items: center;
-justify-content: center;
+align-items: flex-start;
+justify-content: flex-start;
+top: calc(4vh + 20px);
+height: calc(100vh - 4vh - 20px);
 position: fixed;
-bottom: calc(0px);
 }
 
 .nav_section {
 display: flex;
-gap: calc(3vw + 5px);
-background-color: rgba(255,255,255,0.6);
-margin-bottom: 0px;
-padding: calc(2vh + 5px) calc(5vw + 10px) 10px;
+flex-direction: column;
+align-items: flex-start;
+gap: calc(20px);
+background-color: rgba(255,255,255,0.9);
 backdrop-filter: blur(20px);
-border: 1px solid white;
-border-bottom: none;
-box-shadow: inset 0px 5px 20px rgba(255,255,255,1);
-border-radius: 100px 100px 0px 0px;
+margin-bottom: 0px;
+height: calc(100vh - 4vh - 20px);
+border-radius: 0px;
+padding: 20px 22px;
+width: 20vw;
 }
 
 .menu_link {
 display: flex;
-flex-direction: column;
+flex-direction: row;
 align-items: center;
 justify-content: center;
 text-decoration: none;
 color: black;
-gap: 0.5vh;
+background-color: transparent;
+border-radius: 0px;
+aspect-ratio: 1/1;
+height: 20px;
+gap: 20px;
 }
 
 .menu_link:hover {
@@ -74,36 +79,32 @@ height: 1.7rem;
 
 .main_section {
 background-color: rgba(0,0,0,0);
-margin: auto;
-inset: 0;
-position: fixed;
-margin-bottom: 0px;
 width: 100vw;
-height: calc(5vh + 30px);
 display: flex;
-align-items: center;
-justify-content: center;
+align-items: flex-start;
+justify-content: flex-start;
+top: calc(7vh + 19px);
+height: calc(100vh - 4vh - 20px);
+position: fixed;
 }
 
 .nav_section {
 display: flex;
-gap: 0px;
-background: linear-gradient(rgba(255,255,255,0.8));
-margin-bottom: 0px;
+flex-direction: column;
+align-items: flex-start;
+gap: calc(20px);
+background-color: rgba(255,255,255,0.9);
 backdrop-filter: blur(20px);
-height: 100%;
-width: 100%;
+margin-bottom: 0px;
+height: calc(100vh - 4vh - 20px);
 border-radius: 0px;
-border: none;
-border-top: 1px solid white;
-align-items: center;
-justify-content: space-evenly;
-padding: 0px 10vw;
+padding: 20px 22px;
+width: 100vw;
 }
 
 .menu_link {
 display: flex;
-flex-direction: column;
+flex-direction: row;
 align-items: center;
 justify-content: center;
 text-decoration: none;
