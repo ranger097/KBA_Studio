@@ -17,10 +17,10 @@ let {hidden = false} = $props();
       </a>
       {/if}
 
-<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/house-svgrepo-com(1).svg"/>Home</a>
-<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/image-placeholder-svgrepo-com.svg"/>Images</a>
-<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/heart-red-svgrepo-com.svg"/>Testimonies</a>
-<a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/book-svgrepo-com.svg"/>Information</a>
+<a class="menu_link" href="."><img class="menu_icon" src="artwork/icons/house-svgrepo-com(1).svg"/>Home</a>
+<a class="menu_link" href="./Images/"><img class="menu_icon" src="artwork/icons/image-placeholder-svgrepo-com.svg"/>Images</a>
+<a class="menu_link" href="./Testimonies/"><img class="menu_icon" src="artwork/icons/heart-red-svgrepo-com.svg"/>Testimonies</a>
+<a class="menu_link" href="./Information/"><img class="menu_icon" src="artwork/icons/book-svgrepo-com.svg"/>Information</a>
 <a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/delete-user-svgrepo-com.svg"/>Settings</a>
 </nav>
 </main>

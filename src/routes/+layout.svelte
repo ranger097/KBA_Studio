@@ -1,7 +1,6 @@
 <script>
 	import favicon from '#lib/assets/favicon.svg';
-	import Searchbar from './Searchbar.svelte';
-	import Hero from './Hero.svelte';
+	
 	let { children } = $props();
 </script>
 
@@ -10,8 +9,7 @@
 </svelte:head>
 
 <main class="main_section">
-<Searchbar />
-<Hero />
+
 {@render children()}
 </main>
 
