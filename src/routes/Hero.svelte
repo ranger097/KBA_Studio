@@ -5,7 +5,6 @@ import all_art from '#lib/data/art.json';
 let results = $derived(getSearchResults());
 </script>
 
-
 <main class="main_section">
 <div class="homepage_image_flex_container">
 <div class="image_container">
@@ -23,6 +22,11 @@ let results = $derived(getSearchResults());
 
 <div class="homepage_article_flex_container">
 {#if results.articles.length > 0}
+<div class="icon_container">
+<img class="hero_icons" src="./artwork/icons/book-svgrepo-com.svg" alt="" />
+<p>Articles</p>
+</div>
+
 {#each results.articles as article}
 <div class="article_container">
 <h2>{article.title}</h2>
@@ -98,7 +102,7 @@ background-color: white;
 width: 100vw;
 overflow-x: hidden;
 flex-wrap: wrap;
-padding: 10vh 0px 20px 0px;
+padding: 0vh 0px 20px 0px;
 }
 
 .image_container {
@@ -121,14 +125,15 @@ align-items: center;
 justify-content: center;
 flex-direction: column;
 padding-bottom: 12vh;
-gap: 10px;
+gap: 0px;
 }
 
 .article_container {
 background-color: rgba(245,245,245,1);
 width: 90vw;
 border-radius: 20px;
-padding: 10px 20px;
+padding: 0px 20px;
+margin-bottom: 10px;
 }
 
 .main_section {
@@ -139,6 +144,7 @@ overflow: hidden;
 background-color: white;
 align-items: center;
 justify-content: center;
+margin-top: 10vh;
 }
 
 
@@ -152,6 +158,21 @@ object-position: center;
 cursor: pointer;
 }
 
+.icon_container {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+background-color: transparent;
+width: calc(90vw +  40px);
+margin-bottom: 0px;
+height: 1.8rem;
+padding-left: 0px;
+}
+
+.hero_icons {
+width: 1.8rem;
+height: 1.8rem;
+}
 
 @media (max-width: 700px) {
 .homepage_image_flex_container {
@@ -162,7 +183,7 @@ gap: 5px;
 background-color: white;
 min-height: auto;
 width: 100vw;
-padding: 12vh 20px 10px 20px;
+padding: calc(0vh + 0px) 20px 0px 20px;
 }
 
 .flex_image {
