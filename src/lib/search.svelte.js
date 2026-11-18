@@ -2,6 +2,8 @@ import artData from '#lib/data/art.json';
 import articleData from '#lib/data/articles.json';
 import contactData from '#lib/data/contact.json';
 import faqData from '#lib/data/faq.json';
+import testimoniesData from '#lib/data/testimonies.json';
+
 
 export const searchState = $state({
   query: ''
@@ -10,7 +12,7 @@ export const searchState = $state({
 export function getSearchResults() {
   const q = searchState.query.toLowerCase().trim();
   
-  if (!q) return { art: [], articles: [], contact: [], faq: [],  total: 0 };
+  if (!q) return { art: [], articles: [], contact: [], faq: [], testimonies: [],  total: 0 };
 
   const matchingArt = artData.filter(item => 
     item.tags.toLowerCase().includes(q) || 
@@ -33,15 +35,23 @@ export function getSearchResults() {
     item.tags.toLowerCase().includes(q)
   );
 
+  const matchingTest = testimoniesData.filter(item => 
+    item.author.toLowerCase().includes(q) ||
+    item.image.toLowerCase().includes(q) ||
+    item.testimonies.toLowerCase().includes(q)
+  );
+
   return {
     art: matchingArt,
     articles: matchingArticles,
     contact: matchingContacts,
     faq: matchingFAQ,
+    testimonies: matchingTest,
     total: 
     matchingArt.length + 
     matchingArticles.length + 
     matchingContacts.length + 
-    matchingFAQ.length
+    matchingFAQ.length +
+    matchingTest.length
   };
 }
