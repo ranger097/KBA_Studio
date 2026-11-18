@@ -66,7 +66,9 @@ let results = $derived(getSearchResults());
 <main class="main_unsearched_section">
 <div class="title">
 </div>
+<div class="animated_text_container">
 <img class="animated_text" src="./artwork/animated-text.gif" alt="" />
+</div>
 </main>
 {/if}
 
@@ -248,9 +250,20 @@ justify-content: center;
 min-height: 100vh;
 }
 
-.animated_text {
+.animated_text_container {
+overflow: hidden;
 width: 100vw;
 height: 100vw;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: white;
+}
+
+.animated_text {
+width: 125vw;
+height: 125vw;
+margin-left: -5vw;
 }
 
 .flex_image {
