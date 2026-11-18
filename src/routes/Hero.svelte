@@ -19,11 +19,6 @@ let results = $derived(getSearchResults());
 
 <div class="homepage_article_flex_container">
 {#if results.articles.length > 0}
-<div class="icon_container">
-<img class="hero_icons" src="./artwork/icons/book-svgrepo-com.svg" alt="" />
-<p>Articles</p>
-</div>
-
 {#each results.articles as article}
 <div class="article_container">
 <h2>{article.title}</h2>
@@ -113,12 +108,11 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-height: 100%;
 min-height: 100vh;
 }
 
 .animated_text {
-width: 50vw;
+height: calc(100vh);
 }
 
 .image_container {
@@ -140,7 +134,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: column;
-padding-bottom: 12vh;
+padding-bottom: 0vh;
 gap: 0px;
 }
 
@@ -191,14 +185,16 @@ height: 1.8rem;
 }
 
 .testimonie_container {
-background-color: rgba(245,245,245,0);
-width: 90vw;
+background-color: rgba(0,0,0,0);
+width: 100vw;
 border-radius: 20px;
 padding: 0px 0px 0px 0px;
 margin-bottom: 10px;
 display: flex;
 gap: 10px;
 flex-wrap: nowrap;
+align-items: center;
+justify-content: center;
 }
 
 .testimonie_text_container {
@@ -244,10 +240,18 @@ width: 100vw;
 padding: calc(0vh + 0px) 20px 0px 20px;
 }
 
-.animated_text {
-width: 100vw;
+.main_unsearched_section {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
 }
 
+.animated_text {
+width: 100vw;
+height: 100vw;
+}
 
 .flex_image {
 width: 98vw;

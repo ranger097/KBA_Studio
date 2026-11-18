@@ -14,12 +14,10 @@ import Menu from './Menu.svelte';
 
 </script>
 <svelte:window bind:scrollY onscroll={handleScroll} />
-{#if !menu.open}
 <div class="search_div" class:hidden={isScrollingDown}>
       {#if menu.open}
        <a class="menu_link" onclick={menu_button} class:active={menu.open}>
       <img class="menu_icon" src="artwork/icons/close-icon-x-svgrepo-com.svg"/>
-      Close menu
       </a>
 
       {:else}
@@ -31,11 +29,10 @@ import Menu from './Menu.svelte';
       id="search"
       type="text" 
       bind:value={searchState.query} 
-      placeholder="Search ..." 
+      placeholder="Search ..."
     />
- </div>
-   {/if}
 
+ </div>
 {#if menu.open}
 <Menu hidden={isScrollingDown} />
 {/if}
@@ -111,7 +108,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 gap: 0vw;
-padding: 0px 0px 0px 0px;
+padding: 5px 0px 5px 20px;
 background-color: rgba(255,255,255,0.9);
 }
 
@@ -125,12 +122,22 @@ outline: none;
 height: calc(5vh + 30px);
 padding-left: 5vw;
 padding-right: 5vw;
-width: calc(100vw - 40px);
+width: calc(100vw - 40px - 2rem - 20px);
+font-size: 2rem;
 }
 
 #search:focus {
 border: none;
 height: calc(5vh + 30px);
+}
+
+.menu_icon {
+width: 3rem;
+height: 3rem;
+}
+
+.hidden {
+display: none;
 }
 
 
