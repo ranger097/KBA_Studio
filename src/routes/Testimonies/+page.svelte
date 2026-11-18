@@ -1,7 +1,7 @@
 <script>
 import Searchbar from '../Searchbar.svelte';
 import { getSearchResults, searchState } from '#lib/search.svelte.js';
-import all_testamonies from '#lib/data/testimonies.json';
+import all_testimonies from '#lib/data/testimonies.json';
 let results = $derived(getSearchResults());
 </script>
 
@@ -10,16 +10,16 @@ let results = $derived(getSearchResults());
 <main class="main_section">
 {#if results.testimonies.length > 0}
 {#each results.testimonies as testimonie}
-<div class="article_container">
-<img class="flex_image" src="./artwork/{testimonie.image}" alt="" />
+<div class="testimonie_container">
+<img class="testimonie_image" src="./artwork/{testimonie.image}" alt="" />
 <h2>{testimonie.author}</h2>
 <p>{testimonie.testimonies}</p>
 </div>
 {/each}
 {:else}
-{#each all_testamonies as testimonie}
-<div class="article_container">
-<img class="flex_image" src="./artwork/{testimonie.image}" alt="" />
+{#each all_testimonies as testimonie}
+<div class="testimonie_container">
+<img class="testimonie_image" src="./artwork/{testimonie.image}" alt="" />
 <div class="testimonie_text_container">
 <p class="testimonie_text">"{testimonie.testimonies}" - {testimonie.author}, {testimonie.month.charAt(0).toUpperCase() + testimonie.month.slice(1).toLowerCase()} {testimonie.year}</p>
 </div>
@@ -50,7 +50,7 @@ font-size: 1.6rem;
 
 
 
-.article_container {
+.testimonie_container {
 background-color: rgba(245,245,245,0);
 width: 90vw;
 border-radius: 20px;
@@ -91,7 +91,7 @@ margin-bottom: 10vh;
 }
 
 
-.flex_image {
+.testimonie_image {
 aspect-ratio: 1/1;
 border-radius: 0px;
 overflow: hidden;
@@ -107,8 +107,8 @@ border-radius: 20px;
 
 @media (max-width: 700px) {
 
-.flex_image {
-width: 98vw;
+.testimonie_image {
+width: 100vw;
 flex-basis: calc(100%);
 aspect-ratio: 1/1;
 border-radius: 0px;
@@ -119,11 +119,26 @@ cursor: pointer;
 }
 
 
-.article_container {
+.testimonie_container {
 background-color: rgba(245,245,245,1);
-width: calc(100vw - 40px);
+width: calc(100vw);
 border-radius: 0px;
-padding: 10px 20px;
+padding: 0px 0px;
+display: flex;
+flex-direction: column;
+}
+
+.testimonie_text_container {
+background-color: rgba(245,245,245,1);
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: center;
+padding: 20px 60px;
+width: calc(100vw - 120px);
+border-radius: 20px;
+height: 100%;
+white-space: normal;
 }
 
 }

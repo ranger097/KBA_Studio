@@ -1,22 +1,17 @@
 <script>
 import { onMount } from 'svelte';
 import { getSearchResults, searchState } from '#lib/search.svelte.js';
-import all_testimonies from '#lib/data/testimonies.json';
-import all_art from '#lib/data/art.json';
-import all_articles from '#lib/data/articles.json';
 let results = $derived(getSearchResults());
 </script>
 
+
+{#if results.total > 0}
 <main class="main_section">
 <div class="homepage_image_flex_container">
 <div class="image_container">
 {#if results.art.length > 0}
 {#each results.art as art}
 <img class="flex_image" src="./artwork/{art.image_url}" alt={art.alt_text} />
-{/each}
-{:else}
-{#each all_art as artwork}
-<img class="flex_image" src="./artwork/{artwork.image_url}" alt={artwork.alt_text} />
 {/each}
 {/if}
 </div>
@@ -63,22 +58,22 @@ let results = $derived(getSearchResults());
 
 {#if results.testimonies.length > 0}
 {#each results.testimonies as testimonie}
-<div class="testimonies_container">
-<img class="flex_image" src="./artwork/{testimonie.image}" alt="" />
-<h2>{testimonie.author}</h2>
-<p>{testimonie.testimonies}</p>
+<div class="testimonie_container">
+<img class="testimonie_image" src="./artwork/{testimonie.image}" alt="" />
+<div class="testimonie_text_container">
+<p class="testimonie_text">"{testimonie.testimonies}" - {testimonie.author}, {testimonie.month.charAt(0).toUpperCase() + testimonie.month.slice(1).toLowerCase()} {testimonie.year}</p>
 </div>
-{/each}
-{:else}
-{#each all_testimonies as testimonie}
-<div class="testimonies_container">
-<img class="flex_image" src="./artwork/{testimonie.image}" alt="" />
-<h2>{testimonie.author}</h2>
-<p>{testimonie.testimonies}</p>
 </div>
 {/each}
 {/if}
 </main>
+{:else}
+<main class="main_unsearched_section">
+<div class="title">
+</div>
+<img class="animated_text" src="./artwork/animated-text.gif" alt="" />
+</main>
+{/if}
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
@@ -111,6 +106,19 @@ width: 100vw;
 overflow-x: hidden;
 flex-wrap: wrap;
 padding: 0vh 0px 20px 0px;
+}
+
+.main_unsearched_section {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100%;
+min-height: 100vh;
+}
+
+.animated_text {
+width: 50vw;
 }
 
 .image_container {
@@ -182,6 +190,48 @@ width: 1.8rem;
 height: 1.8rem;
 }
 
+.testimonie_container {
+background-color: rgba(245,245,245,0);
+width: 90vw;
+border-radius: 20px;
+padding: 0px 0px 0px 0px;
+margin-bottom: 10px;
+display: flex;
+gap: 10px;
+flex-wrap: nowrap;
+}
+
+.testimonie_text_container {
+background-color: rgba(245,245,245,1);
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: center;
+padding: 20px 30px 20px 60px;
+width: 65vw;
+border-radius: 20px;
+height: calc(20vw - 40px);
+white-space: normal;
+}
+
+.testimonie_text {
+white-space: normal;
+}
+
+.testimonie_image {
+aspect-ratio: 1/1;
+border-radius: 0px;
+overflow: hidden;
+object-fit: cover;
+object-position: center;
+cursor: pointer;
+width: 20vw;
+height: 20vw;
+border-radius: 20px;
+
+}
+
+
 @media (max-width: 700px) {
 .homepage_image_flex_container {
 display: flex;
@@ -193,6 +243,11 @@ min-height: auto;
 width: 100vw;
 padding: calc(0vh + 0px) 20px 0px 20px;
 }
+
+.animated_text {
+width: 100vw;
+}
+
 
 .flex_image {
 width: 98vw;
@@ -223,6 +278,42 @@ width: calc(100vw - 40px);
 border-radius: 0px;
 padding: 10px 20px;
 }
+
+.testimonie_image {
+width: 100vw;
+flex-basis: calc(100%);
+aspect-ratio: 1/1;
+border-radius: 0px;
+overflow: hidden;
+object-fit: cover;
+object-position: center;
+cursor: pointer;
+}
+
+
+.testimonie_container {
+background-color: rgba(245,245,245,1);
+width: calc(100vw);
+border-radius: 0px;
+padding: 0px 0px;
+display: flex;
+flex-direction: column;
+}
+
+.testimonie_text_container {
+background-color: rgba(245,245,245,1);
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: center;
+padding: 20px 60px;
+width: calc(100vw - 120px);
+border-radius: 20px;
+height: 100%;
+white-space: normal;
+}
+
+
 
 }
 

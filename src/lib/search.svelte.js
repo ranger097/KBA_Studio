@@ -38,7 +38,10 @@ export function getSearchResults() {
   const matchingTest = testimoniesData.filter(item => 
     item.author.toLowerCase().includes(q) ||
     item.image.toLowerCase().includes(q) ||
-    item.testimonies.toLowerCase().includes(q)
+    item.testimonies.toLowerCase().includes(q) ||
+    item.month.toLowerCase().includes(q) ||
+    item.year.toLowerCase().includes(q)
+
   );
 
   return {

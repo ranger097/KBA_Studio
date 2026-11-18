@@ -17,10 +17,10 @@ let {hidden = false} = $props();
       </a>
       {/if}
 
-<a class="menu_link" href="."><img class="menu_icon" src="artwork/icons/house-svgrepo-com(1).svg"/>Home</a>
-<a class="menu_link" href="./Images/"><img class="menu_icon" src="artwork/icons/image-placeholder-svgrepo-com.svg"/>Images</a>
-<a class="menu_link" href="./Testimonies/"><img class="menu_icon" src="artwork/icons/heart-red-svgrepo-com.svg"/>Testimonies</a>
-<a class="menu_link" href="./Information/"><img class="menu_icon" src="artwork/icons/book-svgrepo-com.svg"/>Information</a>
+<a class="menu_link" onclick={menu_button} href="."><img class="menu_icon" src="artwork/icons/house-svgrepo-com(1).svg"/>Home</a>
+<a class="menu_link" onclick={menu_button} href="./Images/"><img class="menu_icon" src="artwork/icons/image-placeholder-svgrepo-com.svg"/>Images</a>
+<a class="menu_link" onclick={menu_button} href="./Testimonies/"><img class="menu_icon" src="artwork/icons/heart-red-svgrepo-com.svg"/>Testimonies</a>
+<a class="menu_link" onclick={menu_button} href="./Information/"><img class="menu_icon" src="artwork/icons/book-svgrepo-com.svg"/>Information</a>
 <a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/delete-user-svgrepo-com.svg"/>Settings</a>
 </nav>
 </main>
@@ -137,7 +137,7 @@ position: fixed;
 display: flex;
 flex-direction: column;
 align-items: flex-start;
-gap: calc(20px);
+gap: calc(50px);
 background-color: rgba(255,255,255,0.9);
 backdrop-filter: blur(20px);
 margin-bottom: 0px;
@@ -154,20 +154,27 @@ align-items: center;
 justify-content: center;
 text-decoration: none;
 color: #101010;
-gap: 20px;
+gap: 30px;
+font-size: 2rem;
 }
 
 .menu_link:hover {
 font-weight: 700;
 }
 
+.menu_link:hover img {
+width: 4.0rem;
+height: 4.0rem;
+}
+
+
 .menu_icon {
-width: 1.7rem;
-height: 1.7rem;
+width: 3.0rem;
+height: 3.0rem;
 }
 
 .hidden {
-display: none;
+display: flex;
 }
 
 .close_button {
@@ -179,7 +186,7 @@ justify-content: flex-start;
 padding: 10px 10px;
 margin: -10px;
 border-radius: 5px;
-margin-bottom: 20px;
+margin-bottom: 30px;
 margin-top: 10px;
 }
 
