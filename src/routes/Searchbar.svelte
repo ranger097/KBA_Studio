@@ -38,6 +38,19 @@ import Menu from './Menu.svelte';
 {/if}
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+* {
+   font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1.2rem;
+  transition: all 0.5s linear;
+  &::-webkit-scrollbar { display: none; }
+    scrollbar-width: none;
+   -ms-overflow-style: none; 
+}
 
 .menu_link {
 padding: 6px;
@@ -109,6 +122,7 @@ gap: 0vw;
 padding: 15px 15px;
 background-color: rgba(255,255,255,0.9);
 height: calc(3rem);
+gap: 30px;
 }
 
 #search {
@@ -118,9 +132,9 @@ color: black;
 box-shadow: none;
 outline: none;
 height: calc(3rem);
-padding-left: 7vw;
-padding-right: 5vw;
-width: calc(100vw - 3rem - 12vw);
+padding-left: 0px;
+padding-right: 30px;
+width: calc(100vw - 3rem - 30px - 30px);
 font-size: 2rem;
 display: flex;
 align-items: center;
