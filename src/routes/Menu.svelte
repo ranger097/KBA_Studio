@@ -22,6 +22,17 @@ let {hidden = false} = $props();
 <a class="menu_link" onclick={menu_button} href="./Testimonies/"><img class="menu_icon" src="artwork/icons/heart-red-svgrepo-com.svg"/>Testimonies</a>
 <a class="menu_link" onclick={menu_button} href="./Information/"><img class="menu_icon" src="artwork/icons/book-svgrepo-com.svg"/>Information</a>
 <a class="menu_link" href=""><img class="menu_icon" src="artwork/icons/delete-user-svgrepo-com.svg"/>Settings</a>
+<div class="menu_settings">
+<div class="scale_slider">
+<label for="scale">UI Scale</label>
+<input type="range" name="scale">
+</div>
+<div class="darkmode_checkbox">
+<label for="darkmode">Darkmode</label>
+<input type="checkbox" name="darkmode">
+</div>
+
+</div>
 </nav>
 </main>
 
@@ -39,6 +50,61 @@ let {hidden = false} = $props();
   &::-webkit-scrollbar { display: none; }
     scrollbar-width: none;
    -ms-overflow-style: none; 
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #2563eb;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  margin-top: -6px; 
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #2563eb;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+input[type="range"]:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+input[type="range"]:focus-visible::-moz-range-thumb {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
 }
 
 .main_section {
