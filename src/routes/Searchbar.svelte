@@ -3,38 +3,48 @@ import { searchState } from '#lib/search.svelte.js';
 import { menu, menu_button } from '#lib/menu.svelte.js';
 import Menu from './Menu.svelte';
 
- let scrollY = $state(0);
-  let lastScrollY = 0;
-  let isScrollingDown = $state(false);
 
-  function handleScroll() {
-    isScrollingDown = scrollY > lastScrollY;
-    lastScrollY = scrollY;
+let scrollY = $state(0);
+let lastScrollY = 0;
+let isScrollingDown = $state(false);
+
+ function handleScroll() {
+   if (scrollY <= 10) {
+   isScrollingDown = false;
+   lastScrollY = 0;
+   return;
+   } 
+    
+   let diff = scrollY - lastScrollY;
+   if (diff > 200) {
+   isScrollingDown = true;
+   lastScrollY = scrollY;
+   } else if (diff < -200) {
+   isScrollingDown = false;
+   lastScrollY = scrollY;
+  }
+
   }
 
 </script>
 <svelte:window bind:scrollY onscroll={handleScroll} />
+{#if !menu.open}
 <div class="search_div" class:hidden={isScrollingDown}>
-      {#if menu.open}
        <a class="menu_link" onclick={menu_button} class:active={menu.open}>
-      <img class="menu_icon" src="artwork/icons/close-icon-x-svgrepo-com.svg"/>
+      <img class="menu_icon" src={menu.open ? "artwork/icons/close-icon-x-svgrepo-com.svg" : "artwork/icons/menu-svgrepo-com.svg"}
+      />
+      
       </a>
-
-      {:else}
-       <a class="menu_link" onclick={menu_button} class:active={menu.open}>
-      <img class="menu_icon" src="artwork/icons/menu-svgrepo-com.svg"/>
-      </a>
-      {/if}
       <input 
       id="search"
       type="text" 
       bind:value={searchState.query} 
       placeholder="Search ..."
-    />
-
+      />
  </div>
+{/if}
 {#if menu.open}
-<Menu hidden={isScrollingDown} />
+<Menu />
 {/if}
 
 <style>
@@ -86,6 +96,7 @@ top: 0px;
 backdrop-filter: blur(20px);
 border: none;
 background-color: rgba(255,255,255,0.9);
+animation: header_fade 0.3s linear;
 }
 
 #search {
@@ -108,6 +119,14 @@ height: calc(5vh + 30px);
 
 .hidden {
 display: none;
+}
+
+@keyframes header_fade {
+0% {
+opacity: 0;
+transform: translateY(-300%);
+}
+100% {opacity: 1}
 }
 
 @media (max-width: 700px) {

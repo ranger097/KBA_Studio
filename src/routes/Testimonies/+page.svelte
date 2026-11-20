@@ -12,10 +12,15 @@ let results = $derived(getSearchResults());
 {#each results.testimonies as testimonie}
 <div class="testimonie_container">
 <img class="testimonie_image" src="./artwork/{testimonie.image}" alt="" />
-<h2>{testimonie.author}</h2>
-<p>{testimonie.testimonies}</p>
+<div class="testimonie_text_container">
+<p class="testimonie_text">"{testimonie.testimonies}" - {testimonie.author}, {testimonie.month.charAt(0).toUpperCase() + testimonie.month.slice(1).toLowerCase()} {testimonie.year}</p>
+</div>
 </div>
 {/each}
+{:else if results.testimonies.length == 0 && searchState.query.length > 0 }
+<div class="testimonie_container">
+<p>Sorry no results for that query.</p>
+</div>
 {:else}
 {#each all_testimonies as testimonie}
 <div class="testimonie_container">
@@ -26,7 +31,6 @@ let results = $derived(getSearchResults());
 </div>
 {/each}
 {/if}
-
 </main>
 
 <style>

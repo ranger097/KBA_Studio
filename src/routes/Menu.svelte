@@ -41,8 +41,6 @@ let {hidden = false} = $props();
    -ms-overflow-style: none; 
 }
 
-
-
 .main_section {
 background-color: rgba(0,0,0,0);
 width: 100vw;
