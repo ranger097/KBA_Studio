@@ -127,6 +127,22 @@ border-radius: 20px;
 
 @media (max-width: 700px) {
 
+.no_results_container {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+border-radius: 20px;
+background-color: rgba(245,245,245,1);
+width: calc(90vw);
+margin-top: 1vh;
+}
+
+.no_results {
+font-size: 1.1rem;
+}
+
+
 .testimonie_image {
 width: 100vw;
 flex-basis: calc(100%);
