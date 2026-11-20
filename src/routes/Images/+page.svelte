@@ -13,6 +13,12 @@ let results = $derived(getSearchResults());
 {#each results.art as art}
 <img class="flex_image" src="./artwork/{art.image_url}" alt={art.alt_text} />
 {/each}
+{:else if results.articles.length == 0 && searchState.query.length > 0}
+<div class="homepage_image_flex_container">
+<div class="no_results_container">
+<p>Sorry no results for that query.</p>
+</div>
+</div>
 {:else}
 {#each all_art as artwork}
 <img class="flex_image" src="./artwork/{artwork.image_url}" alt={artwork.alt_text} />
@@ -49,6 +55,23 @@ width: 100vw;
 overflow-x: hidden;
 flex-wrap: wrap;
 padding: 0vh 0px 20px 0px;
+}
+
+.no_results_container {
+display: flex;
+justify-content: flex-start;
+align-items: center;
+flex-wrap: wrap;
+border-radius: 20px;
+background-color: rgba(245,245,245,1);
+width: calc(90vw + 40px);
+overflow:hidden;
+gap: 5px;
+padding-left: 20px;
+}
+
+.no_results {
+font-size: 1.1rem;
 }
 
 .image_container {

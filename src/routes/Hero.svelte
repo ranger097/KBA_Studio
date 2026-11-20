@@ -5,20 +5,21 @@ let results = $derived(getSearchResults());
 </script>
 
 
-{#if results.total > 0}
+
 <main class="main_section">
+{#if results.total > 0 }
+{#if results.art.length > 0}
 <div class="homepage_image_flex_container">
 <div class="image_container">
-{#if results.art.length > 0}
 {#each results.art as art}
 <img class="flex_image" src="./artwork/{art.image_url}" alt={art.alt_text} />
 {/each}
+</div>
+</div>
 {/if}
-</div>
-</div>
 
-<div class="homepage_article_flex_container">
 {#if results.articles.length > 0}
+<div class="homepage_article_flex_container">
 {#each results.articles as article}
 <div class="article_container">
 <h2>{article.title}</h2>
@@ -48,8 +49,8 @@ let results = $derived(getSearchResults());
 {/if}
 </div>
 {/each}
-{/if}
 </div>
+{/if}
 
 {#if results.testimonies.length > 0}
 {#each results.testimonies as testimonie}
@@ -61,7 +62,12 @@ let results = $derived(getSearchResults());
 </div>
 {/each}
 {/if}
-</main>
+
+{:else if results.total == 0 && searchState.query.length > 0 }
+<div class="no_results_container">
+<p class="no_results">Sorry no results for that query.</p>
+</div>
+
 {:else}
 <main class="main_unsearched_section">
 <div class="title">
@@ -71,6 +77,7 @@ let results = $derived(getSearchResults());
 </div>
 </main>
 {/if}
+</main>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
@@ -104,6 +111,24 @@ overflow-x: hidden;
 flex-wrap: wrap;
 padding: 0vh 0px 20px 0px;
 }
+
+.no_results_container {
+display: flex;
+justify-content: flex-start;
+align-items: center;
+flex-wrap: wrap;
+border-radius: 20px;
+background-color: rgba(245,245,245,1);
+width: calc(90vw + 40px);
+overflow:hidden;
+gap: 5px;
+padding-left: 20px;
+}
+
+.no_results {
+font-size: 1.1rem;
+}
+
 
 .main_unsearched_section {
 display: flex;

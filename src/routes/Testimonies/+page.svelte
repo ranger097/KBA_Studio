@@ -18,8 +18,8 @@ let results = $derived(getSearchResults());
 </div>
 {/each}
 {:else if results.testimonies.length == 0 && searchState.query.length > 0 }
-<div class="testimonie_container">
-<p>Sorry no results for that query.</p>
+<div class="no_results_container">
+<p class="no_results">Sorry no results for that query.</p>
 </div>
 {:else}
 {#each all_testimonies as testimonie}
@@ -52,6 +52,22 @@ font-weight: 600;
 font-size: 1.6rem;
 }
 
+.no_results_container {
+display: flex;
+justify-content: flex-start;
+align-items: center;
+flex-wrap: wrap;
+border-radius: 20px;
+background-color: rgba(245,245,245,1);
+width: calc(90vw + 40px);
+overflow:hidden;
+gap: 5px;
+padding-left: 20px;
+}
+
+.no_results {
+font-size: 1.1rem;
+}
 
 
 .testimonie_container {
