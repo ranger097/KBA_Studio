@@ -222,7 +222,8 @@ flex-wrap: wrap;
 border-radius: 20px;
 background-color: rgba(245,245,245,1);
 width: calc(90vw);
-margin-top: 1vh;
+margin-top: 3vh;
+padding-left: 0px;
 }
 
 .no_results {
