@@ -43,12 +43,13 @@ step="0.01"
 bind:value={settings.uiscale}>
 </div>
 <div class="darkmode_checkbox">
-<label for="darkmode">Darkmode</label>
+<label class="custom-checkbox" for="darkmode">Darkmode
 <input 
 type="checkbox" 
 name="darkmode"
 bind:checked={settings.darkmode}
 >
+</label>
 </div>
 
 </div>
@@ -69,6 +70,47 @@ bind:checked={settings.darkmode}
   &::-webkit-scrollbar { display: none; }
     scrollbar-width: none;
    -ms-overflow-style: none; 
+}
+
+.custom-checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.custom-checkbox input[type="checkbox"]::before {
+  content: "";
+  width: 0.65rem;
+  height: 0.65rem;
+  transform: scale(0);
+  transition: transform 0.15s ease-in-out;
+  background-color: #ffffff;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.custom-checkbox input[type="checkbox"]:checked {
+  background-color: black;
+  border-color: black;
+}
+
+.custom-checkbox input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+.custom-checkbox {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+gap: 10px;
 }
 
 input[type="range"] {
