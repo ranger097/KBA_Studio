@@ -1,7 +1,16 @@
 <script>
 	import favicon from '#lib/assets/favicon.svg';
-	
+        import { settings } from '#lib/settings.svelte.js';	
 	let { children } = $props();
+	$effect(()=>{
+	document.documentElement.style.zoom = settings.uiscale;
+	if(settings.darkmode) {
+	document.documentElement.style.backgroundColor = "black";
+	} else
+	{document.documentElement.style.backgroundColor = "white";}
+	});
+
+
 </script>
 
 <svelte:head>
