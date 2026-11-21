@@ -1,13 +1,14 @@
 <script>
 import Searchbar from '../Searchbar.svelte';
 import { getSearchResults, searchState } from '#lib/search.svelte.js';
+import { settings } from '#lib/settings.svelte.js';
 import all_art from '#lib/data/art.json';
 let results = $derived(getSearchResults());
 </script>
 
-<main class="main_section">
+<main class="main_section" class:darkmode={settings.darkmode}>
 <Searchbar />
-<div class="homepage_image_flex_container">
+<div class="homepage_image_flex_container"  class:darkmode={settings.darkmode}>
 <div class="image_container">
 {#if results.art.length > 0}
 {#each results.art as art}
@@ -94,7 +95,7 @@ overflow: hidden;
 background-color: white;
 align-items: center;
 justify-content: center;
-margin-top: 10vh;
+padding-top: 10vh;
 }
 
 .flex_image {
@@ -106,6 +107,18 @@ object-fit: cover;
 object-position: center;
 cursor: pointer;
 }
+
+.darkmode {
+background-color: black;
+color: white;
+}
+
+
+.darkmode div {
+background-color: black;
+color: white;
+}
+
 
 @media (max-width: 700px) {
 .no_results_container {

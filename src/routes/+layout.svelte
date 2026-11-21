@@ -4,10 +4,11 @@
 	let { children } = $props();
 	$effect(()=>{
 	document.documentElement.style.zoom = settings.uiscale;
-	if(settings.darkmode) {
+	if (settings.darkmode) {
 	document.documentElement.style.backgroundColor = "black";
-	} else
-	{document.documentElement.style.backgroundColor = "white";}
+	} else {
+        document.documentElement.style.backgroundColor = "white";
+	}
 	});
 
 

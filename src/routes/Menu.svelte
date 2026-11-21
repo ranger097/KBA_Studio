@@ -4,8 +4,8 @@ import { settings } from '#lib/settings.svelte.js';
 let { hidden = false } = $props();
 </script>
 
-<main class="main_section" class:hidden>
-<nav class="nav_section" class:hidden>
+<main class="main_section" class:hidden class:darkmode={settings.darkmode}>
+<nav class="nav_section" class:hidden class:darkmode={settings.darkmode}>
  {#if menu.open}
        <a class="menu_link close_button" onclick={menu_button} class:active={menu.open}>
       <img class="menu_icon close_icon" src="artwork/icons/close-icon-x-svgrepo-com.svg"/>
@@ -18,7 +18,7 @@ let { hidden = false } = $props();
       </a>
       {/if}
 
-<a class="menu_link" onclick={menu_button} href="."><img class="menu_icon" src="artwork/icons/house-svgrepo-com(1).svg"/>Home</a>
+<a class="menu_link" onclick={menu_button} href="."><img class="menu_icon"  src="artwork/icons/house-svgrepo-com(1).svg"/>Home</a>
 <a class="menu_link" onclick={menu_button} href="./Images/"><img class="menu_icon" src="artwork/icons/image-placeholder-svgrepo-com.svg"/>Images</a>
 <a class="menu_link" onclick={menu_button} href="./Testimonies/"><img class="menu_icon" src="artwork/icons/heart-red-svgrepo-com.svg"/>Testimonies</a>
 <a class="menu_link" onclick={menu_button} href="./Information/"><img class="menu_icon" src="artwork/icons/book-svgrepo-com.svg"/>Information</a>
@@ -312,6 +312,28 @@ border-radius: 5px;
 margin-bottom: 20px;
 margin-top: 10px;
 }
+
+.darkmode {
+background-color: rgba(0,0,0,0.5);
+border-right: 1px solid black;
+box-shadow: inset 0px 0px 50px black;
+color: white;
+}
+
+.darkmode a,
+.darkmode button
+{
+color: silver;
+}
+
+.darkmode button img,
+.darkmode img {
+filter: invert();
+background-color: transparent;
+}
+
+
+
 
 @media (max-width: 700px) {
 

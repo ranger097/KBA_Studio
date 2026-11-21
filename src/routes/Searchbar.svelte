@@ -1,6 +1,7 @@
 <script>
 import { searchState } from '#lib/search.svelte.js';
 import { menu, menu_button } from '#lib/menu.svelte.js';
+import { settings } from '#lib/settings.svelte.js';
 import Menu from './Menu.svelte';
 
 
@@ -29,14 +30,14 @@ let isScrollingDown = $state(false);
 </script>
 <svelte:window bind:scrollY onscroll={handleScroll} />
 {#if !menu.open}
-<div class="search_div" class:hidden={isScrollingDown}>
+<div class="search_div" class:darkmode={settings.darkmode} class:hidden={isScrollingDown}>
        <a class="menu_link" onclick={menu_button} class:active={menu.open}>
       <img class="menu_icon" src={menu.open ? "artwork/icons/close-icon-x-svgrepo-com.svg" : "artwork/icons/menu-svgrepo-com.svg"}
       />
       
       </a>
       <input 
-      id="search"
+      class="search"
       type="text" 
       bind:value={searchState.query} 
       placeholder="Search ..."
@@ -99,7 +100,7 @@ background-color: rgba(255,255,255,0.9);
 animation: header_fade 0.3s linear;
 }
 
-#search {
+.search {
 border-radius: 0px;
 background-color: rgba(255,255,255,0);
 border: none;
@@ -112,7 +113,7 @@ width: 100vw;
 font-size: 1.4rem;
 }
 
-#search:focus {
+.search:focus {
 border: none;
 height: calc(5vh + 30px);
 }
@@ -129,6 +130,26 @@ transform: translateY(-300%);
 100% {opacity: 1}
 }
 
+.darkmode {
+background-color: rgba(0,0,0,0.7);
+color: white;
+}
+
+.darkmode a {
+background-color: rgba(0,0,0,0);
+color: white;
+border-radius: 0px;
+}
+
+.darkmode img {
+filter: invert();
+}
+
+.darkmode input {
+color: white;
+}
+
+
 @media (max-width: 700px) {
 
 .search_div {
@@ -144,7 +165,7 @@ height: calc(3rem);
 gap: 30px;
 }
 
-#search {
+.search {
 border-radius: 0px;
 border: none;
 color: black;
