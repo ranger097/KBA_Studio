@@ -4,8 +4,6 @@ import { getSearchResults, searchState } from '#lib/search.svelte.js';
 let results = $derived(getSearchResults());
 </script>
 
-
-
 <main class="main_section">
 {#if results.total > 0 }
 {#if results.art.length > 0}

@@ -3,7 +3,13 @@ import { menu , menu_button } from '#lib/menu.svelte.js';
 import { settings } from '#lib/settings.svelte.js';
 let { hidden = false } = $props();
 $effect(()=>{
+
+
 });
+
+function open_menu() {
+settings.menu_open = !settings.menu_open;
+}
 
 </script>
 
@@ -26,43 +32,23 @@ $effect(()=>{
 <a class="menu_link" onclick={menu_button} href="./Testimonies/"><img class="menu_icon" src="artwork/icons/heart-red-svgrepo-com.svg"/>Testimonies</a>
 <a class="menu_link" onclick={menu_button} href="./Information/"><img class="menu_icon" src="artwork/icons/book-svgrepo-com.svg"/>Information</a>
 
-<button class="menu_settings_button">
+<button class="menu_settings_button" onclick={open_menu}>
 <img class="menu_icon" src="artwork/icons/delete-user-svgrepo-com.svg"/>
 <div class="menu_settings_button_inner_container">
 <span>Settings</span>
-<img class="menu_settings_icon" src="artwork/icons/chevron-down-svgrepo-com.svg"/>
+<img class="menu_settings_icon" class:hidden={settings.menu_open} src="artwork/icons/chevron-down-svgrepo-com.svg"/>
 </div>
 </button>
 
-<div class="menu_settings">
+<div class="menu_settings" class:hidden={settings.menu_open}>
 <div class="scale_slider">
-<label for="scale">UI Scale</label>
-<div class="scale_checkboxes">
-<div class="custom-checkbox">
-<span>Small</span>
-<input 
+<label class="custom-checkbox" for="scale">Zoom<input 
 type="checkbox" 
 name="scale"
-bind:checked={settings.uiscale_small}
+bind:checked={settings.uiscale}
 >
-</div>
-<div class="custom-checkbox">
-<span>Medium</span>
-<input 
-type="checkbox" 
-name="scale"
-bind:checked={settings.uiscale_medium}
->
-</div>
-<div class="custom-checkbox">
-<span>Large</span>
-<input 
-type="checkbox" 
-name="scale" 
-bind:checked={settings.uiscale_large}
->
-</div>
-</div>
+</label>
+
 </div>
 <div class="darkmode_checkbox">
 <label class="custom-checkbox" for="darkmode">Darkmode
@@ -129,13 +115,9 @@ bind:checked={settings.darkmode}
 }
 
 
-label {
-border-bottom: 1px dotted black;
-}
-
-
 .custom-checkbox {
 display: flex;
+flex-direction: row;
 align-items: center;
 justify-content: flex-start;
 gap: 10px;
@@ -264,14 +246,14 @@ border: none;
 
 
 .menu_settings {
-background-color: rgba(255,255,255,0.2);
+background-color: rgba(255,255,255,0.1);
 border-radius: 5px;
-border: 1px solid rgba(255,255,255,0.5);
+border: 1px dotted rgba(0,0,0,0.5);
 padding: 20px;
 display: flex;
 flex-direction: column;
 gap: 10px;
-
+width: calc(100% - 40px);
 }
 
 

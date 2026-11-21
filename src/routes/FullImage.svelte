@@ -3,7 +3,6 @@ function open_image(id) {
   selected_image_id = id;
 }
 
-
   let buttonText = 'Copy and Share Image';
   let isCopied = false;
 

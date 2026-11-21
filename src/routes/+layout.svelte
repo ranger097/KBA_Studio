@@ -3,15 +3,15 @@
         import { settings } from '#lib/settings.svelte.js';	
 	let { children } = $props();
 
-       
-
 	$effect(()=>{
 
+	if (settings.uiscale) {
+        document.documentElement.style.zoom = 1.0;
+	} 
+	else {
+        document.documentElement.style.zoom = 0.91; 
+	} 
 
-        document.documentElement.style.setProperty('--ui-scale', scaleValue);
-
-
-	
 	if (settings.darkmode) {
 	document.documentElement.style.backgroundColor = "black";
 	} else {
@@ -35,17 +35,13 @@
 
 * {
 background-color: transparent;
-scale: calc(var(--ui-scale, 1.0) * 100%);
 }
-
 
 .main_section {
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-width: 100vw;
-
 }
 
 
