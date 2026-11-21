@@ -2,6 +2,9 @@
 import { menu , menu_button } from '#lib/menu.svelte.js';
 import { settings } from '#lib/settings.svelte.js';
 let { hidden = false } = $props();
+$effect(()=>{
+});
+
 </script>
 
 <main class="main_section" class:hidden class:darkmode={settings.darkmode}>
@@ -34,13 +37,32 @@ let { hidden = false } = $props();
 <div class="menu_settings">
 <div class="scale_slider">
 <label for="scale">UI Scale</label>
+<div class="scale_checkboxes">
+<div class="custom-checkbox">
+<span>Small</span>
 <input 
-type="range" 
+type="checkbox" 
+name="scale"
+bind:checked={settings.uiscale_small}
+>
+</div>
+<div class="custom-checkbox">
+<span>Medium</span>
+<input 
+type="checkbox" 
+name="scale"
+bind:checked={settings.uiscale_medium}
+>
+</div>
+<div class="custom-checkbox">
+<span>Large</span>
+<input 
+type="checkbox" 
 name="scale" 
-min="0.5" 
-max="1.00" 
-step="0.01"
-bind:value={settings.uiscale}>
+bind:checked={settings.uiscale_large}
+>
+</div>
+</div>
 </div>
 <div class="darkmode_checkbox">
 <label class="custom-checkbox" for="darkmode">Darkmode
@@ -105,6 +127,12 @@ bind:checked={settings.darkmode}
 .custom-checkbox input[type="checkbox"]:checked::before {
   transform: scale(1);
 }
+
+
+label {
+border-bottom: 1px dotted black;
+}
+
 
 .custom-checkbox {
 display: flex;

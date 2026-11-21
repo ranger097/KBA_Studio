@@ -1,5 +1,7 @@
 export const settings = $state({
-  uiscale: 1,
+  uiscale_small: false,
+  uiscale_medium: false,
+  uiscale_large: true,
   darkmode: false
 });
 

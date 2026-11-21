@@ -2,8 +2,16 @@
 	import favicon from '#lib/assets/favicon.svg';
         import { settings } from '#lib/settings.svelte.js';	
 	let { children } = $props();
+
+       
+
 	$effect(()=>{
-	document.documentElement.style.zoom = settings.uiscale;
+
+
+        document.documentElement.style.setProperty('--ui-scale', scaleValue);
+
+
+	
 	if (settings.darkmode) {
 	document.documentElement.style.backgroundColor = "black";
 	} else {
@@ -27,7 +35,9 @@
 
 * {
 background-color: transparent;
+scale: calc(var(--ui-scale, 1.0) * 100%);
 }
+
 
 .main_section {
 display: flex;
