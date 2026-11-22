@@ -77,7 +77,8 @@ bind:checked={settings.darkmode}
   transition: all 0.5s linear;
   &::-webkit-scrollbar { display: none; }
     scrollbar-width: none;
-   -ms-overflow-style: none; 
+   -ms-overflow-style: none;
+   z-index: 100;
 }
 
 .custom-checkbox input[type="checkbox"] {

@@ -12,7 +12,14 @@ let results = $derived(getSearchResults());
 <div class="image_container">
 {#if results.art.length > 0}
 {#each results.art as art}
+<div class="art_card">
+<a href="../Images/{art.slug}/" class="slug_link">
+<span>Fullscreen</span>
+<img class="full_image_icon" src="./artwork/icons/expand-svgrepo-com.svg" alt={art.alt_text} />
+</a>
 <img class="flex_image" src="./artwork/{art.image_url}" alt={art.alt_text} />
+<p>{art.slug}</p>
+</div>
 {/each}
 {:else if results.articles.length == 0 && searchState.query.length > 0}
 <div class="homepage_image_flex_container">
@@ -22,7 +29,13 @@ let results = $derived(getSearchResults());
 </div>
 {:else}
 {#each all_art as artwork}
+<div class="art_card">
+<a href="../Images/{artwork.slug}/" class="slug_link">
+<img class="full_image_icon" src="./artwork/icons/expand-svgrepo-com.svg" alt={artwork.alt_text} />
+</a>
 <img class="flex_image" src="./artwork/{artwork.image_url}" alt={artwork.alt_text} />
+</div>
+
 {/each}
 {/if}
 </div>
@@ -42,7 +55,9 @@ let results = $derived(getSearchResults());
   transition: all 0.5s linear;
   &::-webkit-scrollbar { display: none; }
     scrollbar-width: none;
-   -ms-overflow-style: none; 
+   -ms-overflow-style: none;
+   transition: all 0.3s linear;
+
 }
 
 .homepage_image_flex_container {
@@ -71,9 +86,55 @@ gap: 5px;
 padding-left: 20px;
 }
 
-.no_results {
-font-size: 1.1rem;
+.full_image_icon {
+width: 1.5rem;
+height: 1.5rem;
+background-color: rgba(255,255,255,0);
+border-radius: 10px;
+backdrop-filter: blur(0px);
+filter: invert();
 }
+
+.art_card {
+flex-basis: calc(25.1% - 5px);
+position: relative;
+transition: all 0.3s linear;
+width: 100%;
+height: 100%;
+aspect-ratio: 1/1;
+border-radius: 0px;
+overflow: hidden;
+object-fit: cover;
+object-position: center;
+}
+
+.art_card a {
+opacity: 0;
+transition: all 0.8s linear;
+}
+
+.art_card:hover a {
+opacity: 1.0;
+}
+
+
+.slug_link {
+position: absolute;
+right: 10px;
+top: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+text-decoration: none;
+gap: 10px;
+background-color: rgba(0,0,0,0.8);
+padding: 5px 10px;
+backdrop-filter: blur(10px);
+border-radius: 100px;
+border: 1px solid rgba(255,255,255,0.8);
+}
+
 
 .image_container {
 display: flex;
@@ -99,13 +160,14 @@ padding-top: 10vh;
 }
 
 .flex_image {
-flex-basis: calc(25% - 4px);
+width: 100%;
+height: 100%;
 aspect-ratio: 1/1;
 border-radius: 0px;
 overflow: hidden;
 object-fit: cover;
 object-position: center;
-cursor: pointer;
+
 }
 
 .darkmode,

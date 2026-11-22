@@ -3,192 +3,224 @@
     "image_url": "24.JPG",
     "alt_text": "Kathy Belcher",
     "tags": "woman, art, working",
-    "id": "1"
+    "id": "1",
+    "slug": "slug_1"
   },
   {
     "image_url": "19.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "2"
+    "id": "2",
+    "slug": "slug_2"
   },
   {
     "image_url": "2.png",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "3"
+    "id": "3",
+    "slug": "slug_3"
   },
   {
     "image_url": "3.png",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "4"
+    "id": "4",
+    "slug": "slug_4"
   },
   {
     "image_url": "5.jpg",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "5"
+    "id": "5",
+    "slug": "slug_5"
   },
   {
     "image_url": "6.jpg",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "6"
+    "id": "6",
+    "slug": "slug_6"
   },
   {
     "image_url": "7.png",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "7"
+    "id": "7",
+    "slug": "slug_7"
   },
   {
     "image_url": "8.jpg",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "8"
+    "id": "8",
+    "slug": "slug_8"
   },
   {
     "image_url": "9.png",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "9"
+    "id": "9",
+    "slug": "slug_9"
   },
   {
     "image_url": "10.jpg",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "10"
+    "id": "10",
+    "slug": "slug_10"
   },
   {
     "image_url": "11.jpg",
     "alt_text": "art",
     "tags": "green trees sky",
-    "id": "11"
+    "id": "11",
+    "slug": "slug_11"
   },
   {
     "image_url": "12.png",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "12"
+    "id": "12",
+    "slug": "slug_12"
   },
   {
     "image_url": "13.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "13"
+    "id": "13",
+    "slug": "slug_13"
   },
   {
     "image_url": "14.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "14"
+    "id": "14",
+    "slug": "slug_14"
   },
   {
     "image_url": "15.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "15"
+    "id": "15",
+    "slug": "slug_15"
   },
   {
     "image_url": "16.PNG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "16"
+    "id": "16",
+    "slug": "slug_16"
   },
   {
     "image_url": "17.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "17"
+    "id": "17",
+    "slug": "slug_17"
   },
   {
     "image_url": "18.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "18"
+    "id": "18",
+    "slug": "slug_18"
   },
   {
     "image_url": "1.png",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "19"
+    "id": "19",
+    "slug": "slug_19"
   },
   {
     "image_url": "20.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "20"
+    "id": "20",
+    "slug": "slug_20"
   },
   {
     "image_url": "21.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "21"
+    "id": "21",
+    "slug": "slug_21"
   },
   {
     "image_url": "22.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "22"
+    "id": "22",
+    "slug": "slug_22"
   },
   {
     "image_url": "23.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "23"
+    "id": "23",
+    "slug": "slug_23"
   },
   {
     "image_url": "0.jpg",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "24"
+    "id": "24",
+    "slug": "slug_24"
   },
   {
     "image_url": "25.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "25"
+    "id": "25",
+    "slug": "slug_25"
   },
   {
     "image_url": "26.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "26"
+    "id": "26",
+    "slug": "slug_26"
   },
   {
     "image_url": "27.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "27"
+    "id": "27",
+    "slug": "slug_27"
   },
   {
     "image_url": "28.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "28"
+    "id": "28",
+    "slug": "slug_28"
   },
   {
     "image_url": "29.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "29"
+    "id": "29",
+    "slug": "slug_29"
   },
   {
     "image_url": "30.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "30"
+    "id": "30",
+    "slug": "slug_30"
   },
   {
     "image_url": "31.JPG",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "31"
+    "id": "31",
+    "slug": "slug_31"
   },
   {
     "image_url": "32.jpeg",
     "alt_text": "art",
     "tags": "wow cool dang",
-    "id": "32"
+    "id": "32",
+    "slug": "slug_32"
   }
 ]
