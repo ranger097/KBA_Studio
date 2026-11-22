@@ -2,12 +2,13 @@
 import Searchbar from '../Searchbar.svelte';
 import { getSearchResults, searchState } from '#lib/search.svelte.js';
 import all_testimonies from '#lib/data/testimonies.json';
+import { settings } from '#lib/settings.svelte.js';
 let results = $derived(getSearchResults());
 </script>
 
 <Searchbar />
 
-<main class="main_section">
+<main class="main_section" class:darkmode={settings.darkmode}>
 {#if results.testimonies.length > 0}
 {#each results.testimonies as testimonie}
 <div class="testimonie_container">
@@ -124,8 +125,19 @@ border-radius: 20px;
 
 }
 
+.darkmode,
+.darkmode div{
+background-color: black;
+color: rgba(255,255,255,0.9);
+}
 
-@media (max-width: 700px) {
+.darkmode div div {
+background-color: #101010;
+}
+
+
+
+@media (max-width: 744px) {
 
 .no_results_container {
 display: flex;
@@ -163,6 +175,8 @@ border-radius: 0px;
 padding: 0px 0px;
 display: flex;
 flex-direction: column;
+gap: 0px;
+margin-bottom: 10px;
 }
 
 .testimonie_text_container {
@@ -173,10 +187,21 @@ align-items: flex-start;
 justify-content: center;
 padding: 20px 60px;
 width: calc(100vw - 120px);
-border-radius: 20px;
+border-radius: 0px;
 height: 100%;
 white-space: normal;
 }
+
+.darkmode,
+.darkmode div{
+background-color: black;
+color: rgba(255,255,255,0.9);
+}
+
+.darkmode div div {
+background-color: #101010;
+}
+
 
 }
 

@@ -73,7 +73,7 @@ bind:checked={settings.darkmode}
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   transition: all 0.5s linear;
   &::-webkit-scrollbar { display: none; }
     scrollbar-width: none;
@@ -291,7 +291,7 @@ background-color: transparent;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-  font-size: 2.5rem;
+  font-size: 2.1rem;
   transition: all 0.5s linear;
   &::-webkit-scrollbar { display: none; }
     scrollbar-width: none;
@@ -345,8 +345,8 @@ gap: 10px;
 background-color: rgba(0,0,0,0);
 width: 100vw;
 display: flex;
-align-items: flex-start;
-justify-content: flex-start;
+align-items: center;
+justify-content: center;
 top: 0px;
 height: 100%;
 min-height: 100vh;
@@ -364,8 +364,8 @@ margin-bottom: 0px;
 height: 100%;
 min-height: 100vh;
 border-radius: 0px;
-padding: 20px 22px;
-width: 100vw;
+padding: 30px 40px 0px 40px;
+width: calc(100vw - 80px);
 border-right: 1px solid white;
 box-shadow: inset 0px 0px 50px white;
 }
@@ -420,10 +420,9 @@ height: 0.5rem;
 margin-top: 3px;
 }
 
-.menu_settings_icon:hover span, 
 .menu_settings_button:hover img {
-width: 2.0rem;
-height: 2.0rem;
+width: 3.2rem;
+height: 3.2rem;
 }
 
 .menu_settings_button_inner_container {
@@ -443,8 +442,8 @@ font-weight: 700;
 }
 
 .menu_link:hover img {
-width: 2.0rem;
-height: 2.0rem;
+width: 3.2rem;
+height: 3.2rem;
 }
 
 .menu_icon {
@@ -476,8 +475,8 @@ justify-content: flex-start;
 padding: 10px 10px;
 margin: -10px;
 border-radius: 5px;
-margin-bottom: 20px;
-margin-top: 20px;
+margin-bottom: 10px;
+margin-top: 30px;
 }
 
 .darkmode {

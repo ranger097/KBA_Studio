@@ -4,18 +4,15 @@ import { getSearchResults, searchState } from '#lib/search.svelte.js';
 import all_articles from '#lib/data/articles.json';
 import all_contacts from '#lib/data/contact.json';
 import faq from '#lib/data/faq.json';
+import { settings } from '#lib/settings.svelte.js';
 let results = $derived(getSearchResults());
 </script>
 
 <Searchbar />
 
-<main class="main_section">
+<main class="main_section" class:darkmode={settings.darkmode}>
 <div class="homepage_article_flex_container">
 {#if results.articles.length > 0}
-<div class="icon_container">
-<img class="hero_icons" src="./artwork/icons/book-svgrepo-com.svg" alt="" />
-<p>Articles</p>
-</div>
 {#each results.articles as article}
 <div class="article_container">
 <h2>{article.title}</h2>
@@ -212,6 +209,17 @@ padding-left: 0px;
 width: 1.8rem;
 height: 1.8rem;
 }
+
+.darkmode,
+.darkmode div{
+background-color: black;
+color: rgba(255,255,255,0.9);
+}
+
+.darkmode div div {
+background-color: #101010;
+}
+
 
 @media (max-width: 700px) {
 .no_results_container {

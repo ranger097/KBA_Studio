@@ -108,16 +108,16 @@ object-position: center;
 cursor: pointer;
 }
 
-.darkmode {
+.darkmode,
+.darkmode div{
 background-color: black;
-color: white;
+color: rgba(255,255,255,0.9);
 }
 
-
-.darkmode div {
-background-color: black;
-color: white;
+.darkmode div div {
+background-color: #101010;
 }
+
 
 
 @media (max-width: 700px) {

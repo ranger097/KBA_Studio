@@ -1,10 +1,11 @@
 <script>
 import { onMount } from 'svelte';
 import { getSearchResults, searchState } from '#lib/search.svelte.js';
+import { settings } from '#lib/settings.svelte.js';
 let results = $derived(getSearchResults());
 </script>
 
-<main class="main_section">
+<main class="main_section" class:darkmode={settings.darkmode}>
 {#if results.total > 0 }
 {#if results.art.length > 0}
 <div class="homepage_image_flex_container">
@@ -252,6 +253,15 @@ border-radius: 20px;
 
 }
 
+.darkmode,
+.darkmode div {
+background-color: black;
+color: rgba(255,255,255,0.9);
+}
+
+.darkmode div div {
+background-color: #101010;
+}
 
 @media (max-width: 700px) {
 .no_results_container {
@@ -370,6 +380,15 @@ height: 100%;
 white-space: normal;
 }
 
+.darkmode,
+.darkmode div {
+background-color: black;
+color: rgba(255,255,255,0.9);
+}
+
+.darkmode div div {
+background-color: #101010;
+}
 
 
 }

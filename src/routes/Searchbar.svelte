@@ -4,7 +4,6 @@ import { menu, menu_button } from '#lib/menu.svelte.js';
 import { settings } from '#lib/settings.svelte.js';
 import Menu from './Menu.svelte';
 
-
 let scrollY = $state(0);
 let lastScrollY = 0;
 let isScrollingDown = $state(false);
@@ -182,9 +181,13 @@ justify-content: center;
 background-color: transparent;
 }
 
-#search:focus {
+.search:focus {
 border: none;
 height: calc(3rem);
+display: flex;
+align-items: center;
+justify-content: center;
+
 }
 
 .menu_link {
@@ -212,6 +215,33 @@ padding: 0px 0px 0px 30px;
 
 .hidden {
 display: none;
+}
+
+@keyframes header_fade {
+0% {
+opacity: 0;
+transform: translateY(-300%);
+}
+100% {opacity: 1}
+}
+
+.darkmode {
+background-color: rgba(0,0,0,0.7);
+color: white;
+}
+
+.darkmode a {
+background-color: rgba(0,0,0,0);
+color: white;
+border-radius: 0px;
+}
+
+.darkmode img {
+filter: invert();
+}
+
+.darkmode input {
+color: white;
 }
 
 
