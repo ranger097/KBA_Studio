@@ -31,7 +31,7 @@ let isScrollingDown = $state(false);
 {#if !menu.open}
 <div class="search_div" class:darkmode={settings.darkmode} class:hidden={isScrollingDown}>
        <a class="menu_link" onclick={menu_button} class:active={menu.open}>
-      <img class="menu_icon" src={menu.open ? "artwork/icons/close-icon-x-svgrepo-com.svg" : "artwork/icons/menu-svgrepo-com.svg"}
+      <img class="menu_icon" src={menu.open ? "/artwork/icons/close-icon-x-svgrepo-com.svg" : "/artwork/icons/menu-svgrepo-com.svg"}
       />
       
       </a>

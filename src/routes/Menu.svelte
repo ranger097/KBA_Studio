@@ -17,26 +17,26 @@ settings.menu_open = !settings.menu_open;
 <nav class="nav_section" class:hidden class:darkmode={settings.darkmode}>
  {#if menu.open}
        <a class="menu_link close_button" onclick={menu_button} class:active={menu.open}>
-      <img class="menu_icon close_icon" src="artwork/icons/close-icon-x-svgrepo-com.svg"/>
+      <img class="menu_icon close_icon" src="/artwork/icons/close-icon-x-svgrepo-com.svg"/>
       Close
       </a>
 
       {:else}
        <a class="menu_link close_button" onclick={menu_button} class:active={menu.open}>
-      <img class="menu_icon close_icon" src="artwork/icons/menu-svgrepo-com.svg"/>
+      <img class="menu_icon close_icon" src="/artwork/icons/menu-svgrepo-com.svg"/>
       </a>
       {/if}
 
-<a class="menu_link" onclick={menu_button} href="."><img class="menu_icon"  src="artwork/icons/house-svgrepo-com(1).svg"/>Home</a>
-<a class="menu_link" onclick={menu_button} href="./Images/"><img class="menu_icon" src="artwork/icons/image-placeholder-svgrepo-com.svg"/>Images</a>
-<a class="menu_link" onclick={menu_button} href="./Testimonies/"><img class="menu_icon" src="artwork/icons/heart-red-svgrepo-com.svg"/>Testimonies</a>
-<a class="menu_link" onclick={menu_button} href="./Information/"><img class="menu_icon" src="artwork/icons/book-svgrepo-com.svg"/>Information</a>
+<a class="menu_link" onclick={menu_button} href="."><img class="menu_icon"  src="/artwork/icons/house-svgrepo-com(1).svg"/>Home</a>
+<a class="menu_link" onclick={menu_button} href="./Images/"><img class="menu_icon" src="/artwork/icons/image-placeholder-svgrepo-com.svg"/>Images</a>
+<a class="menu_link" onclick={menu_button} href="./Testimonies/"><img class="menu_icon" src="/artwork/icons/heart-red-svgrepo-com.svg"/>Testimonies</a>
+<a class="menu_link" onclick={menu_button} href="./Information/"><img class="menu_icon" src="/artwork/icons/book-svgrepo-com.svg"/>Information</a>
 
 <button class="menu_settings_button" onclick={open_menu}>
-<img class="menu_icon" src="artwork/icons/delete-user-svgrepo-com.svg"/>
+<img class="menu_icon" src="/artwork/icons/delete-user-svgrepo-com.svg"/>
 <div class="menu_settings_button_inner_container">
 <span>Settings</span>
-<img class="menu_settings_icon" class:hidden={settings.menu_open} src="artwork/icons/chevron-down-svgrepo-com.svg"/>
+<img class="menu_settings_icon" class:hidden={settings.menu_open} src="/artwork/icons/chevron-down-svgrepo-com.svg"/>
 </div>
 </button>
 
