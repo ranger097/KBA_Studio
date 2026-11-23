@@ -1,6 +1,5 @@
 <script>
 	import { settings } from '#lib/settings.svelte.js';
-	import Searchbar from '../../Searchbar.svelte';
 	let { data } = $props();
 </script>
 
@@ -14,19 +13,44 @@
 		 alt={data.artwork.alt_text} 
 		/>
 		<div class="fullscreen_info_container">
-		<a href=".">← Back to Gallery</a>
-		<h1>{data.artwork.title ?? data.artwork.slug}</h1>
-		<p>{data.artwork.alt_text}</p>
-		<a href="/artwork/{data.artwork.image_url}" download>Download</a>
-		<a href=#>Share</a>
+		<a class="back_link" href=".">
+		<img class="back_image" src="/artwork/icons/rest-svgrepo-com.svg" alt="" />
+		 Back to Gallery</a>
+		
+		<div class="description_container">
+		<h1 class="header">{data.artwork.title ?? data.artwork.slug}</h1>
+		<p>{data.artwork.description}</p>
+		</div>
+		
+		<a class="share_links" href=#>
+                <img class="back_image" src="/artwork/icons/connect-svgrepo-com.svg" alt="" />
+		Share</a>
+		<a class="share_links" href="/artwork/{data.artwork.image_url}" download>
+                <img class="back_image" src="/artwork/icons/download-svgrepo-com.svg" alt="" />
+		Download</a>
 		</div>
 	</div>
 </main>
 <style>
 
 * {
-text-decoration: none;
-color: black;
+  text-decoration: none;
+  color: black;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.1rem;
+  transition: all 0.5s linear;
+  &::-webkit-scrollbar { display: none; }
+    scrollbar-width: none;
+   -ms-overflow-style: none;
+   transition: all 0.3s linear;
+}
+
+.header {
+font-size: 1.4rem;
+font-weight: 700;
 }
 
 .main_section {
@@ -34,9 +58,17 @@ display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: center;
-width: 100vw;
-height: 100vh;
+width: 100%;
+height: 100%;
 }
+
+.main_section * {
+color: black;
+}
+
+.main_section div div .share_links {
+background-color: antiquewhite;
+} 
 
 .fullscreen_image {
 width: 100%;
@@ -44,6 +76,25 @@ height: 100%;
 object-position: center;
 object-fit: cover;
 overflow: hidden;
+}
+
+.back_image {
+width: 1.5rem;
+height: 1.5rem;
+}
+
+.back_link {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+background-color: #202020;
+padding: 10px 25px 10px 15px;
+border-radius: 100px;
+}
+
+.back_link:hover {
+background-color: red;
 }
 
 .fullscreen_info_container {
@@ -56,17 +107,62 @@ width: 40vw;
 padding: 20px 40px;
 }
 
+.description_container {
+height: 100%;
+width: calc(100% - 40px);
+padding: 10px 20px;
+background-color: white;
+overflow-x: hidden;
+overflow-y: scroll;
+margin-top: 10px;
+margin-bottom: 10px;
+border-radius: 10px;
+}
+
+.share_links {
+background-color: #303030;
+padding: 10px 15px;
+margin-bottom: 10px;
+width: calc(100% - 30px);
+border-radius: 10px;
+color: white;
+display: flex;
+display: flex;
+align-items: center;
+justify-content: flex-start;
+gap: 10px;
+}
+
 .fullscreen_container {
 display: flex;
-background-color: white;
-height: calc(100vh - 60px);
-width: calc(100vw - 60px);
+margin: auto;
+inset: 0;
+position: fixed;
 border-radius: 20px;
 overflow: hidden;
+width: 96%;
+height: 94%;
 }
 
 .darkmode {
 background-color: black;
 color: white;
 }
+
+.darkmode * {
+color: white;
+}
+
+.darkmode div .back_image {
+filter: invert();
+}
+
+.darkmode div div {
+background-color: #101010;
+}
+
+.darkmode div div .description_container {
+background-color: #202020;
+}
+
 </style>

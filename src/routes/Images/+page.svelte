@@ -31,6 +31,8 @@ let results = $derived(getSearchResults());
 {#each all_art as artwork}
 <div class="art_card">
 <a href="../Images/{artwork.slug}/" class="slug_link">
+<span>Fullscreen</span>
+
 <img class="full_image_icon" src="./artwork/icons/expand-svgrepo-com.svg" alt={artwork.alt_text} />
 </a>
 <img class="flex_image" src="./artwork/{artwork.image_url}" alt={artwork.alt_text} />
