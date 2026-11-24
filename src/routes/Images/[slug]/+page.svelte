@@ -16,10 +16,13 @@
 		<a class="back_link" href=".">
 		<img class="back_image" src="/artwork/icons/rest-svgrepo-com.svg" alt="" />
 		 Back to Gallery</a>
-		
-		<div class="description_container">
+
+		<div class="header_container">
 		<h1 class="header">{data.artwork.title ?? data.artwork.slug}</h1>
-		<p>{data.artwork.description}</p>
+                </div>
+
+		<div class="description_container">
+				<p>{data.artwork.description}</p>
 		</div>
 		
 		<a class="share_links" href=#>
@@ -40,7 +43,7 @@
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   transition: all 0.5s linear;
   &::-webkit-scrollbar { display: none; }
     scrollbar-width: none;
@@ -49,7 +52,7 @@
 }
 
 .header {
-font-size: 1.4rem;
+font-size: 1.5rem;
 font-weight: 700;
 }
 
@@ -67,7 +70,8 @@ color: black;
 }
 
 .main_section div div .share_links {
-background-color: antiquewhite;
+background-color: white;
+color: black;
 } 
 
 .fullscreen_image {
@@ -88,7 +92,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 gap: 10px;
-background-color: #202020;
+background-color: #ffffff;
 padding: 10px 25px 10px 15px;
 border-radius: 100px;
 }
@@ -110,13 +114,29 @@ padding: 20px 40px;
 .description_container {
 height: 100%;
 width: calc(100% - 40px);
-padding: 10px 20px;
+padding: 0px 20px 0px 20px;
+background-color: white;
+overflow-x: hidden;
+overflow-y: scroll;
+margin-top: 0px;
+margin-bottom: 10px;
+border-radius: 0px 0px 10px 10px;
+display: flex;
+align-items: flex-start;
+justify-content: center;
+}
+
+.header_container {
+width: calc(100% - 40px);
+padding: 10px 20px 0px 20px;
 background-color: white;
 overflow-x: hidden;
 overflow-y: scroll;
 margin-top: 10px;
-margin-bottom: 10px;
-border-radius: 10px;
+margin-bottom: 0px;
+border-radius: 10px 10px 0px 0px;
+display: flex;
+align-items: center;
 }
 
 .share_links {
@@ -161,8 +181,12 @@ filter: invert();
 background-color: #101010;
 }
 
-.darkmode div div .description_container {
+.darkmode div div .share_links,
+.darkmode div div .header_container,
+.darkmode div div .description_container,
+.darkmode div .back_link {
 background-color: #202020;
+color: white;
 }
 
 </style>
