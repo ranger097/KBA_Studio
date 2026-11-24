@@ -116,7 +116,7 @@ align-items: flex-start;
 justify-content: flex-start;
 flex-direction: column;
 width: calc(40vw);
-padding: 1vw 1vw 0vw 1vw;
+padding: 1vw 0vw 0vw 1vw;
 }
 
 .description_container {
@@ -203,7 +203,7 @@ filter: invert();
 }
 
 .darkmode div div,
-.fullscreen_container {
+.darkmode .fullscreen_container {
 background-color: #101010;
 }
 

@@ -1,5 +1,5 @@
 <script>
-import { onMount } from 'svelte';
+import { resolve } from '$app/paths';
 import { getSearchResults, searchState } from '#lib/search.svelte.js';
 import { settings } from '#lib/settings.svelte.js';
 let results = $derived(getSearchResults());
@@ -11,7 +11,9 @@ let results = $derived(getSearchResults());
 <div class="homepage_image_flex_container">
 <div class="image_container">
 {#each results.art as art}
+<a href={resolve('/Hero/[slug]', { slug: art.slug })}  class="art_card">
 <img class="flex_image" src="./artwork/{art.image_url}" alt={art.alt_text} />
+</a>
 {/each}
 </div>
 </div>
@@ -86,7 +88,7 @@ let results = $derived(getSearchResults());
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   transition: all 0.5s linear;
   &::-webkit-scrollbar { display: none; }
     scrollbar-width: none;
@@ -103,12 +105,23 @@ display: flex;
 flex-direction: row;
 align-items: flex-start;
 justify-content: center;
-gap: 5px;
 background-color: white;
 width: 100vw;
 overflow-x: hidden;
 flex-wrap: wrap;
-padding: 0vh 0px 20px 0px;
+padding: 0vh 0px 0px 0px;
+}
+
+.art_card {
+width: calc(25% - 4px);
+position: relative;
+transition: all 0.3s linear;
+height: 100%;
+aspect-ratio: 1/1;
+border-radius: 0px;
+overflow: hidden;
+object-fit: cover;
+object-position: center;
 }
 
 .no_results_container {
@@ -148,6 +161,8 @@ background-color: rgba(245,245,245,1);
 width: calc(90vw + 40px);
 overflow:hidden;
 gap: 5px;
+padding: 0px;
+margin: 0px;
 }
 
 .homepage_article_flex_container {
@@ -158,7 +173,7 @@ align-items: center;
 justify-content: center;
 flex-direction: column;
 padding-bottom: 0vh;
-gap: 0px;
+gap: 10px;
 }
 
 .article_container {
@@ -166,7 +181,7 @@ background-color: rgba(245,245,245,1);
 width: 90vw;
 border-radius: 20px;
 padding: 0px 20px;
-margin-bottom: 10px;
+margin-bottom: 0px;
 }
 
 .main_section {
@@ -178,11 +193,13 @@ background-color: white;
 align-items: center;
 justify-content: center;
 margin-top: 10vh;
+margin-bottom: 10vh;
+gap: 10px;
 }
 
 
 .flex_image {
-flex-basis: calc(25% - 4px);
+width: 100%;
 aspect-ratio: 1/1;
 border-radius: 0px;
 overflow: hidden;
@@ -194,10 +211,10 @@ cursor: pointer;
 
 .testimonie_container {
 background-color: rgba(0,0,0,0);
-width: 100vw;
+width: calc(100vw - 50px);
 border-radius: 20px;
 padding: 0px 0px 0px 0px;
-margin-bottom: 10px;
+margin-bottom: 0px;
 display: flex;
 gap: 10px;
 flex-wrap: nowrap;
@@ -262,16 +279,50 @@ padding-left: 0px;
 font-size: 1.1rem;
 }
 
+.art_card {
+width: 100%;
+position: relative;
+transition: all 0.3s linear;
+height: 100%;
+aspect-ratio: 1/1;
+border-radius: 0px;
+overflow: hidden;
+object-fit: cover;
+object-position: center;
+}
 
 .homepage_image_flex_container {
 display: flex;
 align-items: center;
 justify-content: center;
-gap: 5px;
+gap: 0px;
 background-color: white;
 min-height: auto;
 width: 100vw;
 padding: calc(0vh + 0px) 20px 0px 20px;
+}
+
+.homepage_article_flex_container {
+background-color: white;
+width: 100vw;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+padding-bottom: 0vh;
+gap: 5px;
+}
+
+.main_section {
+display: flex;
+flex-direction: column;
+width: 100vw;
+overflow: hidden;
+background-color: white;
+align-items: center;
+justify-content: center;
+margin-top: 10vh;
+gap: 5px;
 }
 
 .main_unsearched_section {
@@ -292,9 +343,22 @@ justify-content: center;
 background-color: white;
 }
 
+.testimonie_container {
+background-color: rgba(0,0,0,0);
+width: 100vw;
+border-radius: 20px;
+padding: 0px 0px 0px 0px;
+margin-bottom: 0px;
+display: flex;
+gap: 0px;
+flex-wrap: nowrap;
+align-items: center;
+justify-content: center;
+}
+
 
 .flex_image {
-width: 98vw;
+width: 100vw;
 flex-basis: calc(100%);
 aspect-ratio: 1/1;
 border-radius: 0px;
@@ -311,7 +375,7 @@ align-items: center;
 flex-wrap: wrap;
 border-radius: 0px;
 background-color: rgba(245,245,245,1);
-width: calc(100vw);
+width: calc(100vw - 0px);
 overflow:hidden;
 gap: 5px;
 }
@@ -352,7 +416,7 @@ align-items: flex-start;
 justify-content: center;
 padding: 20px 60px;
 width: calc(100vw - 120px);
-border-radius: 20px;
+border-radius: 0px;
 height: 100%;
 white-space: normal;
 }
