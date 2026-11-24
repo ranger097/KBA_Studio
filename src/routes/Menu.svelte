@@ -7,6 +7,8 @@ $effect(()=>{
 
 });
 
+settings.menu_open = true;
+
 function open_menu() {
 settings.menu_open = !settings.menu_open;
 }

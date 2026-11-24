@@ -137,9 +137,6 @@ justify-content: center;
 min-height: 100vh;
 }
 
-.animated_text {
-height: calc(100vh);
-}
 
 .image_container {
 display: flex;
@@ -194,21 +191,6 @@ object-position: center;
 cursor: pointer;
 }
 
-.icon_container {
-display: flex;
-align-items: center;
-justify-content: flex-start;
-background-color: transparent;
-width: calc(90vw +  40px);
-margin-bottom: 0px;
-height: 1.8rem;
-padding-left: 0px;
-}
-
-.hero_icons {
-width: 1.8rem;
-height: 1.8rem;
-}
 
 .testimonie_container {
 background-color: rgba(0,0,0,0);
@@ -310,11 +292,6 @@ justify-content: center;
 background-color: white;
 }
 
-.animated_text {
-width: 125vw;
-height: 125vw;
-margin-left: -5vw;
-}
 
 .flex_image {
 width: 98vw;
