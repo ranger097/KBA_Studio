@@ -236,6 +236,16 @@ overflow:hidden;
 gap: 5px;
 }
 
+.art_card a {
+opacity: 1;
+transition: all 0.8s linear;
+}
+
+.art_card:hover a {
+opacity: 1.0;
+}
+
+
 }
 
 
