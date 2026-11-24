@@ -22,7 +22,7 @@
                 </div>
 
 		<div class="description_container">
-				<p>{data.artwork.description}</p>
+		<p>{data.artwork.description}</p>
 		</div>
 		
 		<a class="share_links" href=#>
@@ -97,10 +97,6 @@ padding: 10px 25px 10px 15px;
 border-radius: 100px;
 }
 
-.back_link:hover {
-background-color: red;
-}
-
 .fullscreen_info_container {
 display: flex;
 background-color: rgba(245,245,245,1);
@@ -112,7 +108,7 @@ padding: 20px 40px;
 }
 
 .description_container {
-height: 100%;
+flex: 0.5 0.5 0.5;
 width: calc(100% - 40px);
 padding: 0px 20px 0px 20px;
 background-color: white;
@@ -131,7 +127,7 @@ width: calc(100% - 40px);
 padding: 10px 20px 0px 20px;
 background-color: white;
 overflow-x: hidden;
-overflow-y: scroll;
+overflow-y: hidden;
 margin-top: 10px;
 margin-bottom: 0px;
 border-radius: 10px 10px 0px 0px;
@@ -187,6 +183,162 @@ background-color: #101010;
 .darkmode div .back_link {
 background-color: #202020;
 color: white;
+}
+
+@media (max-width: 744px) {
+* {
+  text-decoration: none;
+  color: black;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.15rem;
+  transition: all 0.5s linear;
+  &::-webkit-scrollbar { display: none; }
+    scrollbar-width: none;
+   -ms-overflow-style: none;
+   transition: all 0.3s linear;
+}
+
+.header {
+font-size: 1.5rem;
+font-weight: 700;
+}
+
+.main_section {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: flex-start;
+width: 100vw;
+height: 100vh;
+}
+
+.main_section * {
+color: black;
+}
+
+.main_section div div .share_links {
+background-color: white;
+color: black;
+} 
+
+.fullscreen_image {
+width: 100vw;
+height: 50vh;
+object-position: center;
+object-fit: cover;
+overflow: hidden;
+}
+
+.back_image {
+width: 1.5rem;
+height: 1.5rem;
+}
+
+.back_link {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+background-color: #ffffff;
+padding: 10px 25px 10px 15px;
+border-radius: 100px;
+}
+
+.fullscreen_info_container {
+display: flex;
+background-color: rgba(245,245,245,1);
+align-items: flex-start;
+justify-content: flex-start;
+flex-direction: column;
+width: calc(100vw - 20px);
+padding: 20px 10px;
+height: 50vh;
+}
+
+.description_container {
+height: 100%;
+width: calc(100% - 40px);
+padding: 0px 20px 10px 20px;
+background-color: white;
+overflow-x: hidden;
+overflow-y: scroll;
+margin-top: 0px;
+margin-bottom: 10px;
+border-radius: 0px 0px 10px 10px;
+display: flex;
+align-items: flex-start;
+justify-content: center;
+}
+
+.header_container {
+width: calc(100% - 40px);
+padding: 20px 20px 2px 20px;
+background-color: white;
+overflow-x: hidden;
+overflow-y: hidden;
+margin-top: 10px;
+margin-bottom: 0px;
+border-radius: 10px 10px 0px 0px;
+display: flex;
+align-items: center;
+}
+
+.share_links {
+background-color: #303030;
+padding: 10px 15px;
+margin-bottom: 10px;
+width: calc(100% - 30px);
+border-radius: 10px;
+color: white;
+display: flex;
+display: flex;
+align-items: center;
+justify-content: flex-start;
+gap: 10px;
+}
+
+.fullscreen_container {
+display: flex;
+flex-direction: column;
+border-radius: 0px;
+overflow-x: hidden;
+overflow-y: hidden;
+width: 100vw;
+height: 100vh;
+margin: 0px;
+inset:inherit;
+position:relative;
+
+}
+
+.darkmode {
+background-color: black;
+color: white;
+}
+
+.darkmode * {
+color: white;
+}
+
+.darkmode div .back_image {
+filter: invert();
+}
+
+.darkmode div div {
+background-color: #101010;
+}
+
+.darkmode div div .share_links,
+.darkmode div div .header_container,
+.darkmode div div .description_container,
+.darkmode div .back_link {
+background-color: #202020;
+color: white;
+}
+
 }
 
 </style>
