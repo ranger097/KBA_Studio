@@ -1,10 +1,15 @@
 <script>
-import { resolve } from '$app/paths';
+import { asset, resolve } from '$app/paths';
 import Searchbar from '../Searchbar.svelte';
 import { getSearchResults, searchState } from '#lib/search.svelte.js';
 import { settings } from '#lib/settings.svelte.js';
 import all_art from '#lib/data/art.json';
 let results = $derived(getSearchResults());
+
+ /** @param {string} filename */
+  function getArtworkUrl(filename) {
+    return asset(/** @type {Parameters<typeof asset>[0]} */ (`/artwork/${filename}`));
+  }
 </script>
 
 <main class="main_section" class:darkmode={settings.darkmode}>
@@ -13,7 +18,7 @@ let results = $derived(getSearchResults());
 {#if results.art.length > 0}
 {#each results.art as art}
 <a href={resolve('/Images/[slug]', { slug: art.slug })}  class="art_card">
-<img class="flex_image" src="./artwork/{art.image_url}" alt={art.alt_text} />
+<img class="flex_image" src={getArtworkUrl(art.image_url)} alt={art.alt_text} />
 </a>
 {/each}
 {:else if results.art.length == 0 && searchState.query.length > 0}
@@ -25,7 +30,7 @@ let results = $derived(getSearchResults());
 {:else}
 {#each all_art as art}
 <a href={resolve('/Images/[slug]', { slug: art.slug })}  class="art_card">
-<img class="flex_image" src="./artwork/{art.image_url}" alt={art.alt_text} />
+<img class="flex_image" src={getArtworkUrl(art.image_url)} alt={art.alt_text} />
 </a>
 {/each}
 {/if}

@@ -30,11 +30,12 @@ let isScrollingDown = $state(false);
 <svelte:window bind:scrollY onscroll={handleScroll} />
 {#if !menu.open}
 <div class="search_div" class:darkmode={settings.darkmode} class:hidden={isScrollingDown}>
-       <a class="menu_link" onclick={menu_button} class:active={menu.open}>
+       <button type="button" class="menu_link" onclick={menu_button} class:active={menu.open}>
       <img class="menu_icon" src={menu.open ? "/artwork/icons/close-icon-x-svgrepo-com.svg" : "/artwork/icons/menu-svgrepo-com.svg"}
+      alt="Menu"
       />
       
-      </a>
+      </button>
       <input 
       class="search"
       type="text" 
@@ -79,6 +80,7 @@ margin-left: calc(20px - 6px);
 .menu_icon {
 width: 2rem;
 height: 2rem;
+cursor: pointer;
 }
 
 .active {
@@ -135,7 +137,7 @@ background-color: rgba(0,0,0,0.7);
 color: white;
 }
 
-.darkmode a {
+.darkmode button {
 background-color: rgba(0,0,0,0);
 color: white;
 border-radius: 0px;
@@ -231,7 +233,7 @@ background-color: rgba(0,0,0,0.7);
 color: white;
 }
 
-.darkmode a {
+.darkmode button {
 background-color: rgba(0,0,0,0);
 color: white;
 border-radius: 0px;

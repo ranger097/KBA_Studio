@@ -1,6 +1,34 @@
 <script>
 	import { settings } from '#lib/settings.svelte.js';
 	let { data } = $props();
+	let copied = $state(false);
+	let download = $state(false);
+	let download_button_text = $derived(download ? 'Success' : 'Download');
+        let button_text = $derived(copied ? 'Success' : 'Share');
+        
+	function download_button() {
+        download = !download;
+	setTimeout(()=>{
+        download = !download
+	}, 2000);
+	}
+
+       
+  function copyCurrentLink() {
+    const baseUrl = new URL(window.location.href);
+    const fullUrl = new URL(`artwork/${data.artwork.image_url}`, baseUrl.origin).href;
+    navigator.clipboard.writeText(fullUrl)
+    .then(()=>{
+    copied = true;
+    setTimeout(()=>{
+    copied = false;
+    }, 2000)
+    })
+    .catch((err)=>{
+    console.error('failed to copy link', err)
+    });
+  }
+
 </script>
 
 
@@ -32,12 +60,13 @@
 		</div>
 		
 		<div class="share_link_container">
-		<a class="share_links" href=#>
-                <img class="back_image" src="/artwork/icons/connect-svgrepo-com.svg" alt="" />
-		Share</a>
-		<a class="share_links" href="/artwork/{data.artwork.image_url}" download>
+		<button type="button" class:green={copied} class="share_links" onclick={copyCurrentLink}>
+		<img class="back_image" src="/artwork/icons/connect-svgrepo-com.svg" alt="share icon" />
+		{button_text}
+               </button>
+		<a class="share_links" class:green={download} onclick={download_button} href="/artwork/{data.artwork.image_url}" download>
                 <img class="back_image" src="/artwork/icons/download-svgrepo-com.svg" alt="" />
-		Download</a>
+		{download_button_text}</a>
 		</div>
 		</div>
 	</div>
@@ -116,7 +145,7 @@ align-items: flex-start;
 justify-content: flex-start;
 flex-direction: column;
 width: calc(40vw);
-padding: 1vw 0vw 0vw 1vw;
+padding: 1vw 1vw 0vw 1vw;
 }
 
 .description_container {
@@ -173,6 +202,16 @@ display: flex;
 align-items: center;
 justify-content: flex-start;
 gap: 10px;
+border: none;
+cursor: pointer;
+border: 0px solid white;
+}
+
+.green {
+border: 0px solid green;
+font-weight: 700;
+background: linear-gradient(lightgreen);
+color: green;
 }
 
 .fullscreen_container {

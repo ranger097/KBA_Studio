@@ -3,6 +3,7 @@ import Searchbar from '../Searchbar.svelte';
 import { getSearchResults, searchState } from '#lib/search.svelte.js';
 import all_testimonies from '#lib/data/testimonies.json';
 import { settings } from '#lib/settings.svelte.js';
+import { asset } from '$app/paths';
 let results = $derived(getSearchResults());
 </script>
 
@@ -12,7 +13,7 @@ let results = $derived(getSearchResults());
 {#if results.testimonies.length > 0}
 {#each results.testimonies as testimonie}
 <div class="testimonie_container">
-<img class="testimonie_image" src="./artwork/{testimonie.image}" alt="" />
+<img class="testimonie_image" src={asset(/** @type {any} */ (`artwork/${testimonie.image}`))} alt="" />
 <div class="testimonie_text_container">
 <p class="testimonie_text">"{testimonie.testimonies}" - {testimonie.author}, {testimonie.month.charAt(0).toUpperCase() + testimonie.month.slice(1).toLowerCase()} {testimonie.year}</p>
 </div>
@@ -25,7 +26,7 @@ let results = $derived(getSearchResults());
 {:else}
 {#each all_testimonies as testimonie}
 <div class="testimonie_container">
-<img class="testimonie_image" src="./artwork/{testimonie.image}" alt="" />
+<img class="testimonie_image" src={asset(/** @type {any} */ (`artwork/${testimonie.image}`))} alt="" />
 <div class="testimonie_text_container">
 <p class="testimonie_text">"{testimonie.testimonies}" - {testimonie.author}, {testimonie.month.charAt(0).toUpperCase() + testimonie.month.slice(1).toLowerCase()} {testimonie.year}</p>
 </div>
@@ -48,10 +49,6 @@ let results = $derived(getSearchResults());
   white-space: break;
 }
 
-h2 {
-font-weight: 600;
-font-size: 1.6rem;
-}
 
 .no_results_container {
 display: flex;
