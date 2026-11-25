@@ -1,6 +1,6 @@
 <script>
 	import { settings } from '#lib/settings.svelte.js';
-	import { resolve } from '$app/paths';
+	import { asset,resolve } from '$app/paths';
 	let { data } = $props();
 	let copied = $state(false);
 	let download = $state(false);
@@ -17,7 +17,7 @@
        
   function copyCurrentLink() {
     const baseUrl = new URL(window.location.href);
-    const fullUrl = new URL(`artwork/${data.artwork.image_url}`, baseUrl.origin).href;
+    const fullUrl = new URL(asset(/** @type {any} */(`artwork/${data.artwork.image_url}`)), baseUrl.origin).href;
     navigator.clipboard.writeText(fullUrl)
     .then(()=>{
     copied = true;
@@ -38,18 +38,21 @@
 	<div class="fullscreen_container">
 	        <div class="image_container">
 		<a class="mobile_back_link" href={resolve('/')}>
-		<img class="back_image" src="/artwork/icons/rest-svgrepo-com.svg" alt="" />
+		<img class="back_image" 
+		 src={asset(/** @type {any} */ (`/artwork/icons/rest-svgrepo-com.svg`))} alt="" />
 		 Back to Gallery</a>
 
 		<img 
 		 class="fullscreen_image"
-		 src="/artwork/{data.artwork.image_url}" 
+		 src={asset(/** @type {any} */ (`/artwork/${data.artwork.image_url}`))} 
 		 alt={data.artwork.alt_text} 
 		/>
 		</div>
 		<div class="fullscreen_info_container">
 		<a class="back_link" href={resolve('/')}>
-		<img class="back_image" src="/artwork/icons/rest-svgrepo-com.svg" alt="" />
+		<img class="back_image" 
+		 src={asset(/** @type {any} */ (`/artwork/icons/rest-svgrepo-com.svg`))} 
+		 alt="" />
 		 Back to Gallery</a>
 
 		<div class="header_container">
@@ -62,11 +65,16 @@
 		
 		<div class="share_link_container">
 		<button type="button" class:green={copied} class="share_links" onclick={copyCurrentLink}>
-		<img class="back_image" src="/artwork/icons/connect-svgrepo-com.svg" alt="share icon" />
+		<img class="back_image" 
+		 src={asset(/** @type {any} */ (`/artwork/icons/connect-svgrepo-com.svg`))} 
+		 alt="share icon" />
 		{button_text}
                </button>
-		<a class="share_links" class:green={download} onclick={download_button} href="/artwork/{data.artwork.image_url}" download>
-                <img class="back_image" src="/artwork/icons/download-svgrepo-com.svg" alt="" />
+		<a class="share_links" class:green={download} onclick={download_button} 
+		href={asset(/** @type {any} */ (`/artwork/${data.artwork.image_url}`))} download>
+                <img class="back_image" 
+	         src={asset(/** @type {any} */ (`/artwork/icons/download-svgrepo-com.svg`))} 
+		 alt="" />
 		{download_button_text}</a>
 		</div>
 		</div>

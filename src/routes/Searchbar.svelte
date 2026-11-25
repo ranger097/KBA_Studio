@@ -2,6 +2,7 @@
 import { searchState } from '#lib/search.svelte.js';
 import { menu, menu_button } from '#lib/menu.svelte.js';
 import { settings } from '#lib/settings.svelte.js';
+import { asset } from '$app/paths';
 import Menu from './Menu.svelte';
 
 let scrollY = $state(0);
@@ -31,7 +32,7 @@ let isScrollingDown = $state(false);
 {#if !menu.open}
 <div class="search_div" class:darkmode={settings.darkmode} class:hidden={isScrollingDown}>
        <button type="button" class="menu_link" onclick={menu_button} class:active={menu.open}>
-      <img class="menu_icon" src={menu.open ? "/artwork/icons/close-icon-x-svgrepo-com.svg" : "/artwork/icons/menu-svgrepo-com.svg"}
+      <img class="menu_icon" src={menu.open ? asset(/** @type {any} */  (`/artwork/icons/close-icon-x-svgrepo-com.svg`)) : asset(/** @type {any} */ (`/artwork/icons/menu-svgrepo-com.svg`))}
       alt="Menu"
       />
       

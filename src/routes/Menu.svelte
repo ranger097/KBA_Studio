@@ -1,6 +1,7 @@
 <script>
 import { menu , menu_button } from '#lib/menu.svelte.js';
 import { settings } from '#lib/settings.svelte.js';
+import { asset } from '$app/paths';
 let { hidden = false } = $props();
 
 settings.menu_open = true;
@@ -9,12 +10,12 @@ settings.menu_open = !settings.menu_open;
 }
 
 </script>
-
 <main class="main_section" class:hidden class:darkmode={settings.darkmode}>
 <nav class="nav_section" class:hidden class:darkmode={settings.darkmode}>
  {#if menu.open}
        <button type="button" class="menu_link close_button" onclick={menu_button} class:active={menu.open}>
-      <img class="menu_icon close_icon" src="/artwork/icons/close-icon-x-svgrepo-com.svg"
+      <img class="menu_icon close_icon" 
+      src={asset(/** @type {any} */ (`/artwork/icons/close-icon-x-svgrepo-com.svg`))}
       alt="close button icon"
       />
       Close
@@ -22,7 +23,8 @@ settings.menu_open = !settings.menu_open;
 
       {:else}
        <button type="button" class="menu_link close_button" onclick={menu_button} class:active={menu.open}>
-      <img class="menu_icon close_icon" src="/artwork/icons/menu-svgrepo-com.svg"
+      <img class="menu_icon close_icon" 
+       src={asset(/** @type {any} */ (`/artwork/icons/menu-svgrepo-com.svg`))}
        alt="close button icon"
        />
       </button>
@@ -30,37 +32,40 @@ settings.menu_open = !settings.menu_open;
 
 <a class="menu_link" onclick={menu_button} href=".">
 <img class="menu_icon"  
-src="/artwork/icons/house-svgrepo-com(1).svg"
+src={asset(/** @type {any} */ (`/artwork/icons/house-svgrepo-com(1).svg`))}
 alt="home page button icon"/>
 Home
 </a>
 
 <a class="menu_link" onclick={menu_button} href="./Images/">
 <img class="menu_icon" 
-src="/artwork/icons/image-placeholder-svgrepo-com.svg"
+src={asset(/** @type {any} */ (`/artwork/icons/image-placeholder-svgrepo-com.svg`))}
 alt="art page button icon"/>
 Images
 </a>
 
 <a class="menu_link" onclick={menu_button} href="./Testimonies/">
-<img class="menu_icon" src="/artwork/icons/heart-red-svgrepo-com.svg"
+<img class="menu_icon" 
+src={asset(/** @type {any} */ (`/artwork/icons/heart-red-svgrepo-com.svg`))}
 alt="testimonies page button icon"/>
 Testimonies
 </a>
 
 <a class="menu_link" onclick={menu_button} href="./Information/">
-<img class="menu_icon" src="/artwork/icons/book-svgrepo-com.svg"
+<img class="menu_icon" 
+src={asset(/** @type {any} */ (`/artwork/icons/book-svgrepo-com.svg`))}
 alt="information page button icon"/>
 Information
 </a>
 
 <button class="menu_settings_button" onclick={open_menu}>
-<img class="menu_icon" src="/artwork/icons/delete-user-svgrepo-com.svg"
+<img class="menu_icon" 
+src={asset(/** @type {any} */ (`/artwork/icons/delete-user-svgrepo-com.svg`))}
 alt="settings button container"/>
 <div class="menu_settings_button_inner_container">
 <span>Settings</span>
 <img class="menu_settings_icon" class:hidden={settings.menu_open}
-src="/artwork/icons/chevron-down-svgrepo-com.svg"
+src={asset(/** @type {any} */ (`/artwork/icons/chevron-down-svgrepo-com.svg`))}
 alt="settings button icon"
 />
 </div>
@@ -85,14 +90,12 @@ bind:checked={settings.darkmode}
 >
 </label>
 </div>
-
 </div>
 </nav>
 </main>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
-
 
 * {
    font-family: "Quicksand", sans-serif;
