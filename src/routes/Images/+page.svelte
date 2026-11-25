@@ -11,9 +11,9 @@ let results = $derived(getSearchResults());
     return asset(/** @type {Parameters<typeof asset>[0]} */ (`/artwork/${filename}`));
   }
 </script>
+<Searchbar />
 
 <main class="main_section" class:darkmode={settings.darkmode}>
-<Searchbar />
 <div class="homepage_image_flex_container"  class:darkmode={settings.darkmode}>
 {#if results.art.length > 0}
 {#each results.art as art}
@@ -85,7 +85,6 @@ padding-left: 20px;
 width: calc(25% - 5px);
 position: relative;
 transition: all 0.3s linear;
-height: 100%;
 aspect-ratio: 1/1;
 border-radius: 0px;
 overflow: hidden;
@@ -127,50 +126,88 @@ background-color: #101010;
 
 
 
-@media (max-width: 700px) {
-.no_results_container {
-display: flex;
-justify-content: center;
-align-items: center;
-flex-wrap: wrap;
-border-radius: 20px;
-background-color: rgba(245,245,245,1);
-width: calc(90vw);
-margin-top: 3vh;
-padding-left: 0px;
+@media (max-width: 744px) {
+* {
+   font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.1rem;
+  transition: all 0.5s linear;
+  &::-webkit-scrollbar { display: none; }
+    scrollbar-width: none;
+   -ms-overflow-style: none;
+   transition: all 0.3s linear;
+
 }
 
 .homepage_image_flex_container {
 display: flex;
-align-items: center;
+flex-direction: column;
+align-items: flex-start;
 justify-content: center;
 gap: 5px;
 background-color: white;
-min-height: auto;
 width: 100vw;
-padding: calc(0vh + 0px) 20px 0px 20px;
+overflow-x: hidden;
 flex-wrap: wrap;
+padding: 0vh 0px 20px 0px;
 }
 
-.flex_image {
-flex-basis: 0.25;
+.no_results_container {
+display: flex;
+justify-content: flex-start;
+align-items: center;
+flex-wrap: wrap;
+border-radius: 20px;
+background-color: rgba(245,245,245,1);
+width: calc(90vw + 40px);
+overflow:hidden;
+gap: 5px;
+padding-left: 20px;
+}
+
+.art_card {
+width: 100vw;
+position: relative;
+transition: all 0.3s linear;
 aspect-ratio: 1/1;
 border-radius: 0px;
 overflow: hidden;
 object-fit: cover;
 object-position: center;
-cursor: pointer;
 }
 
-
-.art_card {
-min-width: 100vw;
-aspect-ratio: 1/1;
+.main_section {
 display: flex;
+flex-direction: column;
+width: 100vw;
+overflow: hidden;
+background-color: white;
 align-items: center;
 justify-content: center;
+padding-top: 10vh;
 }
 
+.flex_image {
+width: 100%;
+height: 100%;
+aspect-ratio: 1/1;
+border-radius: 0px;
+overflow: hidden;
+object-fit: cover;
+object-position: center;
+}
+
+.darkmode,
+.darkmode div {
+background-color: black;
+color: rgba(255,255,255,0.9);
+}
+
+.darkmode div div {
+background-color: #101010;
+}
 }
 
 
